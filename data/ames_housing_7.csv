@@ -1,0 +1,80 @@
+Feature Name,Feature Value,Contribution,Average/Mode
+ Identifies the type of dwelling involved in the sale.,20,1719.226755355572,47.0
+ Linear feet of street connected to property,75.0,219.03235571931683,71.44444444444444
+ Lot size in square feet,10084,-1421.8550686437077,10374.8
+ Rates the overall material and finish of the house,8,9655.787012072418,6.7
+ Rates the overall condition of the house,5,-2670.4623878497214,5.5
+ Original construction date,2004,9423.477901210143,1976.1
+ Remodel date (same as construction date if no remodeling or additions),2005,2086.16688796649,1983.9
+ Masonry veneer area in square feet,186.0,1022.5458652148493,113.4
+ Type 1 finished square feet,1369,14641.527959945983,683.1
+ Type 2 finished square feet,0,-492.81895896847595,32.2
+ Unfinished square feet of basement area,317,202.25971360685426,358.3
+ Total square feet of basement area,1686,12138.277877052871,1073.6
+ First Floor square feet,1694,6602.3994333705705,1101.9
+ Second floor square feet,0,-10142.290455798697,583.0
+ Low quality finished square feet (all floors),0,23.593205807691724,0.0
+ Above grade (ground) living area square feet,1694,2655.239598716776,1684.9
+ Basement full bathrooms,1,862.9983446631171,0.8
+ Basement half bathrooms,0,182.7069172638496,0.1
+ Full bathrooms above grade,2,929.0338687661954,1.7
+ Half baths above grade,0,-751.509157285847,0.6
+ Bedrooms above grade (does NOT include basement bedrooms),3,-323.0057605202017,2.8
+ Kitchens above grade,1,264.9751492072544,1.1
+ Total rooms above grade (does not include bathrooms),7,520.1713237589827,6.9
+ Number of fireplaces,1,774.3799790032368,0.9
+ Year garage was built,2004.0,-609.9491676124009,1984.4
+ Size of garage in car capacity,2,58.10796524914301,2.1
+ Size of garage in square feet,636,995.6601029760378,543.8
+ Wood deck area in square feet,255,2175.078349151537,184.6
+ Open porch area in square feet,57,115.82391631061984,58.1
+ Enclosed porch area in square feet,0,-415.2004969645055,70.5
+ Three season porch area in square feet,0,0.0,32.0
+ Screen porch area in square feet,0,-910.6482644469232,0.0
+ Pool area in square feet,0,0.0,0.0
+ $Value of miscellaneous feature,0,-28.230438622589592,105.0
+ Month Sold (MM),8,-632.5435596703386,6.9
+ Year Sold (YYYY),2007,369.48719298765445,2007.8
+ Type of alley access to property,,71.71673395396012,
+ Type of dwelling,1Fam,731.6166191673829,1Fam
+ Evaluates the general condition of the basement,TA,27.888720700067893,TA
+ Refers to walkout or garden level walls,Av,328.56539003413127,No
+ Rating of basement finished area,GLQ,2764.467036148777,GLQ
+ Rating of basement finished area (if multiple types),Unf,232.51227133810937,Unf
+ Evaluates the height of the basement,Ex,13233.23630542964,Gd
+ Central air conditioning,Y,49.32684068078288,Y
+ Proximity to various conditions,Norm,801.9875085137489,Norm
+ Proximity to various conditions (if more than one is present),Norm,192.06878836025004,Norm
+ Electrical system,SBrkr,-83.00691850861952,SBrkr
+ Evaluates the present condition of the material on the exterior,TA,140.66731210452542,TA
+ Evaluates the quality of the material on the exterior,Gd,-98.45395804370492,Gd
+ Exterior covering on house,VinylSd,-1631.2700353053392,VinylSd
+ Exterior covering on house (if more than one material),VinylSd,3005.254765648342,VinylSd
+ Fence quality,,124.10897790018987,MnPrv
+ Fireplace quality,Gd,-1435.5104933928546,TA
+ Type of foundation,PConc,988.379649412295,PConc
+ Home functionality (Assume typical unless deductions are warranted),Typ,1722.604429166849,Typ
+ Garage condition,TA,285.649658219117,TA
+ Interior finish of the garage,RFn,-1856.7951598816794,RFn
+ Garage quality,TA,-254.53112775317254,TA
+ Garage location,Attchd,-892.5718483498481,Attchd
+ Type of heating,GasA,0.0,GasA
+ Heating quality and condition,Ex,1181.3365585814993,Ex
+ Style of dwelling,1Story,2984.203451096467,2Story
+ Kitchen quality,Gd,-1764.5901742450355,Gd
+ Flatness of the property,Lvl,424.3133355512327,Lvl
+ Slope of property,Gtl,-225.7224825380697,Gtl
+ Lot configuration,Inside,-336.5486224832815,Inside
+ General shape of property,Reg,295.6802959222704,IR1
+ Identifies the general zoning classification of the sale.,RL,440.9961923472579,RL
+ Masonry veneer type,Stone,5446.262457499719,BrkFace
+ Miscellaneous feature not covered in other categories,,-29.060190776766206,Shed
+ Physical locations within Ames city limits,Somerst,1539.0668570480589,CollgCr
+ Paved driveway,Y,219.2883820299091,Y
+ Pool quality,,0.0,
+ Roof material,CompShg,-241.17692677970774,CompShg
+ Type of roof,Gable,-273.273849896367,Gable
+ Condition of sale,Normal,1302.657229670718,Normal
+ Type of sale,WD,-2609.610770958109,WD
+ Type of road access to property,Pave,0.0,Pave
+ Type of utilities available,AllPub,0.0,AllPub
