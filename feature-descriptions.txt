@@ -1,0 +1,8 @@
+Feature name: Above grade (ground) living area square feet
+Description: The size of the house in square feet, not including the basement. We generally expect larger houses to have higher prices, but due to market saturation this may not be true for very large houses.
+
+Feature name: Rates the overall material and finish of the house
+Description: The overall material and finish of the house, rated on a scale from 1-10. We expect higher-rated houses to be worth more than lower-rated houses.
+
+Feature name: Second floor square feet
+Description: Size of the second floor of the house. A value of 0 implies there is no second floor.

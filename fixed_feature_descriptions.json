@@ -1,0 +1,397 @@
+{
+    "Above grade (ground) living area square feet": [
+        "Describes the total square footage of the living space in the house located above ground.",
+        "The larger the above grade living area, the higher the housing price as it provides more living space for occupants.",
+        "Houses with a smaller above grade living area may have lower selling prices compared to those with larger living spaces."
+    ],
+    "Rates the overall material and finish of the house": [
+        "Rates the quality of materials and finishings (out of 10) used in the construction of the house.",
+        "A higher rating indicates premium materials and finishes, potentially increasing the value of the property.",
+        "Buyers may be willing to pay more for a house with a high rating for material and finish quality."
+    ],
+    "Second floor square feet": [
+        "Refers to the total square footage of the living space on the second floor of the house.",
+        "Houses with a larger second floor square footage may be priced higher due to more living space.",
+        "The size of the second floor can impact the overall value of the house, with larger areas often translating to higher prices."
+    ],
+    "Physical locations within Ames city limits": [
+        "Describes the specific geographical location of the property within the city limits of Ames.",
+        "Properties located in desirable areas within city limits may have higher housing prices.",
+        "Proximity to amenities, schools, and other urban conveniences can influence the value of properties within city limits."
+    ],
+    "Wood deck area in square feet": [
+        "Refers to the total square footage of the outdoor wooden deck space attached to the house.",
+        "Houses with larger wood deck areas may be more appealing and thus have higher selling prices.",
+        "A wood deck can add value to a property by providing outdoor living space, leading to potential price increases."
+    ],
+    "Size of garage in car capacity": [
+        "Describes the number of cars that can fit inside the garage of the property.",
+        "Properties with larger garage capacities may be priced higher, as they offer more parking space.",
+        "The size of the garage can impact the property value, with multi-car garages potentially increasing the selling price."
+    ],
+    "Type 1 finished square feet": [
+        "Refers to the total square footage of the house with type 1 finish.",
+        "Type 1 finish is generally nicer than type 2 finish.",
+        "Properties with larger Type 1 finished square footage may be priced higher due to more finished living space."
+    ],
+    "Refers to walkout or garden level walls": [
+        "Describes whether the property features walkout or garden level walls.",
+        "Houses with walkout or garden level walls may be priced higher due to additional functional living space.",
+        "Walkout or garden level walls can provide more usable space and natural light, potentially increasing the value of the property."
+    ],
+    "Exterior covering on house (if more than one material)": [
+        "Describes the materials used to cover the exterior of the house, especially if there is more than one type of material.",
+        "The choice of exterior covering materials can impact the aesthetic appeal and value of the property.",
+        "Premium or durable exterior materials may contribute to higher housing prices compared to standard materials."
+    ],
+    "Style of dwelling": [
+        "Refers to the architectural style or design of the house.",
+        "The style of dwelling can influence the overall appeal and desirability of the property.",
+        "Properties with unique or popular architectural styles may command higher selling prices in the housing market."
+    ],
+    "Size of garage in square feet": [
+        "Describes the total square footage of the garage space within the property.",
+        "A larger garage size in square feet can add value to the property and potentially increase its selling price.",
+        "Garages with more square footage may offer additional storage or workspace, making the property more desirable to buyers."
+    ],
+    "Total square feet of basement area": [
+        "Refers to the entire square footage of the basement area in the house.",
+        "The size of the basement area can impact the overall value of the property.",
+        "Houses with larger basement areas may be priced higher due to the extra usable space they provide."
+    ],
+    "Type of sale": [
+        "Describes the nature or type of sale involved in the property transaction.",
+        "The type of sale can influence pricing strategies and negotiations in the real estate market.",
+        "Different types of sales, such as auctions or traditional listings, may affect the final selling price of the property."
+    ],
+    "Original construction date": [
+        "Refers to the date when the property was initially constructed or built.",
+        "The original construction date can impact the historical value and condition of the property.",
+        "Older properties with a long history may be priced differently compared to newer constructions in the housing market."
+    ],
+    "Rates the overall condition of the house": [
+        "Rates the general state and upkeep of the property, encompassing various aspects of its condition.",
+        "A higher rating indicates a better overall condition, potentially leading to a higher selling price.",
+        "The condition rating of a house can affect its market value and buyer interest in the property."
+    ],
+    "Number of fireplaces": [
+        "Describes the quantity of fireplaces present within the property.",
+        "Houses with more fireplaces may have higher selling prices due to added comfort and ambiance.",
+        "Fireplaces can be a desirable feature that adds warmth and character to a home, potentially increasing its value."
+    ],
+    "Remodel date (same as construction date if no remodeling or additions)": [
+        "Refers to the date when the property underwent remodeling or renovation work.",
+        "A recent remodel date may indicate updated features or modernization, potentially increasing the property's value.",
+        "Properties with no remodeling or recent renovations may be priced differently compared to those with updated features."
+    ],
+    "Masonry veneer area in square feet": [
+        "Describes the total square footage of masonry veneer used on the exterior of the property.",
+        "Houses with larger masonry veneer areas may be priced higher due to the premium look and durability of the material.",
+        "Masonry veneer can enhance the curb appeal and value of the property, affecting its selling price."
+    ],
+    "Rating of basement finished area (if multiple types)": [
+        "Rates the quality or condition of the finished areas within the basement, especially if there are multiple types present.",
+        "A higher rating for basement finished areas may increase the overall value of the property.",
+        "Properties with well-rated and functional basement finished areas may be priced higher in the housing market."
+    ],
+    "Fireplace quality": [
+        "Describes the level of quality and condition of the fireplaces within the property.",
+        "Higher-quality fireplaces may add to the overall appeal and value of the house.",
+        "Properties with fireplaces of superior quality may be priced higher due to the added aesthetic and functional benefits."
+    ],
+    "Full bathrooms above grade": [
+        "The number of bathrooms located on or above the main living area of the house.",
+        "Houses with more full bathrooms above grade tend to have higher prices as they provide convenience and comfort to occupants.",
+        "The presence of full bathrooms above grade can enhance the overall value of a property as it caters to the needs of potential buyers."
+    ],
+    "Home functionality (Assume typical unless deductions are warranted)": [
+        "Assessment of the overall functionality and livability of the home, assuming it meets standard expectations unless noted otherwise.",
+        "Homes with good functionality are likely to command higher prices due to their appeal to buyers seeking convenience and comfort.",
+        "Deductions in home functionality may lower the price of the property as it may require additional investments or repairs from potential buyers."
+    ],
+    "Identifies the type of dwelling involved in the sale.": [
+        "Description of the specific type of residential property being sold.",
+        "Different types of dwellings can have varying price ranges based on factors such as size, location, and amenities.",
+        "The type of dwelling can significantly impact the pricing of a property, with certain types being more desirable and therefore more expensive."
+    ],
+    "Lot size in square feet": [
+        "The total area of the land on which the property is built, measured in square feet.",
+        "Properties with larger lot sizes tend to have higher prices due to the potential for expansion, privacy, and outdoor amenities.",
+        "Lot size in square feet is a key factor in determining the value of a property, with larger lots generally translating to higher property values."
+    ],
+    "Kitchen quality": [
+        "The standard and condition of the kitchen in the house, including fixtures, appliances, and overall design.",
+        "Houses with high-quality kitchens often have higher prices as the kitchen is a focal point for many buyers.",
+        "Investing in kitchen upgrades can increase the value of a property, as kitchens are a key selling point for many homebuyers."
+    ],
+    "Type 2 finished square feet": [
+        "The total area of the secondary finished living space in the property, such as a finished basement or attic.",
+        "Homes with additional finished square footage tend to command higher prices as they offer more living space and potential versatility.",
+        "Type 2 finished square feet can add value to a property by providing extra living areas, storage space, or recreational areas for occupants."
+    ],
+    "Condition of sale": [
+        "The terms and conditions under which the property is being sold, including any special considerations or requirements.",
+        "The condition of sale can impact the final price of the property, with more favorable conditions potentially leading to higher selling prices.",
+        "Negotiating favorable conditions of sale can influence the overall value of the property and the final sales price agreed upon by both parties."
+    ],
+    "Heating quality and condition": [
+        "Assessment of the efficiency, type, and condition of the heating system in the house.",
+        "Properties with high-quality heating systems may have higher prices as they offer comfort and energy efficiency to occupants.",
+        "Investing in upgrading the heating system can increase the value of a property, especially in regions with extreme temperatures."
+    ],
+    "Total rooms above grade (does not include bathrooms)": [
+        "The total number of rooms in the house situated on or above the main living area, excluding bathrooms.",
+        "Houses with more rooms above grade can have higher prices as they provide versatility and space for various purposes.",
+        "Total rooms above grade, excluding bathrooms, can influence the pricing of a property by offering more living space or potential for customization."
+    ],
+    "Half baths above grade": [
+        "The number of bathrooms with only a toilet and sink located on or above the main living area of the house.",
+        "Properties with half baths above grade may appeal to buyers seeking convenience and may have slightly higher prices.",
+        "The presence of half baths above grade can add value to a property by providing additional bathroom facilities for occupants and guests."
+    ],
+    "Screen porch area in square feet": [
+        "The size of the screened porch area attached to the house, measured in square feet.",
+        "Houses with larger screen porch areas may have higher prices as they offer additional outdoor living space and potential for relaxation.",
+        "Investing in a screen porch area can increase the value of a property by creating a functional and enjoyable space for occupants to use year-round."
+    ],
+    "Garage location": [
+        "Description of the location of the garage on the property, such as attached, detached, or built-in.",
+        "The location of the garage can affect the price of a property, with attached garages often adding more value due to convenience and security.",
+        "Garage location is an important factor for buyers, and properties with convenient or secure garage locations may have higher prices as a result."
+    ],
+    "Basement full bathrooms": [
+        "The number of full bathrooms located in the basement area of the house.",
+        "Properties with full bathrooms in the basement may have higher prices as they provide convenience and additional amenities for occupants.",
+        "Having full bathrooms in the basement can increase the value of a property by offering extra facilities for residents and guests in that living area."
+    ],
+    "Proximity to various conditions": [
+        "The distance or relationship of the property to certain conditions or features, such as parks, schools, or busy roads.",
+        "Properties in close proximity to desirable conditions like parks or schools may have higher prices due to increased convenience and appeal.",
+        "Proximity to various conditions can influence the value of a property, with factors like noise levels, views, and accessibility playing a role in pricing."
+    ],
+    "Type of dwelling": [
+        "Categorization of the type of residential property being sold, such as single-family, multi-family, or townhouse.",
+        "Different types of dwellings can have different price points based on factors like size, location, and amenities.",
+        "The type of dwelling can impact the pricing of a property, with certain types being more sought after and therefore more expensive."
+    ],
+    "Masonry veneer type": [
+        "Description of the type of masonry veneer used on the exterior of the house, such as brick, stone, or stucco.",
+        "Certain masonry veneer types may add value to a property due to their durability, aesthetics, and potential for insulation.",
+        "Investing in high-quality masonry veneer types can enhance the curb appeal and overall value of a property, leading to potentially higher prices."
+    ],
+    "Identifies the general zoning classification of the sale.": [
+        "Indication of the zoning classification of the property for sale, such as residential, commercial, or agricultural.",
+        "Zoning classification can impact the potential uses and value of a property, with residential zoning often associated with higher prices in certain areas.",
+        "The general zoning classification of the sale can influence the pricing and market demand for a property, depending on the intended use and local regulations."
+    ],
+    "Flatness of the property": [
+        "Description of the topography of the land the property is situated on, such as flat, sloped, or terraced.",
+        "Properties with flat terrain may be more desirable and could have higher prices due to ease of construction, landscaping, and accessibility.",
+        "The flatness of the property can affect its value, with flatter land often being preferred by buyers for its potential for development, outdoor activities, and aesthetics."
+    ],
+    "Rating of basement finished area": [
+        "Evaluation of the quality, condition, and features of the finished area in the basement of the house.",
+        "Properties with well-rated basement finished areas may have higher prices as they offer additional living space and potential for customization.",
+        "Investing in improving the basement finished area can increase the overall value of a property by creating functional and attractive living spaces for occupants."
+    ],
+    "Enclosed porch area in square feet": [
+        "The size of the porch area that is enclosed and attached to the house, measured in square feet.",
+        "Houses with larger enclosed porch areas may have higher prices as they offer additional living space and potential for relaxation or entertainment.",
+        "Investing in an enclosed porch area can increase the value of a property by creating a versatile and inviting space for occupants to enjoy throughout the year."
+    ],
+    "Open porch area in square feet": [
+        "Having a larger open porch area tends to increase the overall curb appeal of a property, potentially leading to higher housing prices.",
+        "Properties with spacious open porch areas are often perceived as more suitable for outdoor leisure activities, adding value to the home.",
+        "A larger open porch area can provide additional living space for relaxation or entertainment, contributing to a higher market value."
+    ],
+    "Interior finish of the garage": [
+        "The interior finish of a garage can influence the overall aesthetic appeal of a property, potentially impacting its market value positively.",
+        "Garages with high-quality interior finishes are often considered more desirable by buyers, leading to increased property prices.",
+        "The interior finish of a garage can reflect the level of maintenance and care given to the property, affecting its resale value."
+    ],
+    "Unfinished square feet of basement area": [
+        "Properties with unfinished basement areas may have lower housing prices due to the potential costs and efforts required for renovation.",
+        "The presence of unfinished square feet in the basement may offer potential for customization and improvement, influencing the property value.",
+        "Unfinished basement areas can provide opportunities for future expansion or personalization, affecting the perceived value of a home."
+    ],
+    "Year garage was built": [
+        "The year a garage was built can indicate its condition and potential maintenance needs, impacting the overall property value.",
+        "Newer garage constructions are often associated with better functionality and aesthetics, contributing to higher housing prices.",
+        "The age of a garage can serve as an indicator of its structural integrity and durability, influencing the market value of a property."
+    ],
+    "Lot configuration": [
+        "The lot configuration of a property can affect its privacy, views, and outdoor space usage, influencing housing prices.",
+        "Properties with irregular or unique lot configurations may have varying market values based on their distinctive features.",
+        "The lot configuration can determine the usability and development potential of the land, impacting the overall property value."
+    ],
+    "Bedrooms above grade (does NOT include basement bedrooms)": [
+        "The number of bedrooms above grade can significantly impact the market value of a property, with more bedrooms often leading to higher prices.",
+        "Properties with a higher number of bedrooms above grade are generally more appealing to larger families, potentially increasing their market value.",
+        "The number of bedrooms above grade can influence the functionality, comfort, and investment potential of a property, affecting housing prices."
+    ],
+    "General shape of property": [
+        "The general shape of a property can affect its curb appeal, land utility, and overall aesthetics, influencing housing prices.",
+        "Properties with regular and symmetrical shapes may have higher market values due to their perceived aesthetic harmony and ease of construction.",
+        "The shape of a property can impact its landscaping options, views, and future development possibilities, affecting its market value."
+    ],
+    "First Floor square feet": [
+        "The square footage of the first floor can significantly impact the overall living space and functionality of a property, affecting its market value.",
+        "Properties with larger first floor areas may command higher prices due to increased living and entertainment space.",
+        "The first floor square footage can influence the layout, comfort, and resale potential of a property, impacting its housing prices."
+    ],
+    "Garage condition": [
+        "The condition of the garage can affect the convenience, safety, and storage capacity of a property, influencing its market value.",
+        "A well-maintained garage in good condition can enhance the overall appeal and value of a property.",
+        "The garage condition can serve as a reflection of the property's maintenance and care level, affecting its resale value."
+    ],
+    "Type of roof": [
+        "The type of roof on a property can impact its durability, energy efficiency, and maintenance costs, influencing housing prices.",
+        "Roof types such as metal or tile may signal higher quality and longevity, potentially increasing the market value of a property.",
+        "The roof type can affect the property's insulation, aesthetics, and weather resistance, impacting its overall value."
+    ],
+    "Type of foundation": [
+        "The type of foundation can affect the structural integrity, maintenance needs, and longevity of a property, influencing its market value.",
+        "Properties with strong foundation types like concrete tend to have higher market values due to their stability and durability.",
+        "The foundation type can impact the property's resilience to natural disasters, energy efficiency, and long-term maintenance costs, affecting its housing prices."
+    ],
+    "Kitchens above grade": [
+        "The number of kitchens above grade can affect the functionality, convenience, and potential uses of a property, influencing its market value.",
+        "Properties with multiple kitchens above grade may appeal to buyers seeking additional cooking or hosting spaces, potentially increasing their value.",
+        "The presence of kitchens above grade can influence the property's versatility, rental potential, and resale value, affecting housing prices."
+    ],
+    "Garage quality": [
+        "The quality of a garage can impact its usability, storage capacity, and overall appeal, influencing the market value of a property.",
+        "Garages with high-quality features and finishes are generally more desirable to buyers, potentially leading to higher housing prices.",
+        "The garage quality can reflect the property's level of maintenance, care, and investment value, affecting its resale potential."
+    ],
+    "Roof material": [
+        "The material used for the roof can affect the property's aesthetics, energy efficiency, and maintenance requirements, influencing housing prices.",
+        "Durable roof materials like asphalt shingles or metal can enhance the property's longevity and value.",
+        "The roof material can impact the property's insulation, weather resistance, and curb appeal, affecting its overall market value."
+    ],
+    "Slope of property": [
+        "The slope of a property can affect its drainage, landscaping options, and structural stability, influencing housing prices.",
+        "Properties with steep slopes may have varying market values based on the challenges and opportunities they present for development.",
+        "The property's slope can impact the views, erosion risks, and building costs, affecting its overall market value."
+    ],
+    "Paved driveway": [
+        "A paved driveway can enhance the curb appeal, accessibility, and convenience of a property, potentially increasing its market value.",
+        "Properties with paved driveways may have higher market values due to their durability, aesthetics, and low maintenance requirements.",
+        "A paved driveway can improve the property's functionality, safety, and overall desirability, affecting its housing prices."
+    ],
+    "Linear feet of street connected to property": [
+        "The length of street connected to a property can influence its accessibility, privacy, and noise levels, impacting housing prices.",
+        "Properties with longer street frontages may have higher market values due to increased curb appeal and development potential.",
+        "The linear feet of connected street can affect the property's views, traffic exposure, and landscaping options, influencing its market value."
+    ],
+    "Proximity to various conditions (if more than one is present)": [
+        "The proximity of a property to various conditions like parks, schools, or commercial areas can impact its desirability and market value.",
+        "Properties located close to amenities or green spaces may command higher prices due to increased convenience and quality of life.",
+        "The proximity to different conditions can affect the property's accessibility, resale potential, and neighborhood attractiveness, influencing its housing prices."
+    ],
+    "Basement half bathrooms": [
+        "Properties with basement half bathrooms may offer additional convenience and functionality, potentially increasing their market value.",
+        "The presence of basement half bathrooms can enhance the property's utility and appeal to buyers seeking extra restroom facilities.",
+        "Basement half bathrooms can improve the comfort, versatility, and resale potential of a property, affecting its housing prices."
+    ],
+    "Evaluates the present condition of the material on the exterior": [
+        "The evaluation of the exterior material's condition can impact the property's curb appeal, maintenance needs, and market value.",
+        "A positive assessment of the exterior material's condition may enhance the property's overall aesthetics and resale potential.",
+        "The evaluation of the exterior material can provide insights into the property's durability, care level, and investment value, influencing its housing prices."
+    ],
+    "Fence quality": [
+        "This feature represents the quality of the fence surrounding the property. A high-quality fence can increase the overall value of the home by enhancing privacy and security.",
+        "The condition of the fence can impact the curb appeal of the property, potentially attracting more buyers and increasing the selling price.",
+        "A well-maintained fence can contribute to the aesthetics of the home, making it more desirable and potentially leading to a higher selling price."
+    ],
+    "Evaluates the height of the basement": [
+        "This feature assesses the height of the basement in the house. A taller basement height can indicate better construction quality and may add value to the property.",
+        "Basement height evaluation can influence the potential use of the space for living or storage purposes, affecting the overall market value of the home.",
+        "Higher basement ceilings can create a more spacious and comfortable atmosphere, potentially increasing the market price of the property."
+    ],
+    "Evaluates the quality of the material on the exterior": [
+        "This feature evaluates the quality of materials used on the exterior of the house. High-quality exterior materials can enhance the durability and appearance of the property, potentially increasing its value.",
+        "The quality of exterior materials can impact the maintenance costs of the home and may influence the selling price in the real estate market.",
+        "Homes with high-quality exterior materials are often perceived as more attractive and well-maintained, leading to a higher resale value."
+    ],
+    "Year Sold (YYYY)": [
+        "The year in which the property was sold. Market trends and conditions during the sale year can affect the final selling price of the home.",
+        "The year of sale can influence the demand and supply dynamics in the housing market, potentially impacting the pricing of properties in a given year.",
+        "Economic factors and interest rates prevailing in the sale year can influence the overall value of the property at the time of sale."
+    ],
+    "Electrical system": [
+        "The type and condition of the electrical system in the property. A modern and well-maintained electrical system can increase the value of the home.",
+        "An outdated or faulty electrical system may decrease the value of the property due to the potential risks and additional costs associated with repairs or upgrades.",
+        "The electrical system's capacity and efficiency can impact the overall safety and functionality of the home, affecting its market price."
+    ],
+    "Type of alley access to property": [
+        "This feature describes the type of access the property has to an alley. Easy alley access can provide convenience and may influence the property's value positively.",
+        "Properties with alley access for parking or deliveries may be more desirable to buyers, potentially leading to a higher selling price.",
+        "Alley access can affect the property's accessibility and usage, which can impact its market value in the real estate industry."
+    ],
+    "Central air conditioning": [
+        "Whether the property has a central air conditioning system. Central AC can increase the comfort and desirability of the home, potentially raising its market value.",
+        "Homes with central air conditioning are often preferred by buyers for their convenience and climate control capabilities, which can influence the selling price.",
+        "The presence of central air conditioning can impact the energy efficiency and overall appeal of the property, potentially affecting its resale value."
+    ],
+    "Exterior covering on house": [
+        "Describes the type of material covering the exterior of the house. The quality and style of the exterior covering can affect the property's curb appeal and value.",
+        "Different exterior coverings like siding or brick can impact the maintenance requirements and aesthetics of the home, potentially influencing its market price.",
+        "The exterior covering on the house can provide insulation and protection, affecting the property's durability and overall market value in the real estate market."
+    ],
+    "Miscellaneous feature not covered in other categories": [
+        "This feature includes miscellaneous characteristics of the property that do not fit into other predefined categories. These unique features can add value to the home.",
+        "Special or unique aspects of the property not captured in standard categories can make it more attractive to buyers, potentially increasing its selling price.",
+        "Miscellaneous features not covered elsewhere can set the property apart from others in the market, potentially enhancing its market value and appeal."
+    ],
+    "$Value of miscellaneous feature": [
+        "Specifies the monetary value associated with miscellaneous features not included in other categories. The value of these unique aspects can contribute to the property's overall worth.",
+        "Monetary evaluation of special features can influence the pricing strategy and market value of the property during sales transactions.",
+        "Assigning a specific value to miscellaneous features can help appraisers and buyers understand the additional worth and appeal of the property."
+    ],
+    "Evaluates the general condition of the basement": [
+        "This feature assesses the overall condition and state of the basement in the house. A well-maintained basement can enhance the property's value.",
+        "The general condition of the basement can impact the living conditions and potential use of the space, influencing the property's market price.",
+        "Proper maintenance and upkeep of the basement can prevent structural issues and add to the overall appeal and value of the home in the real estate market."
+    ],
+    "Low quality finished square feet (all floors)": [
+        "Represents the total square footage of low-quality finished space in the property. Low-quality finishes may reduce the property's market value.",
+        "The presence of low-quality finishes in the square footage can impact the perceived value and aesthetics of the home, potentially affecting its selling price.",
+        "Improving or renovating low-quality finished square feet can enhance the property's overall appeal and market value in the real estate industry."
+    ],
+    "Month Sold (MM)": [
+        "The month in which the property was sold. Seasonal variations and demand levels in different months can influence the selling price of the home.",
+        "The month of sale can affect the competition and availability of properties in the market, potentially impacting the pricing strategy and value of the property.",
+        "Market conditions and buyer behavior may vary across different months, which can influence the negotiation process and final selling price of the home."
+    ],
+    "Three season porch area in square feet": [
+        "Specifies the square footage of the three season porch area in the property. A larger porch area can enhance the living space and overall value of the home.",
+        "Homes with a three-season porch offer additional living and entertainment space, which can attract buyers and potentially increase the selling price.",
+        "The size and condition of the three-season porch can impact the property's appeal and market value, especially for buyers looking for outdoor living spaces."
+    ],
+    "Type of road access to property": [
+        "Describes the type of road providing access to the property. Easy access via paved roads can increase the convenience and value of the home.",
+        "Different road access types like paved or gravel can affect the property's accessibility and maintenance requirements, potentially influencing its market price.",
+        "The type of road access can impact the property's curb appeal and transportation convenience, which may affect its market value in the real estate industry."
+    ],
+    "Type of heating": [
+        "The type of heating system installed in the property. Efficient and modern heating systems can enhance the comfort and energy efficiency of the home, potentially increasing its value.",
+        "Properties with advanced heating systems may be more attractive to buyers due to lower energy costs and increased comfort, potentially influencing the selling price.",
+        "The type of heating system can impact the property's overall energy consumption and maintenance needs, which can influence its market value in the real estate market."
+    ],
+    "Pool area in square feet": [
+        "Specifies the square footage of the pool area on the property. A larger pool area can enhance the outdoor living space and overall value of the home.",
+        "Homes with a pool area offer additional amenities and recreation opportunities, which can attract buyers and potentially increase the selling price.",
+        "The size and condition of the pool area can impact the property's appeal and market value, especially for buyers seeking properties with swimming pools."
+    ],
+    "Pool quality": [
+        "Evaluates the quality and condition of the pool on the property. A well-maintained pool with high quality features can increase the value of the home.",
+        "The quality of the pool can impact the maintenance costs and safety of the property, potentially influencing its market price in the real estate industry.",
+        "Homes with a high-quality pool are often considered luxurious and desirable, which can lead to a higher selling price and increased market value."
+    ],
+    "Type of utilities available": [
+        "Describes the types of utilities available at the property. Access to essential utilities like water, electricity, and gas can increase the functionality and value of the home.",
+        "The availability of utilities can impact the property's livability and operating costs, potentially influencing its market price in the real estate market.",
+        "Properties with a range of utilities available may appeal to a broader range of buyers, potentially leading to a higher selling price and increased market value."
+    ]
+}
