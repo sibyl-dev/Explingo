@@ -1,4 +1,4 @@
-Prompt,Explanation,Response,Accuracy,Fluency,Completeness ,Context
+Prompt,Explanation,Response,Accuracy,Fluency,Completeness,Context-Awareness
 "You are helping users understand an ML model's predictions. I will give you feature contribution explanations, generated using SHAP, in (feature, feature_value, contribution, average_feature_value) format. Convert the explanations in simple narratives. Do not use more tokens than necessary.","(Above grade (ground) living area square feet, 1256, -12527.462023188567, 1684.9), (Rates the overall material and finish of the house, 5, -10743.763013432692, 6.7), (Second floor square feet, 0, -10142.290455798697, 583.0)","The model predicted a lower value for the house primarily because:
 1. The living area above ground, at 1256 square feet, is smaller than the average (1684.9 sq ft), leading to a significant decrease in the house's value.
 2. The overall material and finish quality of the house, rated at 5, is below the average rating of 6.7, further reducing the home's value.
