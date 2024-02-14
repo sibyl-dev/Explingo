@@ -1,0 +1,31 @@
+Feature Name,Feature Value,Contribution,Average/Mode
+School,MS,-0.729760318,GP
+Reason for choosing this school,course,-0.314094167,course
+Extra-curricular activities,no,-0.205561964,no
+Age,17,-0.110641723,17.33333333
+Frequency of going out with friends (1-5),1,-0.102539359,2.666666667
+Amount of free time after school (1-5),5,-0.094441307,4
+Parent's cohibition status,T,-0.041754054,T
+Mother's job,at_home,-0.023187528,at_home
+Home to school travel time,1,-0.008723362,1.333333333
+Attended nursery school,yes,-0.006630832,yes
+Extra paid classes within the subject,no,0,no
+Has internet at home,yes,0.000598074,yes
+Current health status (1-5),3,0.003298017,2
+Frequency of weekend alcohol consumption (1-5),1,0.028797367,2
+Frequency of workday alcohol consumption (1-5),1,0.029617225,1
+Family eductional support,no,0.047257704,no
+In a romantic relationship,no,0.096682211,no
+Extra education support,no,0.116659539,no
+Weekly study time,1,0.127555494,2
+Sex,F,0.136594525,F
+Mother's education,1,0.144097663,2
+Address type,U,0.162213326,U
+Quality of family relationships (1-5),5,0.178380745,4.333333333
+Father's education,2,0.194361524,2
+Family size,LE3,0.199658769,LE3
+Number of school absences,0,0.217178271,0.666666667
+Wants to take higher education,yes,0.221409529,yes
+Father's job,other,0.285307223,other
+Student's guardian,father,0.194083052,mother
+Number of past class failures,0,0.874286262,0
