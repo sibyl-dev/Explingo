@@ -1,0 +1,23 @@
+Feature Name,Feature Value,Contribution,Average/Mode
+bruises,no,0.0182543283443556,no
+cap-color,brown,-0.0004063888745895381,brown
+cap-shape,convex,0.0011623088578016905,flat
+cap-surface,scaly,0.005040515814316677,fibrous
+gill-attachment,free,0.000423333328217268,free
+gill-color,buff,0.0806052389360957,buff
+gill-size,narrow,0.11131508143258544,narrow
+gill-spacing,close,0.016574206237310138,close
+habitat,leaves,0.010504686145250162,leaves
+odor,foul,0.1480498448811886,fishy
+population,several,0.018131944374326848,several
+ring-number,one,0.002573531724783607,one
+ring-type,evanescent,0.04540813787793923,evanescent
+spore-print-color,white,0.024893174549370088,white
+stalk-color-above-ring,white,0.00014908742112311273,white
+stalk-color-below-ring,pink,0.003905400157982513,pink
+stalk-root,,0.017086507871354115,equal
+stalk-shape,tapering,-0.0070896393965631434,tapering
+stalk-surface-above-ring,silky,0.04961233858128253,smooth
+stalk-surface-below-ring,smooth,-0.006271745780395577,smooth
+veil-color,white,-2.1904763707425447e-05,white
+veil-type,partial,0.0,partial
