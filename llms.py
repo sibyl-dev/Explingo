@@ -10,7 +10,7 @@ import tempfile
 
 
 # Setting the API key
-openai.api_key = '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'#os.environ['OPENAI_API_KEY']
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 # Perform tasks using OpenAI API
 client = openai.OpenAI(
