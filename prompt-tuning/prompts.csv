@@ -1,0 +1,7 @@
+id,prompt_text,prompt_metric,notes
+intro,"""You are helping users understand an ML model's predictions. [CONTEXT]""",,
+task,"""I will give you feature contribution explanations,  generated using SHAP, in (feature, feature_value, contribution, average_feature_value) format.  Convert the explanations into simple narratives. Do not use more tokens than necessary.""",,
+P1,"""[INTRO][TASK]""",,
+P2,"""You are helping users who do not have experience working with ML understand an ML model's predictions. [TASK]. Make your answers sound as natural as possible, as though said in conversation.""",fluency,
+P3,"""[INTRO][TASK] Be sure to explicitly mention all feature and contribution values in your response.""",completeness,
+P4,"""[INTRO][TASK] Include context about why the features selected may be important.""",context-awareness,
