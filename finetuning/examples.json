@@ -1,72 +1,147 @@
 [
   {
-    "explanation": "(Above grade (ground) living area square feet, 1256, -12527.462023188567, 1684.9), (Rates the overall material and finish of the house, 5, -10743.763013432692, 6.7), (Second floor square feet, 0, -10142.290455798697, 583.0), (Physical locations within Ames city limits, Edwards, -9913.810643538069, CollgCr), (Wood deck area in square feet, 736, 9846.38415602857, 184.6)",
+    "explanation": "(Above ground living area square feet, 1256.00, -12527.46), (Rates the overall material and finish of the house, 5.00, -10743.76), (Second floor square feet, 0.00, -10142.29), (Physical locations within Ames city limits, Edwards, -9913.81), (Wood deck area in square feet, 736.00, 9846.38)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "description": "The relatively smaller above ground living space in this house reduces its predicted price by about $12,000. The lower-than-average material rating also reduced the house price by about $10,000. The absence of a second floor also reduced the price by about $10,000. The house's location in Edwards reduced the price by about $10,000. The relatively larger wood deck area increased the price by about $10,000.",
-    "bad_description": "The above grade (ground) living area's value of 1256 had a contribution of -12527. The overall material and finish of the house's value of 5 had a contribution of -10743. The second floor square feet's value of 0 had a contribution of -10142. The physical location within Ames city limits of Edwards had a contribution of -9913. The wood deck area in square feet's value of 736 had a contribution of 9846."
+    "bad_description": "The Above ground living area square feet feature has a values of 1256.00 and a SHAP value of -12527.46. The Rates the overall material and finish of the house feature has a values of 5.00 and a SHAP value of -10743.76. The Second floor square feet feature has a values of 0.00 and a SHAP value of -10142.29. The Physical locations within Ames city limits feature has a values of Edwards and a SHAP value of -9913.81. The Wood deck area in square feet feature has a values of 736.00 and a SHAP value of 9846.38. "
   },
   {
-    "explanation": "(Second floor square feet, 854, 12757.839225221018, 583.0), (Original construction date, 2003, 9115.722254534434, 1976.1), (Total square feet of basement area, 856, -6157.864205856202, 1073.6), (First Floor square feet, 856, -5466.642132767198, 1101.9), (Physical locations within Ames city limits, CollgCr, -4761.423413509238, CollgCr)",
+    "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86), (First Floor square feet, 856.00, -5466.64), (Physical locations within Ames city limits, CollgCr, -4761.42)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "description": "The house's larger than average second floor increased the predicted price by about $12,000. The house is newer than average, with a construction year of 2003, which increased the price by about $9,000. The relatively smaller basement and first floor areas reduced the price by about $6,000 and $5,000, respectively. The house's location in CollgCr, reduced the price by about $5,000.",
-    "bad_description": "The second floor square feet's value of 854 had a contribution of 12757. The original construction date of 2003 had a contribution of 9115. The total square feet of basement area of 856 had a contribution of -6157. The first floor square feet of 856 had a contribution of -5466. The physical location within Ames city limits of CollgCr had a contribution of -4761."
+    "bad_description": "The Second floor square feet feature has a values of 854.00 and a SHAP value of 12757.84. The Original construction date feature has a values of 2003.00 and a SHAP value of 9115.72. The Total square feet of basement area feature has a values of 856.00 and a SHAP value of -6157.86. The First Floor square feet feature has a values of 856.00 and a SHAP value of -5466.64. The Physical locations within Ames city limits feature has a values of CollgCr and a SHAP value of -4761.42. "
   },
   {
-    "explanation": "(Refers to walkout or garden level walls, Gd, 17607.43314710544, No), (Rates the overall condition of the house, 8, 13038.139893619234, 5.5), (Above grade (ground) living area square feet, 1262, -12319.479809189865, 1684.9), (Second floor square feet, 0, -10142.290455798697, 583.0), (Proximity to various conditions, Feedr, -8251.833386868077, Norm)",
+    "explanation": "(Refers to walkout or garden level walls, Gd, 17607.43), (Rates the overall condition of the house, 8.00, 13038.14), (Above ground living area square feet, 1262.00, -12319.48), (Second floor square feet, 0.00, -10142.29), (Proximity to various conditions, Feedr, -8251.83)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "description": "This house has good garden level walls, which increases its predicted price by about $17,000. The house's good condition (rated 8/10) increased the price by about $13,000. The relatively smaller above ground living space reduced the price by about $12,000. The absence of a second floor reduced the price by about $10,000. The house's location on a feeder street reduced the price by about $8,000.",
-    "bad_description": "The 'refers to walkout or garden level walls' value of Gd had a contribution of 17607. The overall condition of the house's value of of 8 had a contribution of 13038. The above grade (ground) living area square feet of 1262 had a contribution of -12319. The second floor square feet of 0 had a contribution of -10142. The proximity to various conditions of Feedr had a contribution of -8251."
+    "bad_description": "The Refers to walkout or garden level walls feature has a values of Gd and a SHAP value of 17607.43. The Rates the overall condition of the house feature has a values of 8.00 and a SHAP value of 13038.14. The Above ground living area square feet feature has a values of 1262.00 and a SHAP value of -12319.48. The Second floor square feet feature has a values of 0.00 and a SHAP value of -10142.29. The Proximity to various conditions feature has a values of Feedr and a SHAP value of -8251.83. "
   },
   {
-    "explanation": "(Second floor square feet, 866, 13079.62090692153, 583.0), (Original construction date, 2001, 8500.210961183018, 1976.1), (Above grade (ground) living area square feet, 1786, 5844.30021336356, 1684.9), (Physical locations within Ames city limits, CollgCr, -4761.423413509238, CollgCr), (Total square feet of basement area, 920, -4747.077346451165, 1073.6)",
+    "explanation": "(Second floor square feet, 866.00, 13079.62), (Original construction date, 2001.00, 8500.21), (Above ground living area square feet, 1786.00, 5844.30), (Physical locations within Ames city limits, CollgCr, -4761.42), (Total square feet of basement area, 920.00, -4747.08)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "description": "The house's larger than average second floor increased the predicted price by about $13,000. The house is newer than average, with a construction year of 2001, which increased the price by about $8,500. The relatively larger above ground living space increased the price by about $5,800. The house's location in CollgCr reduced the price by about $5,000. The relatively smaller basement area reduced the price by about $5,000.",
-    "bad_description": "The second floor square feet's value of 866 had a contribution of 13079. The original construction date of 2001 had a contribution of 8500. The above grade (ground) living area square feet of 1786 had a contribution of 5844. The physical locations within Ames city limits of CollgCr had a contribution of -4761. The total square feet of basement area of 920 had a contribution of -4747."
+    "bad_description": "The Second floor square feet feature has a values of 866.00 and a SHAP value of 13079.62. The Original construction date feature has a values of 2001.00 and a SHAP value of 8500.21. The Above ground living area square feet feature has a values of 1786.00 and a SHAP value of 5844.30. The Physical locations within Ames city limits feature has a values of CollgCr and a SHAP value of -4761.42. The Total square feet of basement area feature has a values of 920.00 and a SHAP value of -4747.08. "
   },
   {
-    "explanation": "(Original construction date, 1915, -17966.774652927863, 1976.1), (Physical locations within Ames city limits, Crawfor, 17703.261792613397, CollgCr), (Second floor square feet, 756, 10129.95549133351, 583.0), (Total square feet of basement area, 756, -8362.218673676573, 1073.6), (Condition of sale, Abnorml, -6786.655896749632, Normal)",
+    "explanation": "(Original construction date, 1915.00, -17966.77), (Physical locations within Ames city limits, Crawfor, 17703.26), (Second floor square feet, 756.00, 10129.96), (Total square feet of basement area, 756.00, -8362.22), (Condition of sale, Abnorml, -6786.66)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "description": "This house is older than average, with a construction year of 1915, which reduced the predicted price by about $18,000. The house's location in Crawford increased the price by about $17,000. The house's larger than average second floor increased the price by about $10,000. The relatively smaller basement area reduced the price by about $8,000. The abnormal sale condition reduced the price by about $7,000.",
-    "bad_description": "The original construction date of 1915 had a contribution of -17966. The physical locations within Ames city limits of Crawfor had a contribution of 17703. The second floor square feet of 756 had a contribution of 10129. The total square feet of basement area of 756 had a contribution of -8362. The condition of sale of Abnorml had a contribution of -6786."
+    "bad_description": "The Original construction date feature has a values of 1915.00 and a SHAP value of -17966.77. The Physical locations within Ames city limits feature has a values of Crawfor and a SHAP value of 17703.26. The Second floor square feet feature has a values of 756.00 and a SHAP value of 10129.96. The Total square feet of basement area feature has a values of 756.00 and a SHAP value of -8362.22. The Condition of sale feature has a values of Abnorml and a SHAP value of -6786.66. "
   },
   {
-    "explanation": "(Physical locations within Ames city limits, NoRidge, 23069.888280905867, CollgCr), (Above grade (ground) living area square feet, 2198, 20125.745574607856, 1684.9), (Second floor square feet, 1053, 18094.052113421163, 583.0), (Rates the overall material and finish of the house, 8, 9655.787012072418, 6.7), (Original construction date, 2000, 8192.455314507311, 1976.1)",
+    "explanation": "(Physical locations within Ames city limits, NoRidge, 23069.89), (Above ground living area square feet, 2198.00, 20125.75), (Second floor square feet, 1053.00, 18094.05), (Rates the overall material and finish of the house, 8.00, 9655.79), (Original construction date, 2000.00, 8192.46)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "description": "The location of this house in the No Ridge neighborhood significantly increased its predicted price by about $23,000. The relatively larger above ground living space increased the price by about $20,000. The house's larger than average second floor increased the price by about $18,000. The house's good condition (rated 8/10) increased the price by about $10,000. The house is newer than average, with a construction year of 2000, which increased the price by about $8,000.",
-    "bad_description": "The physical locations within Ames city limits of NoRidge had a contribution of 23069. The above grade (ground) living area square feet of 2198 had a contribution of 20125. The second floor square feet of 1053 had a contribution of 18094. The rates the overall material and finish of the house of 8 had a contribution of 9655. The original construction date of 2000 had a contribution of 8192."
+    "bad_description": "The Physical locations within Ames city limits feature has a values of NoRidge and a SHAP value of 23069.89. The Above ground living area square feet feature has a values of 2198.00 and a SHAP value of 20125.75. The Second floor square feet feature has a values of 1053.00 and a SHAP value of 18094.05. The Rates the overall material and finish of the house feature has a values of 8.00 and a SHAP value of 9655.79. The Original construction date feature has a values of 2000.00 and a SHAP value of 8192.46. "
   },
   {
-    "explanation": "(Type of foundation, Wood, -18650.666195097787, PConc), (Physical locations within Ames city limits, Mitchel, -13510.920744839805, CollgCr), (Rates the overall material and finish of the house, 5, -10743.763013432692, 6.7), (Three season porch area in square feet, 320, 9959.331215652945, 32.0), (Bedrooms above grade (does NOT include basement bedrooms), 1, 8905.730254342725, 2.8)",
+    "explanation": "(Type of foundation, Wood, -18650.67), (Physical locations within Ames city limits, Mitchel, -13510.92), (Rates the overall material and finish of the house, 5.00, -10743.76), (Three season porch area in square feet, 320.00, 9959.33), (Bedrooms above ground, 1.00, 8905.73)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "description": "The house's wood foundation reduced the predicted price by about $19,000. The house's location in Mitchel reduced the price by about $13,000. The lower-than-average material rating also reduced the house price by about $10,000. The relatively larger three-season porch area increased the price by about $10,000. The relatively smaller number of bedrooms reduced the price by about $9,000.",
-    "bad_description": "The type of foundation of Wood had a contribution of -18650. The physical locations within Ames city limits of Mitchel had a contribution of -13510. The rates the overall material and finish of the house of 5 had a contribution of -10743. The three season porch area in square feet of 320 had a contribution of 9959. The bedrooms above grade of 1 had a contribution of 8905."
+    "bad_description": "The Type of foundation feature has a values of Wood and a SHAP value of -18650.67. The Physical locations within Ames city limits feature has a values of Mitchel and a SHAP value of -13510.92. The Rates the overall material and finish of the house feature has a values of 5.00 and a SHAP value of -10743.76. The Three season porch area in square feet feature has a values of 320.00 and a SHAP value of 9959.33. The Bedrooms above ground feature has a values of 1.00 and a SHAP value of 8905.73. "
   },
   {
-    "explanation": "(Type 1 finished square feet, 1369, 14641.527959945985, 683.1), (Evaluates the height of the basement, Ex, 13233.23630542964, Gd), (Total square feet of basement area, 1686, 12138.277877052871, 1073.6), (Second floor square feet, 0, -10142.290455798697, 583.0), (Rates the overall material and finish of the house, 8, 9655.787012072418, 6.7)",
+    "explanation": "(Type 1 finished square feet, 1369.00, 14641.53), (Evaluates the height of the basement, Ex, 13233.24), (Total square feet of basement area, 1686.00, 12138.28), (Second floor square feet, 0.00, -10142.29), (Rates the overall material and finish of the house, 8.00, 9655.79)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "description": "This houses relatively large type 1 finished square footage increased the predicted price by about $14,000. The house's excellent basement height increased the price by about $13,000. The relatively larger basement area increased the price by about $12,000. The absence of a second floor reduced the price by about $10,000. The house's good condition (rated 8/10) increased the price by about $10,000.",
-    "bad_description": "The type 1 finished square feet of 1369 had a contribution of 14641. The evaluates the height of the basement of Ex had a contribution of 13233. The total square feet of basement area of 1686 had a contribution of 12138. The second floor square feet of 0 had a contribution of -10142. The rates the overall material and finish of the house of 8 had a contribution of 9655."
+    "bad_description": "The Type 1 finished square feet feature has a values of 1369.00 and a SHAP value of 14641.53. The Evaluates the height of the basement feature has a values of Ex and a SHAP value of 13233.24. The Total square feet of basement area feature has a values of 1686.00 and a SHAP value of 12138.28. The Second floor square feet feature has a values of 0.00 and a SHAP value of -10142.29. The Rates the overall material and finish of the house feature has a values of 8.00 and a SHAP value of 9655.79. "
   },
   {
-    "explanation": "(Above grade (ground) living area square feet, 2090, 16382.065722631196, 1684.9), (Second floor square feet, 983, 16216.992303501513, 583.0), (Physical locations within Ames city limits, NWAmes, -9769.726786634115, CollgCr), (Type 1 finished square feet, 859, 6193.632518586058, 683.1), (Masonry veneer type, Stone, 5446.262457499719, BrkFace)",
+    "explanation": "(Above ground living area square feet, 2090.00, 16382.07), (Second floor square feet, 983.00, 16216.99), (Physical locations within Ames city limits, NWAmes, -9769.73), (Type 1 finished square feet, 859.00, 6193.63), (Masonry veneer type, Stone, 5446.26)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "description": "This house's relatively larger above ground living space increased the predicted price by about $16,000. The house's larger than average second floor increased the price by about $16,000. The house's location in NWAmes reduced the price by about $10,000. The relatively larger type 1 finished square footage increased the price by about $6,000. The house's stone masonry veneer increased the price by about $5,000.",
-    "bad_description": "The above grade (ground) living area square feet of 2090 had a contribution of 16382. The second floor square feet of 983 had a contribution of 16216. The physical locations within Ames city limits of NWAmes had a contribution of -9769. The type 1 finished square feet of 859 had a contribution of 6193. The masonry veneer type of Stone had a contribution of 5446."
+    "bad_description": "The Above ground living area square feet feature has a values of 2090.00 and a SHAP value of 16382.07. The Second floor square feet feature has a values of 983.00 and a SHAP value of 16216.99. The Physical locations within Ames city limits feature has a values of NWAmes and a SHAP value of -9769.73. The Type 1 finished square feet feature has a values of 859.00 and a SHAP value of 6193.63. The Masonry veneer type feature has a values of Stone and a SHAP value of 5446.26. "
   },
   {
-    "explanation": "(Exterior covering on house, BrkFace, 16798.143330875704, VinylSd), (Original construction date, 1931, -13042.684306116536, 1976.1), (Kitchens above grade, 2, -12983.782311155455, 1.1), (Home functionality (Assume typical unless deductions are warranted), Min1, -11474.190634443654, Typ), (Second floor square feet, 752, 10022.694930766673, 583.0)",
+    "explanation": "(Exterior covering on house, BrkFace, 16798.14), (Original construction date, 1931.00, -13042.68), (Kitchens above grade, 2.00, -12983.78), (Home functionality, Min1, -11474.19), (Second floor square feet, 752.00, 10022.69)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "description": "This houses exterior covering is brick, which increased the predicted price by about $17,000. The house is older than average, with a construction year of 1931, which reduced the predicted price by about $13,000. The house's two kitchens reduced the price by about $13,000. The house's functionality is slightly below average, which reduced the price by about $11,000. The house's larger than average second floor increased the price by about $10,000.",
-    "bad_description": "The exterior covering on house of BrkFace had a contribution of 16798. The original construction date of 1931 had a contribution of -13042. The kitchens above grade of 2 had a contribution of -12983. The home functionality of Min1 had a contribution of -11474. The second floor square feet of 752 had a contribution of 10022."
+    "bad_description": "The Exterior covering on house feature has a values of BrkFace and a SHAP value of 16798.14. The Original construction date feature has a values of 1931.00 and a SHAP value of -13042.68. The Kitchens above grade feature has a values of 2.00 and a SHAP value of -12983.78. The Home functionality feature has a values of Min1 and a SHAP value of -11474.19. The Second floor square feet feature has a values of 752.00 and a SHAP value of 10022.69. "
+  },
+  {
+    "explanation": "(Above grade (ground) living area square feet, 1256.00, -12527.46), (Rates the overall material and finish of the house, 5.00, -10743.76), (Second floor square feet, 0.00, -10142.29), (Physical locations within Ames city limits, Edwards, -9913.81), (Wood deck area in square feet, 736.00, 9846.38)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86), (First Floor square feet, 856.00, -5466.64), (Physical locations within Ames city limits, CollgCr, -4761.42)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Refers to walkout or garden level walls, Gd, 17607.43), (Rates the overall condition of the house, 8.00, 13038.14), (Above grade (ground) living area square feet, 1262.00, -12319.48), (Second floor square feet, 0.00, -10142.29), (Proximity to various conditions, Feedr, -8251.83)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-size, broad, 0.06), (gill-spacing, crowded, 0.06), (spore-print-color, brown, 0.03), (stalk-surface-above-ring, smooth, 0.03)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.14), (gill-color, buff, 0.11), (odor, fishy, 0.09), (spore-print-color, white, 0.05), (ring-type, evanescent, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(odor, foul, 0.15), (gill-size, narrow, 0.11), (gill-color, buff, 0.08), (stalk-surface-above-ring, silky, 0.05), (ring-type, evanescent, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 262.00, 0.10), (Total size in KB, 74.00, 0.09), (Number of Javascript keywords, 0.00, 0.09), (Number of images, 1.00, 0.07), (Number of streams (sequences of binary data), 30.00, 0.06)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 0.00, 0.10), (Total size in KB, 90.00, 0.09), (Size of metadata in KB, 272.00, 0.08), (Number of images, 1.00, 0.06), (Number of keywords with startxref, 2.00, 0.05)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 0.00, 0.10), (Total size in KB, 91.00, 0.09), (Size of metadata in KB, 262.00, 0.07), (Number of images, 1.00, 0.07), (Number of keywords with startxref, 2.00, 0.05)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of streams (sequences of binary data), -1.00, 0.10), (Number of objects, -1.00, 0.10), (Number of keywords that denote end of streams, -1.00, 0.09), (Number of keywords with startxref, -1.00, 0.07), (Number of Javascript keywords, -1.00, -0.04)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 180.00, 0.08), (Total size in KB, 7.00, 0.07), (Number of streams (sequences of binary data), -1.00, 0.04), (Number of keywords that denote end of streams, -1.00, 0.04), (Number of objects, -1.00, 0.03)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 180.00, 0.13), (Total size in KB, 3.00, 0.07), (Number of streams (sequences of binary data), 1.00, 0.04), (Number of keywords that denote end of streams, 1.00, 0.04), (Number of Javascript keywords, 0.00, -0.03)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of past class failures, 0.00, 0.90), (School, GP, 0.80), (Age, 18.00, 0.68), (Reason for choosing this school, other, 0.50), (Address type, U, 0.44)",
+    "context": "The model predicts if a student with pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of past class failures, 0.00, 0.87), (School, MS, -0.73), (Reason for choosing this school, course, -0.31), (Father's job, other, 0.29), (Wants to take higher education, yes, 0.22)",
+    "context": "The model predicts if a student with pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of past class failures, 0.00, 0.89), (Wants to take higher education, yes, 0.50), (Amount of free time after school (1-5), 4.00, -0.35), (School, GP, 0.33), (Reason for choosing this school, reputation, 0.32)",
+    "context": "The model predicts if a student with pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   }
 ]
