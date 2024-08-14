@@ -160,5 +160,6 @@ cython_debug/
 .idea/
 
 key.yaml
+keys.yaml
 
 data/real-estate-info/*
