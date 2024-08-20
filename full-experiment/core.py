@@ -79,15 +79,13 @@ class Explingo:
 
     def run_experiment(
         self,
-        explanations,
-        explanation_format,
+        dataset,
         prompt_type="basic",
         prompt="You are helping users understand an ML model's prediction. Given an explanation and information about the model, convert the explanation into a human-readable narrative.",
         max_iters=100,
     ):
         """
-        :param explanations: List of evaluation explanations
-        :param explanation_format: Format of the explanations
+        :param dataset: List of example objects to evaluate on
         :param prompt_type: One of "basic", "few-shot", "bootstrap-few-shot"
         :param prompt: Currently unused
         :param max_iters: Maximum number of explanations to evaluate on
@@ -107,14 +105,13 @@ class Explingo:
         total_score = 0
         all_scores = None
         total_count = 0
-        for exp in explanations:
+        for example in dataset:
             result = func(
-                prompt=prompt, explanation=exp, explanation_format=explanation_format
+                prompt=prompt,
+                explanation=example.explanation,
+                explanation_format=example.explanation_format,
             )
-            score = self.metric(
-                dspy.Example(explanation=exp, explanation_format=explanation_format),
-                result,
-            )
+            score = self.metric(example, result)
             total_score += score[0]
             total_count += 1
             if all_scores is None:

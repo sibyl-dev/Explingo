@@ -101,9 +101,16 @@ def accuracy(gold, pred, trace=None):
     return compute_score_from_rubric("accuracy", question, rubric, pred.narrative)
 
 
-def fluency(gold, pred, trace=None):
+def fluency(gold, pred, trace=None, good_narrative=None, bad_narrative=None):
     question = f"How natural and human does the narrative sound?"
-    rubric = f"0: Not at all natural. " f"1: Somewhat natural. 2: Natural."
+    if hasattr(gold, "narrative"):
+        good_narrative = gold.narrative
+    if hasattr(gold, "bad_narrative"):
+        bad_narrative = gold.bad_narrative
+    if good_narrative is not None and bad_narrative is not None:
+        rubric = f"0: Not at all natural (Example: {bad_narrative}. 1: Somewhat natural. 2: Natural (Example: {good_narrative})"
+    else:
+        rubric = f"0: Not at all natural. 1: Somewhat natural. 2: Natural. "
     return compute_score_from_rubric("fluency", question, rubric, pred.narrative)
 
 
