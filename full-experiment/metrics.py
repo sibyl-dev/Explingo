@@ -1,5 +1,6 @@
 import dspy
 import pandas as pd
+import random
 
 grader = dspy.OpenAI(model="gpt-4-1106-preview", max_tokens=1000, model_type="chat")
 
@@ -101,14 +102,10 @@ def accuracy(gold, pred, trace=None):
     return compute_score_from_rubric("accuracy", question, rubric, pred.narrative)
 
 
-def fluency(gold, pred, trace=None, good_narrative=None, bad_narrative=None):
+def fluency(gold, pred, trace=None, good_narratives=None, bad_narratives=None):
     question = f"How natural and human does the narrative sound?"
-    if hasattr(gold, "narrative"):
-        good_narrative = gold.narrative
-    if hasattr(gold, "bad_narrative"):
-        bad_narrative = gold.bad_narrative
-    if good_narrative is not None and bad_narrative is not None:
-        rubric = f"0: Not at all natural (Example: {bad_narrative}. 1: Somewhat natural. 2: Natural (Example: {good_narrative})"
+    if good_narratives is not None and bad_narratives is not None:
+        rubric = f"0: Not at all natural (Example: {random.choice(bad_narratives)}. 1: Somewhat natural. 2: Natural (Example: {random.choice(good_narratives)})"
     else:
         rubric = f"0: Not at all natural. 1: Somewhat natural. 2: Natural. "
     return compute_score_from_rubric("fluency", question, rubric, pred.narrative)

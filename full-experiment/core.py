@@ -83,12 +83,14 @@ class Explingo:
         prompt_type="basic",
         prompt="You are helping users understand an ML model's prediction. Given an explanation and information about the model, convert the explanation into a human-readable narrative.",
         max_iters=100,
+        few_shot_n=3,
     ):
         """
         :param dataset: List of example objects to evaluate on
         :param prompt_type: One of "basic", "few-shot", "bootstrap-few-shot"
         :param prompt: Currently unused
         :param max_iters: Maximum number of explanations to evaluate on
+        :param few_shot_n: Number of examples to use in few-shot learning
         :return: Average total score over all explanations (currently 0-8)
         """
         if prompt_type == "basic":
@@ -110,6 +112,7 @@ class Explingo:
                 prompt=prompt,
                 explanation=example.explanation,
                 explanation_format=example.explanation_format,
+                few_shot_n=few_shot_n,
             )
             score = self.metric(example, result)
             total_score += score[0]
@@ -122,14 +125,35 @@ class Explingo:
                 break
         return total_score / total_count, all_scores / total_count
 
-    def prompt(self, prompt, explanation, explanation_format):
+    def prompt(self, prompt, explanation, explanation_format, few_shot_n=0):
+        """
+        Basic prompting
+
+        :param prompt:
+        :param explanation:
+        :param explanation_format:
+        :param few_shot_n: Included for compatibility with other methods
+        :return: DSPy Prediction object
+        """
         full_prompt = self.assemble_prompt(
             prompt, explanation, explanation_format, examples=None
         )
         output = self.llm(full_prompt)[0]
         return _manually_parse_output(output)
 
-    def few_shot(self, prompt, explanation, explanation_format, use_dspy=False):
+    def few_shot(
+        self, prompt, explanation, explanation_format, few_shot_n=3, use_dspy=False
+    ):
+        """
+        Few-shot prompting
+
+        :param prompt:
+        :param explanation:
+        :param explanation_format:
+        :param few_shot_n:
+        :param use_dspy: Should be set to False, saving legacy version using DSPy in case needed later
+        :return: DSPy Prediction object
+        """
         if not use_dspy:
             examples_with_labels = [
                 example
@@ -153,9 +177,22 @@ class Explingo:
                 context=self.context,
             )
 
-    def bootstrap_few_shot(self, prompt, explanation, explanation_format):
+    def bootstrap_few_shot(self, prompt, explanation, explanation_format, few_shot_n=3):
+        """
+        Use DSPy to bootstrap few-shot prompts to optimize metrics
+
+        :param prompt:
+        :param explanation:
+        :param explanation_format:
+        :param few_shot_n:
+        :return:
+        """
         if self.bootstrapped_few_shot_prompter is None:
-            optimizer = BootstrapFewShot(metric=self.metric)
+            optimizer = BootstrapFewShot(
+                metric=self.metric,
+                max_bootstrapped_demos=few_shot_n,
+                max_labeled_demos=0,
+            )
             self.bootstrapped_few_shot_prompter = optimizer.compile(
                 dspy.Predict(ExplingoSig), trainset=self.examples
             )
