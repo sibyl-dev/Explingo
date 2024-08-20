@@ -1,4 +1,5 @@
 import dspy
+import pandas as pd
 
 grader = dspy.OpenAI(model="gpt-4-1106-preview", max_tokens=1000, model_type="chat")
 
@@ -22,6 +23,32 @@ class BooleanAssess(dspy.Signature):
     question = dspy.InputField()
 
     assessment = dspy.OutputField(desc="yes or no")
+
+
+class Metrics:
+    def __init__(self, metric_funcs, verbose=True):
+        self.metric_funcs = metric_funcs
+        self.verbose = verbose
+
+    def __call__(self, gold, pred, trace=None):
+        metrics = {}
+        for metric in self.metric_funcs:
+            metrics[metric.__name__] = metric(gold, pred, trace)
+
+        total_score = sum(metrics.values())
+
+        if self.verbose:
+            print("Explanation:", gold.explanation)
+            print("Narrative:", pred.narrative)
+            print("Rationalization:", pred.rationalization)
+            print("Total Score:", total_score)
+            print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
+            print("--")
+
+        if trace is None:
+            return total_score, pd.Series(metrics)
+        else:
+            return (metrics["accuracy"] == 2) and (total_score >= 8)
 
 
 def compute_score_from_boolean(metric, question, narrative, iters=10):
@@ -93,27 +120,27 @@ def context_awareness(gold, pred, trace=None):
     )
 
 
-def all_metrics(gold, pred, trace=None, verbose=False):
-    metrics = {
-        "accuracy": accuracy(gold, pred, trace),
-        "fluency": fluency(gold, pred, trace),
-        "completeness": completeness(gold, pred, trace),
-        "conciseness": conciseness(gold, pred, trace),
-        "context_awareness": context_awareness(gold, pred, trace),
-    }
-
-    total_score = sum(metrics.values())
-
-    if verbose:
-        print("Explanation:", gold.explanation)
-        print("Narrative:", pred.narrative)
-        print("Rationalization:", pred.rationalization)
-        print("Total Score:", total_score)
-        print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
-        print("--")
-
-    if trace is None:
-        return total_score
-    else:
-        # For bootstrapping, only consider this narrative acceptable if it is completely accurate and score 8 or higher
-        return (metrics["accuracy"] == 2) and (total_score >= 8)
+# def all_metrics(gold, pred, trace=None, verbose=False):
+#     metrics = {
+#         "accuracy": accuracy(gold, pred, trace),
+#         "fluency": fluency(gold, pred, trace),
+#         "completeness": completeness(gold, pred, trace),
+#         "conciseness": conciseness(gold, pred, trace),
+#         "context_awareness": context_awareness(gold, pred, trace),
+#     }
+#
+#     total_score = sum(metrics.values())
+#
+#     if verbose:
+#         print("Explanation:", gold.explanation)
+#         print("Narrative:", pred.narrative)
+#         print("Rationalization:", pred.rationalization)
+#         print("Total Score:", total_score)
+#         print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
+#         print("--")
+#
+#     if trace is None:
+#         return total_score
+#     else:
+#         # For bootstrapping, only consider this narrative acceptable if it is completely accurate and scores 8 or higher
+#         return (metrics["accuracy"] == 2) and (total_score >= 8)
