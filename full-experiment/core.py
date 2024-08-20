@@ -20,26 +20,47 @@ class ExplingoSig(dspy.Signature):
 
 
 class Explingo:
-    def __init__(self, context, examples, metric):
+    def __init__(self, llm, context, examples, metric):
+        dspy.settings.configure(lm=llm, experimental=True)
+        self.llm = llm
         self.context = context
         self.examples = examples
         self.few_shot_prompter = None
         self.bootstrapped_few_shot_prompter = None
         self.metric = metric
 
+    def assemble_prompt(self, prompt, explanation, explanation_format, examples=None):
+        header_string = f"{prompt}\n"
+        format_string = (
+            f"Follow the following format\n"
+            f"Context: what the model predicts\n"
+            f"Explanation: explanation of the model's prediction\n"
+            f"Explanation Format: format the explanation is given in\n"
+            f"Narrative: human-readable narrative version of the explanation\n"
+            f"Rationalization: explains why given features may be relevant\n"
+        )
+        input_string = (
+            f"Context: {self.context}\n"
+            f"Explanation: {explanation}\n"
+            f"Explanation Format: {explanation_format}\n"
+            "Please provide the output fields Narrative then Rationalization. "
+            "Do so immediately, without additional content before or after, "
+            "and precisely as the format above shows. Begin with the field Narrative."
+        )
+        return header_string + "---\n" + format_string + "---\n" + input_string
+
     def run_experiment(
         self,
         explanations,
         explanation_format,
         prompt_type="basic",
-        prompt=None,
+        prompt="You are helping users understand an ML model's prediction. Given an explanation and information about the model, convert the explanation into a human-readable narrative.",
         max_iters=100,
     ):
         """
-        TODO: also return average score over each individual metric
         :param explanations: List of evaluation explanations
         :param explanation_format: Format of the explanations
-        :param type: One of "basic", "few-shot", "bootstrap-few-shot"
+        :param prompt_type: One of "basic", "few-shot", "bootstrap-few-shot"
         :param prompt: Currently unused
         :param max_iters: Maximum number of explanations to evaluate on
         :return: Average total score over all explanations (currently 0-8)
@@ -59,7 +80,9 @@ class Explingo:
         all_scores = None
         total_count = 0
         for exp in explanations:
-            result = func(explanation=exp, explanation_format=explanation_format)
+            result = func(
+                prompt=prompt, explanation=exp, explanation_format=explanation_format
+            )
             score = self.metric(
                 dspy.Example(explanation=exp, explanation_format=explanation_format),
                 result,
@@ -74,14 +97,20 @@ class Explingo:
                 break
         return total_score / total_count, all_scores / total_count
 
-    def prompt(self, explanation, explanation_format):
-        return dspy.Predict(ExplingoSig)(
-            explanation=explanation,
-            explanation_format=explanation_format,
-            context=self.context,
+    def prompt(self, prompt, explanation, explanation_format):
+        full_prompt = self.assemble_prompt(
+            prompt, explanation, explanation_format, examples=None
         )
+        output = self.llm(full_prompt)[0]
+        narrative = output.split("Narrative: ")[1].split("\n")[0]
+        rationalization = output.split("Rationalization: ")[1].split("\n")[0]
+        result = dspy.Prediction(
+            narrative=narrative,
+            rationalization=rationalization,
+        )
+        return result
 
-    def few_shot(self, explanation, explanation_format):
+    def few_shot(self, prompt, explanation, explanation_format):
         if self.few_shot_prompter is None:
             optimizer = LabeledFewShot(k=3)
             self.few_shot_prompter = optimizer.compile(
@@ -93,7 +122,7 @@ class Explingo:
             context=self.context,
         )
 
-    def bootstrap_few_shot(self, explanation, explanation_format):
+    def bootstrap_few_shot(self, prompt, explanation, explanation_format):
         if self.bootstrapped_few_shot_prompter is None:
             optimizer = BootstrapFewShot(metric=self.metric)
             self.bootstrapped_few_shot_prompter = optimizer.compile(
