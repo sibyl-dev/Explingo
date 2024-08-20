@@ -26,7 +26,7 @@ class BooleanAssess(dspy.Signature):
 
 
 class Metrics:
-    def __init__(self, metric_funcs, verbose=True):
+    def __init__(self, metric_funcs, verbose=0):
         self.metric_funcs = metric_funcs
         self.verbose = verbose
 
@@ -37,10 +37,15 @@ class Metrics:
 
         total_score = sum(metrics.values())
 
-        if self.verbose:
+        if self.verbose == 2:
             print("Explanation:", gold.explanation)
             print("Narrative:", pred.narrative)
             print("Rationalization:", pred.rationalization)
+            print("Total Score:", total_score)
+            print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
+            print("--")
+        if self.verbose == 1:
+            print("Narrative:", pred.narrative)
             print("Total Score:", total_score)
             print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
             print("--")
@@ -107,7 +112,7 @@ def completeness(gold, pred, trace=None):
 def conciseness(gold, pred, trace=None):
     length = len(pred.narrative.split())
     # scale length between 0 and 2, such that longer lengths score lower
-    return 2 - min(length / 50, 2)
+    return 2 - min(length / 100, 2)
 
 
 def context_awareness(gold, pred, trace=None):
@@ -118,29 +123,3 @@ def context_awareness(gold, pred, trace=None):
     return compute_score_from_rubric(
         "context_awareness", question, rubric, pred.rationalization
     )
-
-
-# def all_metrics(gold, pred, trace=None, verbose=False):
-#     metrics = {
-#         "accuracy": accuracy(gold, pred, trace),
-#         "fluency": fluency(gold, pred, trace),
-#         "completeness": completeness(gold, pred, trace),
-#         "conciseness": conciseness(gold, pred, trace),
-#         "context_awareness": context_awareness(gold, pred, trace),
-#     }
-#
-#     total_score = sum(metrics.values())
-#
-#     if verbose:
-#         print("Explanation:", gold.explanation)
-#         print("Narrative:", pred.narrative)
-#         print("Rationalization:", pred.rationalization)
-#         print("Total Score:", total_score)
-#         print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
-#         print("--")
-#
-#     if trace is None:
-#         return total_score
-#     else:
-#         # For bootstrapping, only consider this narrative acceptable if it is completely accurate and scores 8 or higher
-#         return (metrics["accuracy"] == 2) and (total_score >= 8)
