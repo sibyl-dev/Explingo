@@ -1,6 +1,15 @@
 import dspy
 from dspy.teleprompt import LabeledFewShot, BootstrapFewShot
-import numpy as np
+import random
+
+
+def _manually_parse_output(output):
+    narrative = output.split("Narrative: ")[1].split("\n")[0]
+    rationalization = output.split("Rationalization: ")[1].split("\n")[0]
+    return dspy.Prediction(
+        narrative=narrative,
+        rationalization=rationalization,
+    )
 
 
 class ExplingoSig(dspy.Signature):
@@ -29,7 +38,9 @@ class Explingo:
         self.bootstrapped_few_shot_prompter = None
         self.metric = metric
 
-    def assemble_prompt(self, prompt, explanation, explanation_format, examples=None):
+    def assemble_prompt(
+        self, prompt, explanation, explanation_format, examples=None, k=3
+    ):
         header_string = f"{prompt}\n"
         format_string = (
             f"Follow the following format\n"
@@ -47,7 +58,24 @@ class Explingo:
             "Do so immediately, without additional content before or after, "
             "and precisely as the format above shows. Begin with the field Narrative."
         )
-        return header_string + "---\n" + format_string + "---\n" + input_string
+
+        examples_string = ""
+        if examples is not None:
+            for i, example in enumerate(random.sample(examples, k)):
+                examples_string += (
+                    f"Example {i+1}\n"
+                    f"Context: {example.context}\n"
+                    f"Explanation: {example.explanation}\n"
+                    f"Explanation Format: {example.explanation_format}\n"
+                    f"Narrative: {example.narrative}\n"
+                )
+
+        if len(examples_string) == 0:
+            return "---\n".join([header_string, format_string, input_string])
+        else:
+            return "---\n".join(
+                [header_string, format_string, examples_string, input_string]
+            )
 
     def run_experiment(
         self,
@@ -102,25 +130,31 @@ class Explingo:
             prompt, explanation, explanation_format, examples=None
         )
         output = self.llm(full_prompt)[0]
-        narrative = output.split("Narrative: ")[1].split("\n")[0]
-        rationalization = output.split("Rationalization: ")[1].split("\n")[0]
-        result = dspy.Prediction(
-            narrative=narrative,
-            rationalization=rationalization,
-        )
-        return result
+        return _manually_parse_output(output)
 
-    def few_shot(self, prompt, explanation, explanation_format):
-        if self.few_shot_prompter is None:
-            optimizer = LabeledFewShot(k=3)
-            self.few_shot_prompter = optimizer.compile(
-                dspy.Predict(ExplingoSig), trainset=self.examples
+    def few_shot(self, prompt, explanation, explanation_format, use_dspy=False):
+        if not use_dspy:
+            examples_with_labels = [
+                example
+                for example in self.examples
+                if hasattr(example, "narrative") and example.narrative is not None
+            ]
+            full_prompt = self.assemble_prompt(
+                prompt, explanation, explanation_format, examples=examples_with_labels
             )
-        return self.few_shot_prompter(
-            explanation=explanation,
-            explanation_format=explanation_format,
-            context=self.context,
-        )
+            output = self.llm(full_prompt)[0]
+            return _manually_parse_output(output)
+        if use_dspy:
+            if self.few_shot_prompter is None:
+                optimizer = LabeledFewShot(k=3)
+                self.few_shot_prompter = optimizer.compile(
+                    dspy.Predict(ExplingoSig), trainset=self.examples
+                )
+            return self.few_shot_prompter(
+                explanation=explanation,
+                explanation_format=explanation_format,
+                context=self.context,
+            )
 
     def bootstrap_few_shot(self, prompt, explanation, explanation_format):
         if self.bootstrapped_few_shot_prompter is None:
