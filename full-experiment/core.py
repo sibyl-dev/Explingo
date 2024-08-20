@@ -185,54 +185,6 @@ class Explingo:
             },
         )
 
-    def run_experiment(
-        self,
-        dataset,
-        prompt_type="basic",
-        prompt="You are helping users understand an ML model's prediction. Given an explanation and information about the model, convert the explanation into a human-readable narrative.",
-        max_iters=100,
-        few_shot_n=3,
-    ):
-        """
-        :param dataset: List of example objects to evaluate on
-        :param prompt_type: One of "basic", "few-shot", "bootstrap-few-shot"
-        :param prompt: Currently unused
-        :param max_iters: Maximum number of explanations to evaluate on
-        :param few_shot_n: Number of examples to use in few-shot learning
-        :return: Average total score over all explanations (currently 0-8)
-        """
-        if prompt_type == "basic":
-            func = self.prompt
-        elif prompt_type == "few-shot":
-            func = self.few_shot
-        elif prompt_type == "bootstrap-few-shot":
-            func = self.bootstrap_few_shot
-        else:
-            raise ValueError(
-                "Invalid type. Options: basic, few-shot, bootstrap-few-shot"
-            )
-
-        total_score = 0
-        all_scores = None
-        total_count = 0
-        for example in dataset:
-            result = func(
-                prompt=prompt,
-                explanation=example.explanation,
-                explanation_format=example.explanation_format,
-                few_shot_n=few_shot_n,
-            )
-            score = self.metric(example, result)
-            total_score += score[0]
-            total_count += 1
-            if all_scores is None:
-                all_scores = score[1]
-            else:
-                all_scores += score[1]
-            if total_count >= max_iters:
-                break
-        return total_score / total_count, all_scores / total_count
-
     def basic_prompt(self, prompt, explanation, explanation_format, few_shot_n=0):
         """
         Basic prompting
@@ -305,15 +257,14 @@ class Explingo:
         Returns:
             DSPy Prediction object
         """
-        if self.bootstrapped_few_shot_prompter is None:
-            optimizer = BootstrapFewShot(
-                metric=self.metric,
-                max_bootstrapped_demos=n_bootstrapped_few_shot,
-                max_labeled_demos=n_labeled_few_shot,
-            )
-            self.bootstrapped_few_shot_prompter = optimizer.compile(
-                dspy.Predict(ExplingoSig), trainset=self.examples
-            )
+        optimizer = BootstrapFewShot(
+            metric=self.metric,
+            max_bootstrapped_demos=n_bootstrapped_few_shot,
+            max_labeled_demos=n_labeled_few_shot,
+        )
+        self.bootstrapped_few_shot_prompter = optimizer.compile(
+            dspy.Predict(ExplingoSig), trainset=self.examples
+        )
         return self.bootstrapped_few_shot_prompter(
             explanation=explanation,
             explanation_format=explanation_format,
