@@ -26,14 +26,17 @@ class BooleanAssess(dspy.Signature):
 
 
 class Metrics:
-    def __init__(self, metric_funcs, verbose=0):
+    def __init__(self, metric_funcs, verbose=0, metric_kwargs=None):
         self.metric_funcs = metric_funcs
         self.verbose = verbose
+        self.metric_kwargs = metric_kwargs if metric_kwargs is not None else {}
 
     def __call__(self, gold, pred, trace=None):
         metrics = {}
         for metric in self.metric_funcs:
-            metrics[metric.__name__] = metric(gold, pred, trace)
+            metric_name = metric.__name__
+            kwargs = self.metric_kwargs.get(metric_name, {})
+            metrics[metric_name] = metric(gold, pred, trace, **kwargs)
 
         total_score = sum(metrics.values())
 
@@ -100,7 +103,7 @@ def accuracy(gold, pred, trace=None):
 
 def fluency(gold, pred, trace=None):
     question = f"How natural and human does the narrative sound?"
-    rubric = f"0: Not at all natural. 1: Somewhat natural. 2: Natural."
+    rubric = f"0: Not at all natural. " f"1: Somewhat natural. 2: Natural."
     return compute_score_from_rubric("fluency", question, rubric, pred.narrative)
 
 
@@ -109,10 +112,10 @@ def completeness(gold, pred, trace=None):
     return compute_score_from_boolean("completeness", question, pred.narrative)
 
 
-def conciseness(gold, pred, trace=None):
+def conciseness(gold, pred, trace=None, max_optimal_length=100):
     length = len(pred.narrative.split())
     # scale length between 0 and 2, such that longer lengths score lower
-    return 2 - min(length / 100, 2)
+    return 2 - min(length / max_optimal_length, 2)
 
 
 def context_awareness(gold, pred, trace=None):
