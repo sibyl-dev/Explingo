@@ -114,8 +114,8 @@ def completeness(gold, pred, trace=None):
 
 def conciseness(gold, pred, trace=None, max_optimal_length=100):
     length = len(pred.narrative.split())
-    # scale length between 0 and 2, such that longer lengths score lower
-    return 2 - min(length / max_optimal_length, 2)
+    # scale length between 0 and 2
+    return max(0.0, min(2.0, 2 * (2 - length / max_optimal_length)))
 
 
 def context_awareness(gold, pred, trace=None):
