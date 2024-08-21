@@ -57,7 +57,7 @@ class Metrics:
         if trace is None:
             return total_score, pd.Series(metrics)
         else:
-            return (metrics["accuracy"] == 2) and (total_score >= 8)
+            return (metrics["accuracy"] == 2) and (total_score >= len(metrics) * 2)
 
 
 def compute_score_from_boolean(metric, question, narrative, iters=10):

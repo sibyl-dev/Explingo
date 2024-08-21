@@ -29,11 +29,16 @@ class ExplingoSig(dspy.Signature):
 
 
 class Explingo:
-    def __init__(self, llm, context, examples, metric):
+    def __init__(
+        self, llm, context, metric, labeled_train_data, unlabeled_train_data=None
+    ):
         dspy.settings.configure(lm=llm, experimental=True)
         self.llm = llm
         self.context = context
-        self.examples = examples
+        self.labeled_train_data = labeled_train_data
+        self.unlabeled_train_data = (
+            [] if unlabeled_train_data is None else unlabeled_train_data
+        )
         self.few_shot_prompter = None
         self.bootstrapped_few_shot_prompter = None
         self.metric = metric
@@ -77,7 +82,7 @@ class Explingo:
                 [header_string, format_string, examples_string, input_string]
             )
 
-    def _run_experiment(self, func, dataset, prompt=None, max_iters=100, kwargs=None):
+    def _run_experiment(self, func, eval_data, prompt=None, max_iters=100, kwargs=None):
         if kwargs is None:
             kwargs = {}
         if prompt is None:
@@ -88,7 +93,7 @@ class Explingo:
             )
 
         total_scores = None
-        for i, example in enumerate(dataset):
+        for i, example in enumerate(eval_data):
             if i >= max_iters:
                 break
             result = func(
@@ -103,18 +108,18 @@ class Explingo:
             else:
                 total_scores += score[1]
 
-        total = min(max_iters, len(dataset))
+        total = min(max_iters, len(eval_data))
         average_scores = total_scores / total
         total_average_score = total_scores.sum() / total
 
         return total_average_score, average_scores
 
-    def run_basic_prompting_experiment(self, dataset, prompt=None, max_iters=100):
+    def run_basic_prompting_experiment(self, eval_data, prompt=None, max_iters=100):
         """
         Run a basic prompting experiment
 
         Args:
-            dataset (list of DSPy examples): testing dataset
+            eval_data (list of DSPy examples): testing dataset
             prompt (string): Prompt
             max_iters (int): Maximum number of examples to run on
 
@@ -124,19 +129,19 @@ class Explingo:
         """
         return self._run_experiment(
             self.basic_prompt,
-            dataset,
+            eval_data,
             prompt=prompt,
             max_iters=max_iters,
         )
 
     def run_few_shot_experiment(
-        self, dataset, prompt=None, max_iters=100, n_few_shot=3
+        self, eval_data, prompt=None, max_iters=100, n_few_shot=3
     ):
         """
         Run a few-shot experiment
 
         Args:
-            dataset (list of DSPy examples): testing dataset
+            eval_data (list of DSPy examples): testing dataset
             prompt (string): Prompt
             max_iters (int): Maximum number of examples to run on
             n_few_shot (int): Number of examples to use in few-shot learning
@@ -147,7 +152,7 @@ class Explingo:
         """
         return self._run_experiment(
             self.few_shot,
-            dataset,
+            eval_data,
             prompt=prompt,
             max_iters=max_iters,
             kwargs={"n_few_shot": n_few_shot},
@@ -155,7 +160,7 @@ class Explingo:
 
     def run_bootstrap_few_shot_experiment(
         self,
-        dataset,
+        eval_data,
         prompt=None,
         max_iters=100,
         n_labeled_few_shot=3,
@@ -164,7 +169,7 @@ class Explingo:
         """
         Run a bootstrap few-shot experiment
         Args:
-            dataset (list of DSPy examples): testing dataset
+            eval_data (list of DSPy examples): testing dataset
             prompt (string): Prompt
             max_iters (int): Maximum number of examples to run on
             n_labeled_few_shot (int): Number of examples to use in few-shot learning
@@ -176,7 +181,7 @@ class Explingo:
         """
         return self._run_experiment(
             self.bootstrap_few_shot,
-            dataset,
+            eval_data,
             prompt=prompt,
             max_iters=max_iters,
             kwargs={
@@ -214,13 +219,11 @@ class Explingo:
             DSPy Prediction object
         """
         if not use_dspy:
-            examples_with_labels = [
-                example
-                for example in self.examples
-                if hasattr(example, "narrative") and example.narrative is not None
-            ]
             full_prompt = self.assemble_prompt(
-                prompt, explanation, explanation_format, examples=examples_with_labels
+                prompt,
+                explanation,
+                explanation_format,
+                examples=self.labeled_train_data,
             )
             output = self.llm(full_prompt)[0]
             return _manually_parse_output(output)
@@ -228,7 +231,7 @@ class Explingo:
             if self.few_shot_prompter is None:
                 optimizer = LabeledFewShot(k=n_few_shot)
                 self.few_shot_prompter = optimizer.compile(
-                    dspy.Predict(ExplingoSig), trainset=self.examples
+                    dspy.Predict(ExplingoSig), trainset=self.labeled_train_data
                 )
             return self.few_shot_prompter(
                 explanation=explanation,
@@ -263,7 +266,8 @@ class Explingo:
             max_labeled_demos=n_labeled_few_shot,
         )
         self.bootstrapped_few_shot_prompter = optimizer.compile(
-            dspy.Predict(ExplingoSig), trainset=self.examples
+            dspy.Predict(ExplingoSig),
+            trainset=self.labeled_train_data + self.unlabeled_train_data,
         )
         return self.bootstrapped_few_shot_prompter(
             explanation=explanation,
