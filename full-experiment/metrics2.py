@@ -2,8 +2,6 @@ import dspy
 import pandas as pd
 import random
 
-grader = dspy.OpenAI(model="gpt-4-1106-preview", max_tokens=1000, model_type="chat")
-
 MAX_SCORE = 4
 
 
@@ -15,7 +13,7 @@ class RubricAssess(dspy.Signature):
     rubric = dspy.InputField()
 
     assessment = dspy.OutputField(
-        desc="A single number from the options in the rubric."
+        desc="A single number from the options in the rubric. Provide only a single number."
     )
 
 
@@ -25,21 +23,29 @@ class BooleanAssess(dspy.Signature):
     narrative = dspy.InputField()
     question = dspy.InputField()
 
-    assessment = dspy.OutputField(desc="yes or no")
+    assessment = dspy.OutputField(desc="yes or no. Include only the word yes or no.")
 
 
 class Metrics:
-    def __init__(self, metric_funcs, verbose=0, metric_kwargs=None):
+    def __init__(self, metric_funcs, openai_key, verbose=0, metric_kwargs=None):
         self.metric_funcs = metric_funcs
         self.verbose = verbose
         self.metric_kwargs = metric_kwargs if metric_kwargs is not None else {}
+        self.grader = dspy.OpenAI(
+            model="gpt-4-1106-preview",
+            max_tokens=1000,
+            model_type="chat",
+            api_key=openai_key,
+        )
 
     def __call__(self, gold, pred, trace=None):
         metrics = {}
         for metric in self.metric_funcs:
             metric_name = metric.__name__
             kwargs = self.metric_kwargs.get(metric_name, {})
-            metrics[metric_name] = metric(gold, pred, trace, **kwargs)
+            metrics[metric_name] = metric(
+                gold, pred, grader=self.grader, trace=trace, **kwargs
+            )
 
         total_score = sum(metrics.values())
 
@@ -64,8 +70,8 @@ class Metrics:
             )
 
 
-def compute_score_from_boolean(metric, question, narrative, iters=10):
-    total_score = 0
+def compute_score_from_boolean(metric, question, narrative, grader, iters=5):
+    total_score = 0.0
 
     with dspy.context(lm=grader):
         for i in range(iters):
@@ -74,6 +80,10 @@ def compute_score_from_boolean(metric, question, narrative, iters=10):
             ).assessment
             if score == "yes":
                 total_score += 1
+            elif score == "no":
+                pass
+            else:
+                print("Invalid score for metric %s: %s" % (metric, score))
     score = total_score / iters
 
     if 0.3 < score < 0.7:
@@ -82,9 +92,8 @@ def compute_score_from_boolean(metric, question, narrative, iters=10):
     return score * MAX_SCORE
 
 
-def compute_score_from_rubric(metric, question, rubric, narrative, iters=5):
+def compute_score_from_rubric(metric, question, rubric, narrative, grader, iters=5):
     scores = []
-
     with dspy.context(lm=grader):
         for i in range(iters):
             score = dspy.Predict(RubricAssess)(
@@ -100,13 +109,13 @@ def compute_score_from_rubric(metric, question, rubric, narrative, iters=5):
     return sum(scores) / iters
 
 
-def accuracy(gold, pred, trace=None):
+def accuracy(gold, pred, grader, trace=None):
     question = f"Everything said in the narrative is accurate based on the explanation. Explanation format: {gold.explanation_format}. Explanation: {gold.explanation}. "
-    rubric = f"0: Disagree. 2: Neutral (accurate but misleading). 4: Agree."
-    return compute_score_from_rubric("accuracy", question, rubric, pred.narrative)
+    # rubric = f"0: Disagree. 2: Partially Agree. 4: Agree."
+    return compute_score_from_boolean("accuracy", question, pred.narrative, grader)
 
 
-def fluency(gold, pred, trace=None, good_narratives=None, bad_narratives=None):
+def fluency(gold, pred, grader, trace=None, good_narratives=None, bad_narratives=None):
     if good_narratives is None:
         question = f"How natural and human is the narrative?"
     else:
@@ -119,25 +128,30 @@ def fluency(gold, pred, trace=None, good_narratives=None, bad_narratives=None):
         rubric = (
             f"0: Very unnatural. 1: Unnatural. 2: Neutral. 3: Natural. 4: Very natural"
         )
-    return compute_score_from_rubric("fluency", question, rubric, pred.narrative)
+    return compute_score_from_rubric(
+        "fluency", question, rubric, pred.narrative, grader
+    )
 
 
-def completeness(gold, pred, trace=None):
+def completeness(gold, pred, grader, trace=None):
     question = f"Does the narrative contain all information from the explanation? Explanation format: {gold.explanation_format}. Explanation: {gold.explanation}"
-    return compute_score_from_boolean("completeness", question, pred.narrative)
+    return compute_score_from_boolean("completeness", question, pred.narrative, grader)
 
 
-def conciseness(gold, pred, trace=None, max_optimal_length=100):
+def conciseness(gold, pred, grader=None, trace=None, max_optimal_length=100):
     length = len(pred.narrative.split())
     # scale length between 0 and 2
     return max(0.0, min(MAX_SCORE, MAX_SCORE * (2 - length / max_optimal_length)))
 
 
-def context_awareness(gold, pred, trace=None):
+def context_awareness(gold, pred, grader, trace=None):
     question = (
-        f"How well does the narrative rationalization help explain the model's logic?"
+        f"How well does the rationalization help explain the logic in the narrative?"
     )
     rubric = f"0: Not at all. 2: Somewhat. 4: Very well."
+    narrative_input = (
+        f"Narrative: {pred.narrative}. Rationalization: {pred.rationalization}"
+    )
     return compute_score_from_rubric(
-        "context_awareness", question, rubric, pred.rationalization
+        "context_awareness", question, rubric, narrative_input, grader
     )
