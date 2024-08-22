@@ -4,6 +4,8 @@ import random
 
 grader = dspy.OpenAI(model="gpt-4-1106-preview", max_tokens=1000, model_type="chat")
 
+MAX_SCORE = 4
+
 
 class RubricAssess(dspy.Signature):
     """Assess a narrative based on a rubric."""
@@ -13,7 +15,7 @@ class RubricAssess(dspy.Signature):
     rubric = dspy.InputField()
 
     assessment = dspy.OutputField(
-        desc="0, 1, or 2, based on the rubric. Include only the number."
+        desc="A single number from the options in the rubric."
     )
 
 
@@ -57,7 +59,9 @@ class Metrics:
         if trace is None:
             return total_score, pd.Series(metrics)
         else:
-            return (metrics["accuracy"] == 2) and (total_score >= len(metrics) * 2)
+            return (metrics["accuracy"] == MAX_SCORE) and (
+                total_score >= len(metrics) * MAX_SCORE
+            )
 
 
 def compute_score_from_boolean(metric, question, narrative, iters=10):
@@ -75,7 +79,7 @@ def compute_score_from_boolean(metric, question, narrative, iters=10):
     if 0.3 < score < 0.7:
         print("Inconsistent score for metric %s: %s" % (metric, score))
 
-    return score * 2
+    return score * MAX_SCORE
 
 
 def compute_score_from_rubric(metric, question, rubric, narrative, iters=5):
@@ -90,43 +94,46 @@ def compute_score_from_rubric(metric, question, rubric, narrative, iters=5):
             ).assessment
             scores.append(int(score))
 
-    if 0 in scores and 2 in scores:
+    if 0 in scores and MAX_SCORE in scores:
         print("Inconsistent score for metric %s: %s" % (metric, scores))
 
     return sum(scores) / iters
 
 
 def accuracy(gold, pred, trace=None):
-    question = f"How accurately does the narrative describe this explanation: {gold.explanation}?. The explanation is formatted as: {gold.explanation_format}"
-    rubric = f"0: Contain an error. 1: Accurate, but misleading. 2: Accurate and clear."
+    question = f"Everything said in the narrative is accurate based on the explanation. Explanation format: {gold.explanation_format}. Explanation: {gold.explanation}. "
+    rubric = f"0: Disagree. 2: Neutral (accurate but misleading). 4: Agree."
     return compute_score_from_rubric("accuracy", question, rubric, pred.narrative)
 
 
 def fluency(gold, pred, trace=None, good_narratives=None, bad_narratives=None):
-    question = f"How natural and human does the narrative sound?"
-    if good_narratives is not None and bad_narratives is not None:
-        rubric = f"0: Not at all natural (Example: {random.choice(bad_narratives)}. 1: Somewhat natural. 2: Natural (Example: {random.choice(good_narratives)})"
+    if good_narratives is None:
+        question = f"The narrative is easy to understand and sounds natural. "
     else:
-        rubric = f"0: Not at all natural. 1: Somewhat natural. 2: Natural. "
+        question = f"The narrative is easy to understand and sounds natural, based on the style given in the rubric examples. "
+    if good_narratives is not None and bad_narratives is not None:
+        rubric = f"0: Strongly Disagree (Example: {random.choice(bad_narratives)}). 1: Disagree. 3: Neutral. 4: Agree. 5: Strongly Agree (Example: {random.choice(good_narratives)})"
+    else:
+        rubric = f"0: Strongly Disagree. 1: Disagree. 3: Neutral. 4: Agree. 5: Strongly Agree"
     return compute_score_from_rubric("fluency", question, rubric, pred.narrative)
 
 
 def completeness(gold, pred, trace=None):
-    question = f"Does the narrative contain all the feature values from this explanation? {gold.explanation}? The explanation is formatted as: {gold.explanation_format}"
+    question = f"Does the narrative contain all information from the explanation? Explanation format: {gold.explanation_format}. Explanation: {gold.explanation}"
     return compute_score_from_boolean("completeness", question, pred.narrative)
 
 
 def conciseness(gold, pred, trace=None, max_optimal_length=100):
     length = len(pred.narrative.split())
     # scale length between 0 and 2
-    return max(0.0, min(2.0, 2 * (2 - length / max_optimal_length)))
+    return max(0.0, min(MAX_SCORE, MAX_SCORE * (2 - length / max_optimal_length)))
 
 
 def context_awareness(gold, pred, trace=None):
     question = (
         f"How well does the narrative rationalization help explain the model's logic?"
     )
-    rubric = f"0: Not at all. 1: Somewhat. 2: Very well."
+    rubric = f"0: Not at all. 2: Somewhat. 4: Very well."
     return compute_score_from_rubric(
         "context_awareness", question, rubric, pred.rationalization
     )
