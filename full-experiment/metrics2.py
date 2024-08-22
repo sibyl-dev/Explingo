@@ -108,13 +108,17 @@ def accuracy(gold, pred, trace=None):
 
 def fluency(gold, pred, trace=None, good_narratives=None, bad_narratives=None):
     if good_narratives is None:
-        question = f"The narrative is easy to understand and sounds natural. "
+        question = f"How natural and human is the narrative?"
     else:
-        question = f"The narrative is easy to understand and sounds natural, based on the style given in the rubric examples. "
+        question = f"Well well does the style of the narrative match the style of these examples: ?"
+        for narrative in good_narratives:
+            question += f"\n{narrative}"
     if good_narratives is not None and bad_narratives is not None:
-        rubric = f"0: Strongly Disagree (Example: {random.choice(bad_narratives)}). 1: Disagree. 3: Neutral. 4: Agree. 5: Strongly Agree (Example: {random.choice(good_narratives)})"
+        rubric = f"0: Very dissimilar. 1: Dissimilar. 2: Neutral. 3: Similar. 4: Very similar"
     else:
-        rubric = f"0: Strongly Disagree. 1: Disagree. 3: Neutral. 4: Agree. 5: Strongly Agree"
+        rubric = (
+            f"0: Very unnatural. 1: Unnatural. 2: Neutral. 3: Natural. 4: Very natural"
+        )
     return compute_score_from_rubric("fluency", question, rubric, pred.narrative)
 
 
