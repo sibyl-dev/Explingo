@@ -38,26 +38,26 @@ class Metrics:
             api_key=openai_key,
         )
 
-    def __call__(self, gold, pred, trace=None):
+    def __call__(self, input_, output_, trace=None):
         metrics = {}
         for metric in self.metric_funcs:
             metric_name = metric.__name__
             kwargs = self.metric_kwargs.get(metric_name, {})
             metrics[metric_name] = metric(
-                gold, pred, grader=self.grader, trace=trace, **kwargs
+                input_, output_, grader=self.grader, trace=trace, **kwargs
             )
 
         total_score = sum(metrics.values())
 
         if self.verbose == 2:
-            print("Explanation:", gold.explanation)
-            print("Narrative:", pred.narrative)
-            print("Rationalization:", pred.rationalization)
+            print("Explanation:", input_.explanation)
+            print("Narrative:", output_.narrative)
+            print("Rationalization:", output_.rationalization)
             print("Total Score:", total_score)
             print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
             print("--")
         if self.verbose == 1:
-            print("Narrative:", pred.narrative)
+            print("Narrative:", output_.narrative)
             print("Total Score:", total_score)
             print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
             print("--")
@@ -109,13 +109,15 @@ def compute_score_from_rubric(metric, question, rubric, narrative, grader, iters
     return sum(scores) / iters
 
 
-def accuracy(gold, pred, grader, trace=None):
-    question = f"Everything said in the narrative is accurate based on the explanation. Explanation format: {gold.explanation_format}. Explanation: {gold.explanation}. "
+def accuracy(input_, output_, grader, trace=None):
+    question = f"Everything said in the narrative is accurate based on the explanation. Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}. "
     # rubric = f"0: Disagree. 2: Partially Agree. 4: Agree."
-    return compute_score_from_boolean("accuracy", question, pred.narrative, grader)
+    return compute_score_from_boolean("accuracy", question, output_.narrative, grader)
 
 
-def fluency(gold, pred, grader, trace=None, good_narratives=None, bad_narratives=None):
+def fluency(
+    input_, output_, grader, trace=None, good_narratives=None, bad_narratives=None
+):
     if good_narratives is None:
         question = f"How natural and human is the narrative?"
     else:
@@ -129,28 +131,30 @@ def fluency(gold, pred, grader, trace=None, good_narratives=None, bad_narratives
             f"0: Very unnatural. 1: Unnatural. 2: Neutral. 3: Natural. 4: Very natural"
         )
     return compute_score_from_rubric(
-        "fluency", question, rubric, pred.narrative, grader
+        "fluency", question, rubric, output_.narrative, grader
     )
 
 
-def completeness(gold, pred, grader, trace=None):
-    question = f"Does the narrative contain all information from the explanation? Explanation format: {gold.explanation_format}. Explanation: {gold.explanation}"
-    return compute_score_from_boolean("completeness", question, pred.narrative, grader)
+def completeness(input_, output_, grader, trace=None):
+    question = f"Does the narrative contain all information from the explanation? Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}"
+    return compute_score_from_boolean(
+        "completeness", question, output_.narrative, grader
+    )
 
 
-def conciseness(gold, pred, grader=None, trace=None, max_optimal_length=100):
-    length = len(pred.narrative.split())
+def conciseness(input_, output_, grader=None, trace=None, max_optimal_length=100):
+    length = len(output_.narrative.split())
     # scale length between 0 and 2
     return max(0.0, min(MAX_SCORE, MAX_SCORE * (2 - length / max_optimal_length)))
 
 
-def context_awareness(gold, pred, grader, trace=None):
+def context_awareness(input_, output_, grader, trace=None):
     question = (
         f"How well does the rationalization help explain the logic in the narrative?"
     )
     rubric = f"0: Not at all. 2: Somewhat. 4: Very well."
     narrative_input = (
-        f"Narrative: {pred.narrative}. Rationalization: {pred.rationalization}"
+        f"Narrative: {output_.narrative}. Rationalization: {output_.rationalization}"
     )
     return compute_score_from_rubric(
         "context_awareness", question, rubric, narrative_input, grader
