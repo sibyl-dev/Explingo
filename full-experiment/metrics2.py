@@ -111,8 +111,10 @@ def compute_score_from_rubric(metric, question, rubric, narrative, grader, iters
 
 def accuracy(input_, output_, grader, trace=None):
     question = f"Everything said in the narrative is accurate based on the explanation. Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}. "
-    # rubric = f"0: Disagree. 2: Partially Agree. 4: Agree."
-    return compute_score_from_boolean("accuracy", question, output_.narrative, grader)
+    rubric = f"0: Disagree (Error in values or contribution direction). 2: Partially Agree (Accurate but misleading). 4: Agree (Accurate)."
+    return compute_score_from_rubric(
+        "accuracy", question, rubric, output_.narrative, grader
+    )
 
 
 def fluency(
@@ -136,9 +138,14 @@ def fluency(
 
 
 def completeness(input_, output_, grader, trace=None):
-    question = f"Does the narrative contain all information from the explanation? Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}"
-    return compute_score_from_boolean(
-        "completeness", question, output_.narrative, grader
+    # question = f"Does the narrative contain all information from the explanation? Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}"
+    # return compute_score_from_boolean(
+    #    "completeness", question, output_.narrative, grader
+    # )
+    question = f"Does the narrative contain all information from the explanation? Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}. Narrative: {output_.narrative}"
+    rubric = "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+    return compute_score_from_rubric(
+        "completeness", question, rubric, output_.narrative, grader
     )
 
 
