@@ -8,8 +8,8 @@ MAX_SCORE = 4
 class RubricAssess(dspy.Signature):
     """Assess a narrative based on a rubric."""
 
-    narrative = dspy.InputField()
     question = dspy.InputField()
+    narrative = dspy.InputField()
     rubric = dspy.InputField()
 
     assessment = dspy.OutputField(
@@ -92,15 +92,22 @@ def compute_score_from_boolean(metric, question, narrative, grader, iters=5):
     return score * MAX_SCORE
 
 
-def compute_score_from_rubric(metric, question, rubric, narrative, grader, iters=5):
+def compute_score_from_rubric(
+    metric, question, rubric, narrative, grader, iters=5, rational_type=None
+):
     scores = []
     with dspy.context(lm=grader):
         for i in range(iters):
-            score = dspy.Predict(RubricAssess)(
-                question=question,
-                rubric=rubric,
-                narrative=narrative,
-            ).assessment
+            if rational_type is None:
+                score = dspy.Predict(RubricAssess)(
+                    question=question, rubric=rubric, narrative=narrative
+                ).assessment
+            else:
+                score = dspy.ChainOfThought(RubricAssess, rationale_type=rational_type)(
+                    question=question,
+                    rubric=rubric,
+                    narrative=narrative,
+                ).assessment
             scores.append(int(score))
 
     if 0 in scores and MAX_SCORE in scores:
@@ -138,14 +145,20 @@ def fluency(
 
 
 def completeness(input_, output_, grader, trace=None):
-    # question = f"Does the narrative contain all information from the explanation? Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}"
-    # return compute_score_from_boolean(
-    #    "completeness", question, output_.narrative, grader
-    # )
-    question = f"Does the narrative contain all information from the explanation? Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}"
-    rubric = "0: Does not mention all features. 2: Includes all features, but not all feature values and/or contribution directions. 4: Includes all features. For each feature, includes at least an approximation of the feature's value and contribution direction."
+    question = f"How completely does the narrative below describe the explanation given in <<>>?\nExplanation format: {input_.explanation_format}.\nExplanation: <<{input_.explanation}>>"
+    rubric = "0 - One or more feature names from the explanation are not mentioned at all in the narrative. 2 - All features are mentioned, but not all feature values and/or contribution directions. 4 - All features are mentioned, and for each feature, includes at least an approximation of the feature's value and contribution direction."
+    rational_type = dspy.OutputField(
+        prefix="Start by listing out all the features in the explanations, and then determine every feature is present in the narrative, along with its value and contribution direction.",
+        desc="Feature-by-feature processing of the narrative.",
+    )
+
     return compute_score_from_rubric(
-        "completeness", question, rubric, output_.narrative, grader
+        "completeness",
+        question,
+        rubric,
+        output_.narrative,
+        grader,
+        rational_type=rational_type,
     )
 
 
