@@ -2,7 +2,7 @@
   {
     "explanation": "(Above ground living area square feet, 1256.00, -12527.46), (Rates the overall material and finish of the house, 5.00, -10743.76), (Wood deck area in square feet, 736.00, 9846.38)",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": "The above ground living area and material rating reduce the prediction, while the wood deck area increases it.",
+    "narrative": "The above ground living area and material/finish rating reduce the prediction, while the wood deck area increases it.",
     "completeness_score": 2,
     "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
   },
@@ -10,20 +10,20 @@
     "explanation": "(Second floor square feet, 854.00, 12757.84), (Total square feet of basement area, 856.00, -6157.86), (Physical locations within Ames city limits, CollgCr, -4761.42)",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "narrative": "The larger second floor increases the price, while the smaller basement area and location in CollgCr decrease it.",
-    "completeness_score": 4,
+    "completeness_score": 2,
     "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
   },
   {
     "explanation": "(Refers to walkout or garden level walls, Gd, 17607.43), (Rates the overall condition of the house, 8.00, 13038.14), (Above ground living area square feet, 1262.00, -12319.48)",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "narrative": "The house's garden level walls and good condition increase the price, while the smaller living area reduces it.",
-    "completeness_score": 4,
+    "completeness_score": 2,
     "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
   },
   {
     "explanation": "(Second floor square feet, 866.00, 13079.62), (Original construction date, 2001.00, 8500.21), (Physical locations within Ames city limits, CollgCr, -4761.42)",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": "The construction year of 2001 and second floor size both increase the prediction, while the location in CollgCr decreases it.",
+    "narrative": "The construction year of 2001 and second floor size of around 800 sq ft both increase the prediction, while the location in CollgCr decreases it.",
     "completeness_score": 4,
     "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
   },
@@ -51,7 +51,7 @@
   {
     "explanation": "(Type 1 finished square feet, 1369.00, 14641.53), (Second floor square feet, 0.00, -10142.29)",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": "The large finished square footage increases the price by over $14,000, while the lack of a second floor decreases it by around $10,000.",
+    "narrative": "The large finished square footage (of around 1300) increases the price by over $14,000, while the lack of a second floor decreases it by around $10,000.",
     "completeness_score": 4,
     "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
   },
@@ -84,7 +84,7 @@
     "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
   },
   {
-    "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86), (First Floor square feet, 856.00, -5466.64), (Physical locations within Ames city limits, CollgCr, -4761.42)",
+    "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86)",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "narrative": "The original construction date plays a significant role.",
     "completeness_score": 0,
@@ -144,6 +144,42 @@
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "narrative": "The brick exterior has a positive impact.",
     "completeness_score": 0,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+    {
+    "explanation": "(Type 1 finished square feet, 1369.00, 14641.53), (Evaluates the height of the basement, Ex, 13233.24), (Total square feet of basement area, 1686.00, 12138.28), (Second floor square feet, 0.00, -10142.29), (Rates the overall material and finish of the house, 8.00, 9655.79)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "This house's relatively large type 1 finished square footage increased the predicted price by about $14,000. The house's excellent basement height increased the price by about $13,000. The relatively larger basement area increased the price by about $12,000. The absence of a second floor reduced the price by about $10,000. The house's good condition (rated 8/10) increased the price by about $10,000.",
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model.",
+    "completeness_score": 2
+    },
+  {
+    "explanation": "(Exterior covering on house, BrkFace, 16798.14), (Original construction date, 1931.00, -13042.68), (Kitchens above grade, 2.00, -12983.78), (Second floor square feet, 752.00, 10022.69)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "This houses exterior covering is brick, which increased the predicted price by about $17,000. The house is older than average, with a construction year of 1931, which reduced the predicted price by about $13,000. The house's two kitchens reduced the price by about $13,000. The house's second floor size of over 700 sq ft increased the price by about $10,000.",
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model.",
+    "completeness_score": 4
+  },
+    {
+    "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The original construction date of 2003 and second floor size of around 800 sq ft increases the price prediction, while the smaller basement of 856 sq ft reduces the price prediction.",
+    "completeness_score": 4,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+    {
+    "explanation": "(Second floor square feet, 752.00, 10022.69)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The second floor square footage of 752 increased the predicted price by about $10,000.",
+    "completeness_score": 4,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+      {
+    "explanation": "(Number of past class failures, 0.00, 0.89), (Wants to take higher education, yes, 0.50), (Amount of free time after school (1-5), 4.00, -0.35), (School, GP, 0.33)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The student's lack of past class failures and desire for higher education significantly increase the predicted grade. However, the student's free time after school (rated 4/5) and school (GP) reputation slightly decrease the predicted grade.",
+    "completeness_score": 4,
     "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
   }
 ]

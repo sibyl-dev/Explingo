@@ -13,7 +13,7 @@ class RubricAssess(dspy.Signature):
     rubric = dspy.InputField()
 
     assessment = dspy.OutputField(
-        desc="A single number from the options in the rubric. Provide only a single number."
+        desc="A single number from the options in the rubric. Provide only a single number with no other text."
     )
 
 
@@ -142,8 +142,8 @@ def completeness(input_, output_, grader, trace=None):
     # return compute_score_from_boolean(
     #    "completeness", question, output_.narrative, grader
     # )
-    question = f"Does the narrative contain all information from the explanation? Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}. Narrative: {output_.narrative}"
-    rubric = "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+    question = f"Does the narrative contain all information from the explanation? Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}"
+    rubric = "0: Does not mention all features. 2: Includes all features, but not all feature values and/or contribution directions. 4: Includes all features. For each feature, includes at least an approximation of the feature's value and contribution direction."
     return compute_score_from_rubric(
         "completeness", question, rubric, output_.narrative, grader
     )
