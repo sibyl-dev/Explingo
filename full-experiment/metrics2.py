@@ -20,8 +20,8 @@ class RubricAssess(dspy.Signature):
 class BooleanAssess(dspy.Signature):
     """Assess a narrative with a yes/no question."""
 
-    narrative = dspy.InputField()
     question = dspy.InputField()
+    narrative = dspy.InputField()
 
     assessment = dspy.OutputField(desc="yes or no. Include only the word yes or no.")
 
@@ -77,7 +77,7 @@ def compute_score_from_boolean(metric, question, narrative, grader, iters=5):
         for i in range(iters):
             score = dspy.Predict(BooleanAssess)(
                 question=question, narrative=narrative
-            ).assessment
+            ).assessment.lower()
             if score == "yes":
                 total_score += 1
             elif score == "no":
@@ -117,11 +117,14 @@ def compute_score_from_rubric(
 
 
 def accuracy(input_, output_, grader, trace=None):
-    # question = f"Is everything said in the narrative is accurate based on the explanation? Only consider the information present in the narrative; do not reduce the score for missing information. Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}. "
-    question = f"How accurate is the information in the narrative, based on the explanation given in <<>>? Do not reduce the score based on missing information.\nExplanation format: {input_.explanation_format}.\nExplanation: <<{input_.explanation}>>"
-    rubric = f"0 - Contains one or more errors in value or contribution direction. 2 - Contains no errors, but may be misleading. 4 - Contains no errors."
+    question = (
+        f"How accurate is the information in the narrative, based on the explanation given in <<>>? "
+        f"Only consider the correctness of the information in the narrative, say yes if the present information is correct even if information is incomplete"
+        f"\n\nExplanation format: {input_.explanation_format}.\nExplanation: <<{input_.explanation}>>"
+    )
+    rubric = f"0 - Contains one or more errors in value or contribution direction. 4 - Contains no errors."
     return compute_score_from_rubric(
-        "accuracy", question, rubric, output_.narrative, grader
+        "accuracy", question, rubric=rubric, narrative=output_.narrative, grader=grader
     )
 
 
@@ -131,7 +134,7 @@ def fluency(
     if good_narratives is None:
         question = f"How natural and human is the narrative?"
     else:
-        question = f"Well well does the style of the narrative match the style of these examples: ?"
+        question = f"How well does the style of the narrative match the style of these examples: ?"
         for narrative in good_narratives:
             question += f"\n{narrative}"
     if good_narratives is not None and bad_narratives is not None:

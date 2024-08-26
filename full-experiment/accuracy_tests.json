@@ -39,9 +39,9 @@
     "explanation": "(Above ground living area square feet, 1256.00, -12527.46)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": "Surprisingly, the house's small size decreases the house price prediction. ",
-    "accuracy_score": 2,
-    "accuracy_rationalization": "Accurate but misleading",
+    "narrative": "The house's small size decreases the house price prediction. ",
+    "accuracy_score": 4,
+    "accuracy_rationalization": "Accurate and complete",
     "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
   },
   {
@@ -102,9 +102,9 @@
     "explanation": "(Quality of materials out of 10, 3, 560.46), (Size in sq ft, 1020, 909)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": "The house's high quality of 3/10 increased the model's prediction by around 500, while its size of around 1000 sq ft increased it by about 900",
-    "accuracy_score": 2,
-    "accuracy_rationalization": "Accurate but misleading",
+    "narrative": "The house's quality of 3/10 increased the model's prediction by around 500, while its size of around 1000 sq ft increased it by about 900",
+    "accuracy_score": 4,
+    "accuracy_rationalization": "Accurate and complete",
     "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
   },
   {
@@ -193,17 +193,8 @@
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "narrative": "The first floor size decreases the prediction, while the second floor size increases it.",
-    "accuracy_score": 2,
-    "accuracy_rationalization": "Accurate but misleading",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
-  },
-  {
-    "explanation": "(Exterior covering on house, BrkFace, 16798.14), (Exterior covering on house (if more than one material), Wd Shng, -4006.65)",
-    "context": "The ML model predicts house prices",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": "The brick face exterior covering increases the price prediction, but the additional wood shingle material decreases it.",
-    "accuracy_score": 2,
-    "accuracy_rationalization": "Accurate but misleading",
+    "accuracy_score": 4,
+    "accuracy_rationalization": "Accurate and complete",
     "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
   },
   {
