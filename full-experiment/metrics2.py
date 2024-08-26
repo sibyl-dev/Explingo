@@ -117,8 +117,9 @@ def compute_score_from_rubric(
 
 
 def accuracy(input_, output_, grader, trace=None):
-    question = f"Everything said in the narrative is accurate based on the explanation. Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}. "
-    rubric = f"0: Disagree (Error in values or contribution direction). 2: Partially Agree (Accurate but misleading). 4: Agree (Accurate)."
+    # question = f"Is everything said in the narrative is accurate based on the explanation? Only consider the information present in the narrative; do not reduce the score for missing information. Explanation format: {input_.explanation_format}. Explanation: {input_.explanation}. "
+    question = f"How accurate is the information in the narrative, based on the explanation given in <<>>? Do not reduce the score based on missing information.\nExplanation format: {input_.explanation_format}.\nExplanation: <<{input_.explanation}>>"
+    rubric = f"0 - Contains one or more errors in value or contribution direction. 2 - Contains no errors, but may be misleading. 4 - Contains no errors."
     return compute_score_from_rubric(
         "accuracy", question, rubric, output_.narrative, grader
     )
