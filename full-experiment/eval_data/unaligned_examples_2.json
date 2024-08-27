@@ -3,54 +3,54 @@
     "explanation": "(Above ground living area square feet, 1256.00, -12527.46), (Rates the overall material and finish of the house, 5.00, -10743.76), (Second floor square feet, 0.00, -10142.29), (Physical locations within Ames city limits, Edwards, -9913.81), (Wood deck area in square feet, 736.00, 9846.38)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "description": "This house is cheaper because it has less above ground living space (size=1256), lower material quality (rating=5), no second floor (size=0), and it's in Edwards. However, the deck is larger (size=736), which makes it a bit more expensive."
+    "narrative": "This house is cheaper because it has less above ground living space (size=1256), lower material quality (rating=5), no second floor (size=0), and it's in Edwards. However, the deck is larger (size=736), which makes it a bit more expensive."
   },
   {
     "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86), (First Floor square feet, 856.00, -5466.64), (Physical locations within Ames city limits, CollgCr, -4761.42)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "description": "This house costs more because of its larger second floor (size=854) and newer construction year (2003). It’s cheaper due to a smaller basement (size=856) and first floor (size=856), and its location in CollgCr."
+    "narrative": "This house costs more because of its larger second floor (size=854) and newer construction year (2003). It’s cheaper due to a smaller basement (size=856) and first floor (size=856), and its location in CollgCr."
   },
   {
     "explanation": "(Refers to walkout or garden level walls, Gd, 17607.43), (Rates the overall condition of the house, 8.00, 13038.14), (Above ground living area square feet, 1262.00, -12319.48), (Second floor square feet, 0.00, -10142.29), (Proximity to various conditions, Feedr, -8251.83)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "description": "This house is more expensive because of its good garden level walls and overall condition (rating=8). It’s cheaper due to less above ground space (size=1262), no second floor (size=0), and being on a feeder street."
+    "narrative": "This house is more expensive because of its good garden level walls and overall condition (rating=8). It’s cheaper due to less above ground space (size=1262), no second floor (size=0), and being on a feeder street."
   },
   {
     "explanation": "(Second floor square feet, 866.00, 13079.62), (Original construction date, 2001.00, 8500.21), (Above ground living area square feet, 1786.00, 5844.30), (Physical locations within Ames city limits, CollgCr, -4761.42), (Total square feet of basement area, 920.00, -4747.08)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "description": "This house costs more because of its larger second floor (size=866), newer construction year (2001), and larger above ground space (size=1786). It’s cheaper due to its location in CollgCr and smaller basement (size=920)."
+    "narrative": "This house costs more because of its larger second floor (size=866), newer construction year (2001), and larger above ground space (size=1786). It’s cheaper due to its location in CollgCr and smaller basement (size=920)."
   },
   {
     "explanation": "(Original construction date, 1915.00, -17966.77), (Physical locations within Ames city limits, Crawfor, 17703.26), (Second floor square feet, 756.00, 10129.96), (Total square feet of basement area, 756.00, -8362.22), (Condition of sale, Abnorml, -6786.66)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "description": "This house is cheaper because it's older (year=1915), has a smaller basement (size=756), and the sale condition is abnormal. It’s more expensive due to its location in Crawfor and a larger second floor (size=756)."
+    "narrative": "This house is cheaper because it's older (year=1915), has a smaller basement (size=756), and the sale condition is abnormal. It’s more expensive due to its location in Crawfor and a larger second floor (size=756)."
   },
   {
     "explanation": "(Physical locations within Ames city limits, NoRidge, 23069.89), (Above ground living area square feet, 2198.00, 20125.75), (Second floor square feet, 1053.00, 18094.05), (Rates the overall material and finish of the house, 8.00, 9655.79), (Original construction date, 2000.00, 8192.46)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "description": "This house is more expensive because it’s in No Ridge, has more above ground space (size=2198), a larger second floor (size=1053), better material quality (rating=8), and a newer construction year (2000)."
+    "narrative": "This house is more expensive because it’s in No Ridge, has more above ground space (size=2198), a larger second floor (size=1053), better material quality (rating=8), and a newer construction year (2000)."
   },
   {
     "explanation": "(Type of foundation, Wood, -18650.67), (Physical locations within Ames city limits, Mitchel, -13510.92), (Rates the overall material and finish of the house, 5.00, -10743.76), (Three season porch area in square feet, 320.00, 9959.33), (Bedrooms above ground, 1.00, 8905.73)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "description": "This house is cheaper because it has a wood foundation, is located in Mitchel, and has lower material quality (rating=5). It’s more expensive due to a larger porch (size=320) and fewer bedrooms (count=1)."
+    "narrative": "This house is cheaper because it has a wood foundation, is located in Mitchel, and has lower material quality (rating=5). It’s more expensive due to a larger porch (size=320) and fewer bedrooms (count=1)."
   },
   {
     "explanation": "(Type 1 finished square feet, 1369.00, 14641.53), (Evaluates the height of the basement, Ex, 13233.24), (Total square feet of basement area, 1686.00, 12138.28), (Second floor square feet, 0.00, -10142.29), (Rates the overall material and finish of the house, 8.00, 9655.79)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "description": "This house is more expensive because it has more finished space (size=1369), a taller basement (height=Ex), and better material quality (rating=8). It’s cheaper because it lacks a second floor (size=0)."
+    "narrative": "This house is more expensive because it has more finished space (size=1369), a taller basement (height=Ex), and better material quality (rating=8). It’s cheaper because it lacks a second floor (size=0)."
   },
   {
     "explanation": "(Above ground living area square feet, 2090.00, 16382.07), (Second floor square feet, 983.00, 16216.99), (Physical locations within Ames city limits, NWAmes, -9769.73), (Type 1 finished square feet, 859.00, 6193.63), (Masonry veneer type, Stone, 5446.26)",
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "description": "This house is more expensive due to its larger above ground space (size=2090), a bigger second floor (size=983), and a stone veneer. It’s cheaper because of its location in NWAmes."
+    "narrative": "This house is more expensive due to its larger above ground space (size=2090), a bigger second floor (size=983), and a stone veneer. It’s cheaper because of its location in NWAmes."
   }
 ]
