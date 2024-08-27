@@ -132,6 +132,7 @@ class ExplingoExperimentRunner:
             prompt=prompt,
             max_iters=max_iters,
             kwargs={
+                "metric": self.metrics,
                 "n_labeled_few_shot": n_labeled_few_shot,
                 "n_bootstrapped_few_shot": n_bootstrapped_few_shot,
             },
