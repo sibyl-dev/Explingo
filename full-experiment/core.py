@@ -3,6 +3,37 @@ from dspy.teleprompt import LabeledFewShot, BootstrapFewShot
 import random
 
 
+def _run_experiment(func, eval_data, metrics, prompt=None, max_iters=100, kwargs=None):
+    if kwargs is None:
+        kwargs = {}
+    if prompt is None:
+        prompt = (
+            "You are helping users understand an ML model's prediction. Given an explanation and information about the model, convert the explanation into a human-readable narrative."
+        )
+
+    total_scores = None
+    for i, example in enumerate(eval_data):
+        if i >= max_iters:
+            break
+        result = func(
+            prompt=prompt,
+            explanation=example.explanation,
+            explanation_format=example.explanation_format,
+            **kwargs,
+        )
+        score = metrics(example, result)
+        if total_scores is None:
+            total_scores = score[1]
+        else:
+            total_scores += score[1]
+
+    total = min(max_iters, len(eval_data))
+    average_scores = total_scores / total
+    total_average_score = total_scores.sum() / total
+
+    return total_average_score, average_scores
+
+
 def _manually_parse_output(output):
     narrative = output.split("Narrative: ")[1].split("\n")[0]
     rationalization = output.split("Rationalization: ")[1].split("\n")[0]
@@ -30,7 +61,7 @@ class ExplingoSig(dspy.Signature):
 
 class Explingo:
     def __init__(
-        self, llm, context, metric, labeled_train_data, unlabeled_train_data=None
+        self, llm, context, labeled_train_data, unlabeled_train_data=None
     ):
         dspy.settings.configure(lm=llm, experimental=True)
         self.llm = llm
@@ -41,7 +72,6 @@ class Explingo:
         )
         self.few_shot_prompter = None
         self.bootstrapped_few_shot_prompter = None
-        self.metric = metric
 
     def assemble_prompt(
         self, prompt, explanation, explanation_format, examples=None, k=3
@@ -82,42 +112,13 @@ class Explingo:
                 [header_string, format_string, examples_string, input_string]
             )
 
-    def _run_experiment(self, func, eval_data, prompt=None, max_iters=100, kwargs=None):
-        if kwargs is None:
-            kwargs = {}
-        if prompt is None:
-            prompt = (
-                "You are helping users understand an ML model's prediction. Given an explanation and information about the model, convert the explanation into a human-readable narrative."
-            )
-
-        total_scores = None
-        for i, example in enumerate(eval_data):
-            if i >= max_iters:
-                break
-            result = func(
-                prompt=prompt,
-                explanation=example.explanation,
-                explanation_format=example.explanation_format,
-                **kwargs,
-            )
-            score = self.metric(example, result)
-            if total_scores is None:
-                total_scores = score[1]
-            else:
-                total_scores += score[1]
-
-        total = min(max_iters, len(eval_data))
-        average_scores = total_scores / total
-        total_average_score = total_scores.sum() / total
-
-        return total_average_score, average_scores
-
-    def run_basic_prompting_experiment(self, eval_data, prompt=None, max_iters=100):
+    def run_basic_prompting_experiment(self, eval_data, metrics, prompt=None, max_iters=100):
         """
         Run a basic prompting experiment
 
         Args:
             eval_data (list of DSPy examples): testing dataset
+            metrics (function): Metrics function
             prompt (string): Prompt
             max_iters (int): Maximum number of examples to run on
 
@@ -125,21 +126,23 @@ class Explingo:
             total_average_score (float): Average total score over all explanations
             average_scores (pd.Series): Average scores for each metric
         """
-        return self._run_experiment(
+        return _run_experiment(
             self.basic_prompt,
             eval_data,
+            metrics=metrics,
             prompt=prompt,
             max_iters=max_iters,
         )
 
     def run_few_shot_experiment(
-        self, eval_data, prompt=None, max_iters=100, n_few_shot=3
+        self, eval_data, metrics, prompt=None, max_iters=100, n_few_shot=3
     ):
         """
         Run a few-shot experiment
 
         Args:
             eval_data (list of DSPy examples): testing dataset
+            metrics (function): Metrics function
             prompt (string): Prompt
             max_iters (int): Maximum number of examples to run on
             n_few_shot (int): Number of examples to use in few-shot learning
@@ -148,9 +151,10 @@ class Explingo:
             total_average_score (float): Average total score over all explanations
             average_scores (pd.Series): Average scores for each metric
         """
-        return self._run_experiment(
+        return _run_experiment(
             self.few_shot,
             eval_data,
+            metrics=metrics,
             prompt=prompt,
             max_iters=max_iters,
             kwargs={"n_few_shot": n_few_shot},
@@ -159,6 +163,7 @@ class Explingo:
     def run_bootstrap_few_shot_experiment(
         self,
         eval_data,
+        metrics,
         prompt=None,
         max_iters=100,
         n_labeled_few_shot=3,
@@ -168,6 +173,7 @@ class Explingo:
         Run a bootstrap few-shot experiment
         Args:
             eval_data (list of DSPy examples): testing dataset
+            metrics (function): Metrics function
             prompt (string): Prompt
             max_iters (int): Maximum number of examples to run on
             n_labeled_few_shot (int): Number of examples to use in few-shot learning
@@ -177,9 +183,10 @@ class Explingo:
             total_average_score (float): Average total score over all explanations
             average_scores (pd.Series): Average scores for each metric
         """
-        return self._run_experiment(
+        return _run_experiment(
             self.bootstrap_few_shot,
             eval_data,
+            metrics=metrics,
             prompt=prompt,
             max_iters=max_iters,
             kwargs={
