@@ -52,5 +52,29 @@
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "narrative": "This house is more expensive due to its larger above ground space (size=2090), a bigger second floor (size=983), and a stone veneer. It’s cheaper because of its location in NWAmes."
+  },
+  {
+    "explanation": "(Lot area in square feet, 10000.00, 14876.45), (Garage size in square feet, 600.00, 12445.76), (Above ground living area square feet, 1500.00, 11122.58), (Physical locations within Ames city limits, SawyerW, -8734.25), (Year of remodel, 1995.00, -5231.12)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "This house is more expensive due to its larger lot area (size=10000), a larger garage (size=600), and more above ground living space (size=1500). It’s cheaper because of its location in SawyerW and an older remodel year (1995)."
+  },
+  {
+    "explanation": "(Central air conditioning, Yes, 13876.23), (Lot area in square feet, 9500.00, 12975.67), (Rates the overall condition of the house, 7.00, 10123.44), (Physical locations within Ames city limits, Blmngtn, -9243.76), (Total square feet of basement area, 850.00, -5123.89)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "This house is more expensive because it has central air conditioning, a large lot (size=9500), and a better overall condition (rating=7). It’s cheaper due to a smaller basement (size=850) and its location in Blmngtn."
+  },
+  {
+    "explanation": "(Garage size in square feet, 450.00, 12674.34), (Above ground living area square feet, 1800.00, 11754.29), (Rates the overall material and finish of the house, 7.00, 10342.76), (Physical locations within Ames city limits, OldTown, -8329.12), (Condition of sale, Partial, -5343.82)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "This house is more expensive due to a larger garage (size=450), more above ground living space (size=1800), and better material quality (rating=7). It’s cheaper because it’s located in OldTown and has a partial sale condition."
+  },
+  {
+    "explanation": "(Lot area in square feet, 8500.00, 12346.22), (Three season porch area in square feet, 250.00, 9762.53), (Above ground living area square feet, 1400.00, 8793.24), (Physical locations within Ames city limits, ClearCr, -7865.43), (Year of remodel, 1985.00, -6531.44)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "This house is more expensive because it has a larger lot (size=8500), a three-season porch (size=250), and more above ground living space (size=1400). It’s cheaper due to its location in ClearCr and an older remodel year (1985)."
   }
 ]

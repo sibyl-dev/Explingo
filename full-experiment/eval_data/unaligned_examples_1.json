@@ -54,5 +54,33 @@
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "narrative": "The SHAP value shows that the house price increases because the finished square footage is 1369 sq ft, the basement height is excellent, and the material quality is rated 8. However, the price decreases because there's no second floor.",
     "bad_narrative": "The Type 1 finished square feet feature has a values of 1369.00 and a SHAP value of 14641.53. The Evaluates the height of the basement feature has a values of Ex and a SHAP value of 13233.24. The Total square feet of basement area feature has a values of 1686.00 and a SHAP value of 12138.28. The Second floor square feet feature has a values of 0.00 and a SHAP value of -10142.29. The Rates the overall material and finish of the house feature has a values of 8.00 and a SHAP value of 9655.79."
-  }
+  },
+  {
+    "explanation": "(Garage size in square feet, 550.00, 12012.34), (Central air conditioning, Yes, 9874.21), (First Floor square feet, 1000.00, -8467.92), (Physical locations within Ames city limits, Sawyer, -6354.76), (Type of foundation, Slab, -5347.65)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The SHAP value indicates that the house price increases because of the garage size of 550 sq ft and the presence of central air conditioning. However, the price decreases due to the first floor size of 1000 sq ft, location in Sawyer, and slab foundation.",
+    "bad_narrative": "The Garage size in square feet feature has a value of 550.00 and a SHAP value of 12012.34. The Central air conditioning feature has a value of Yes and a SHAP value of 9874.21. The First Floor square feet feature has a value of 1000.00 and a SHAP value of -8467.92. The Physical locations within Ames city limits feature has a value of Sawyer and a SHAP value of -6354.76. The Type of foundation feature has a value of Slab and a SHAP value of -5347.65."
+},
+{
+    "explanation": "(Lot area in square feet, 9000.00, 15321.67), (Garage size in square feet, 700.00, 13222.58), (Rates the overall condition of the house, 6.00, 8500.43), (Physical locations within Ames city limits, NWAmes, -7543.12), (Second floor square feet, 0.00, -6872.91)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The SHAP value shows that the house price increases because of the large lot area (9000 sq ft), a spacious garage (700 sq ft), and a house condition rating of 6. However, the price decreases due to the location in NWAmes and no second floor.",
+    "bad_narrative": "The Lot area in square feet feature has a value of 9000.00 and a SHAP value of 15321.67. The Garage size in square feet feature has a value of 700.00 and a SHAP value of 13222.58. The Rates the overall condition of the house feature has a value of 6.00 and a SHAP value of 8500.43. The Physical locations within Ames city limits feature has a value of NWAmes and a SHAP value of -7543.12. The Second floor square feet feature has a value of 0.00 and a SHAP value of -6872.91."
+},
+{
+    "explanation": "(Rates the overall condition of the house, 7.00, 11564.44), (Fireplace quality, Excellent, 10798.23), (Garage size in square feet, 400.00, 8562.67), (Physical locations within Ames city limits, OldTown, -7324.15), (Second floor square feet, 0.00, -6451.33)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The SHAP value suggests that the house price increases due to the condition rating of 7, excellent fireplace quality, and garage size of 400 sq ft. However, the price decreases because the house is located in OldTown and there is no second floor.",
+    "bad_narrative": "The Rates the overall condition of the house feature has a value of 7.00 and a SHAP value of 11564.44. The Fireplace quality feature has a value of Excellent and a SHAP value of 10798.23. The Garage size in square feet feature has a value of 400.00 and a SHAP value of 8562.67. The Physical locations within Ames city limits feature has a value of OldTown and a SHAP value of -7324.15. The Second floor square feet feature has a value of 0.00 and a SHAP value of -6451.33."
+},
+{
+    "explanation": "(Rates the overall material and finish of the house, 9.00, 18643.52), (Lot area in square feet, 11000.00, 14421.11), (Garage size in square feet, 800.00, 13211.79), (First Floor square feet, 2000.00, -10422.68), (Physical locations within Ames city limits, Meadow, -8421.33)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The SHAP value shows that the house price increases due to a high material and finish rating of 9, a large lot area of 11000 sq ft, and a garage size of 800 sq ft. However, the price decreases because the first floor is 2000 sq ft and the location is in Meadow.",
+    "bad_narrative": "The Rates the overall material and finish of the house feature has a value of 9.00 and a SHAP value of 18643.52. The Lot area in square feet feature has a value of 11000.00 and a SHAP value of 14421.11. The Garage size in square feet feature has a value of 800.00 and a SHAP value of 13211.79. The First Floor square feet feature has a value of 2000.00 and a SHAP value of -10422.68. The Physical locations within Ames city limits feature has a value of Meadow and a SHAP value of -8421.33."
+}
 ]

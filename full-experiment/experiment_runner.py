@@ -6,7 +6,7 @@ from explingo import Explingo
 
 
 class ExplingoExperimentRunner:
-    def __init__(self, llm, dataset_filepath, openai_api_key):
+    def __init__(self, llm, dataset_filepath, openai_api_key, verbose=0):
         (
             self.labeled_train,
             self.labeled_eval,
@@ -30,7 +30,7 @@ class ExplingoExperimentRunner:
                 metrics.conciseness,
             ],
             openai_key=openai_api_key,
-            verbose=0,
+            verbose=verbose,
             metric_kwargs={
                 "conciseness": {"max_optimal_length": max_optimal_length},
                 "fluency": {"good_narratives": example_good_narratives},
