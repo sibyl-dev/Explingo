@@ -3,37 +3,6 @@ from dspy.teleprompt import LabeledFewShot, BootstrapFewShot
 import random
 
 
-def _run_experiment(func, eval_data, metrics, prompt=None, max_iters=100, kwargs=None):
-    if kwargs is None:
-        kwargs = {}
-    if prompt is None:
-        prompt = (
-            "You are helping users understand an ML model's prediction. Given an explanation and information about the model, convert the explanation into a human-readable narrative."
-        )
-
-    total_scores = None
-    for i, example in enumerate(eval_data):
-        if i >= max_iters:
-            break
-        result = func(
-            prompt=prompt,
-            explanation=example.explanation,
-            explanation_format=example.explanation_format,
-            **kwargs,
-        )
-        score = metrics(example, result)
-        if total_scores is None:
-            total_scores = score[1]
-        else:
-            total_scores += score[1]
-
-    total = min(max_iters, len(eval_data))
-    average_scores = total_scores / total
-    total_average_score = total_scores.sum() / total
-
-    return total_average_score, average_scores
-
-
 def _manually_parse_output(output):
     narrative = output.split("Narrative: ")[1].split("\n")[0]
     rationalization = output.split("Rationalization: ")[1].split("\n")[0]
@@ -60,9 +29,7 @@ class ExplingoSig(dspy.Signature):
 
 
 class Explingo:
-    def __init__(
-        self, llm, context, labeled_train_data, unlabeled_train_data=None
-    ):
+    def __init__(self, llm, context, labeled_train_data, unlabeled_train_data=None):
         dspy.settings.configure(lm=llm, experimental=True)
         self.llm = llm
         self.context = context
@@ -72,6 +39,11 @@ class Explingo:
         )
         self.few_shot_prompter = None
         self.bootstrapped_few_shot_prompter = None
+        self.default_prompt = (
+            "You are helping users understand an ML model's prediction. "
+            "Given an explanation and information about the model, "
+            "convert the explanation into a human-readable narrative."
+        )
 
     def assemble_prompt(
         self, prompt, explanation, explanation_format, examples=None, k=3
@@ -112,95 +84,18 @@ class Explingo:
                 [header_string, format_string, examples_string, input_string]
             )
 
-    def run_basic_prompting_experiment(self, eval_data, metrics, prompt=None, max_iters=100):
-        """
-        Run a basic prompting experiment
-
-        Args:
-            eval_data (list of DSPy examples): testing dataset
-            metrics (function): Metrics function
-            prompt (string): Prompt
-            max_iters (int): Maximum number of examples to run on
-
-        Returns:
-            total_average_score (float): Average total score over all explanations
-            average_scores (pd.Series): Average scores for each metric
-        """
-        return _run_experiment(
-            self.basic_prompt,
-            eval_data,
-            metrics=metrics,
-            prompt=prompt,
-            max_iters=max_iters,
-        )
-
-    def run_few_shot_experiment(
-        self, eval_data, metrics, prompt=None, max_iters=100, n_few_shot=3
-    ):
-        """
-        Run a few-shot experiment
-
-        Args:
-            eval_data (list of DSPy examples): testing dataset
-            metrics (function): Metrics function
-            prompt (string): Prompt
-            max_iters (int): Maximum number of examples to run on
-            n_few_shot (int): Number of examples to use in few-shot learning
-
-        Returns:
-            total_average_score (float): Average total score over all explanations
-            average_scores (pd.Series): Average scores for each metric
-        """
-        return _run_experiment(
-            self.few_shot,
-            eval_data,
-            metrics=metrics,
-            prompt=prompt,
-            max_iters=max_iters,
-            kwargs={"n_few_shot": n_few_shot},
-        )
-
-    def run_bootstrap_few_shot_experiment(
-        self,
-        eval_data,
-        metrics,
-        prompt=None,
-        max_iters=100,
-        n_labeled_few_shot=3,
-        n_bootstrapped_few_shot=3,
-    ):
-        """
-        Run a bootstrap few-shot experiment
-        Args:
-            eval_data (list of DSPy examples): testing dataset
-            metrics (function): Metrics function
-            prompt (string): Prompt
-            max_iters (int): Maximum number of examples to run on
-            n_labeled_few_shot (int): Number of examples to use in few-shot learning
-            n_bootstrapped_few_shot (int): Number of  bootstrapped examples to use in few-shot learning
-
-        Returns:
-            total_average_score (float): Average total score over all explanations
-            average_scores (pd.Series): Average scores for each metric
-        """
-        return _run_experiment(
-            self.bootstrap_few_shot,
-            eval_data,
-            metrics=metrics,
-            prompt=prompt,
-            max_iters=max_iters,
-            kwargs={
-                "n_labeled_few_shot": n_labeled_few_shot,
-                "n_bootstrapped_few_shot": n_bootstrapped_few_shot,
-            },
-        )
-
-    def basic_prompt(self, prompt, explanation, explanation_format, few_shot_n=0):
+    def basic_prompt(self, explanation, explanation_format, prompt=None, few_shot_n=0):
         """
         Basic prompting
 
-
+        Args:
+            explanation (string): Explanation
+            explanation_format (string): Explanation format
+            prompt (string): Prompt
+            few_shot_n (int): Number of examples to use in few-shot learning
         """
+        if prompt is None:
+            prompt = self.default_prompt
         full_prompt = self.assemble_prompt(
             prompt, explanation, explanation_format, examples=None
         )
@@ -208,21 +103,23 @@ class Explingo:
         return _manually_parse_output(output)
 
     def few_shot(
-        self, prompt, explanation, explanation_format, n_few_shot=3, use_dspy=False
+        self, explanation, explanation_format, prompt=None, n_few_shot=3, use_dspy=False
     ):
         """
         Few-shot prompting
 
         Args:
-            prompt (string): Prompt
             explanation (string): Explanation
             explanation_format (string): Explanation format
+            prompt (string): Prompt
             n_few_shot (int): Number of examples to use in few-shot learning
             use_dspy (bool): Should be set to False, saving legacy version using DSPy in case needed later
 
         Returns:
             DSPy Prediction object
         """
+        if prompt is None:
+            prompt = self.default_prompt
         if not use_dspy:
             full_prompt = self.assemble_prompt(
                 prompt,
@@ -246,9 +143,10 @@ class Explingo:
 
     def bootstrap_few_shot(
         self,
-        prompt,
         explanation,
         explanation_format,
+        metric,
+        prompt=None,
         n_labeled_few_shot=3,
         n_bootstrapped_few_shot=3,
     ):
@@ -256,9 +154,11 @@ class Explingo:
         Use DSPy to bootstrap few-shot prompts to optimize metrics
 
         Args:
-            prompt (string): Prompt
+            prompt (string): Not supported, included for consistency. To modify prompt, manually
+                             edit the docstrings in the ExplingoSig object
             explanation (string): Explanation
             explanation_format (string): Explanation format
+            metric (string): Metric to optimize
             n_labeled_few_shot (int): Number of examples to use in few-shot learning
             n_bootstrapped_few_shot (int): Number of bootstrapped examples to use in few-shot learning
 
@@ -266,7 +166,7 @@ class Explingo:
             DSPy Prediction object
         """
         optimizer = BootstrapFewShot(
-            metric=self.metric,
+            metric=metric,
             max_bootstrapped_demos=n_bootstrapped_few_shot,
             max_labeled_demos=n_labeled_few_shot,
         )
