@@ -8,7 +8,7 @@ MAX_SCORE = 4
 class RubricAssess(dspy.Signature):
     """Assess a narrative based on a rubric."""
 
-    question = dspy.InputField()
+    question = dspy.InputField(format=str)
     narrative = dspy.InputField()
     rubric = dspy.InputField()
 
@@ -20,7 +20,7 @@ class RubricAssess(dspy.Signature):
 class BooleanAssess(dspy.Signature):
     """Assess a narrative with a yes/no question."""
 
-    question = dspy.InputField()
+    question = dspy.InputField(format=str)
     narrative = dspy.InputField()
 
     assessment = dspy.OutputField(desc="yes or no. Include only the word yes or no.")
@@ -118,9 +118,9 @@ def compute_score_from_rubric(
 
 def accuracy(input_, output_, grader, trace=None):
     question = (
-        f"How accurate is the information in the narrative, based on the explanation given in <<>>? "
-        f"Only consider the correctness of the information in the narrative, say yes if the present information is correct even if information is incomplete"
-        f"\n\nExplanation format: {input_.explanation_format}.\nExplanation: <<{input_.explanation}>>"
+        f"How accurate is the information in the narrative, based on the explanation given? "
+        f"A narrative can score 4 even if it is missing information as long as everything in the narrative is correct. "
+        f"\n\nExplanation format: {input_.explanation_format}.\nExplanation: {input_.explanation}"
     )
     rubric = f"0 - Contains one or more errors in value or contribution direction. 4 - Contains no errors."
     return compute_score_from_rubric(
@@ -134,10 +134,10 @@ def fluency(
     if good_narratives is None:
         question = f"How natural and human is the narrative?"
     else:
-        question = f"How well does the style of the narrative match the style of these examples: ?"
+        question = f"How well does the style of the narrative match the style of these examples:"
         for narrative in good_narratives:
             question += f"\n{narrative}"
-    if good_narratives is not None and bad_narratives is not None:
+    if good_narratives is not None:
         rubric = f"0: Very dissimilar. 1: Dissimilar. 2: Neutral. 3: Similar. 4: Very similar"
     else:
         rubric = (

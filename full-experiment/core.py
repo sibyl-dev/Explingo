@@ -87,9 +87,7 @@ class Explingo:
             kwargs = {}
         if prompt is None:
             prompt = (
-                "You are helping users understand an ML model's prediction. "
-                "Given an explanation and information about the model, "
-                "convert the explanation into a human-readable narrative."
+                "You are helping users understand an ML model's prediction. Given an explanation and information about the model, convert the explanation into a human-readable narrative."
             )
 
         total_scores = None
