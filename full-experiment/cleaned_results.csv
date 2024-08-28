@@ -1,4 +1,4 @@
-,Dataset,Prompt,Few-shot samples,Bootstrapped few-shot samples,Accuracy,Completeness,Fluency,Conciseness,Total score
+,Dataset,Prompt,$L$,$B$,Accuracy,Completeness,Fluency,Conciseness,Total score
 0,Housing 1,Prompt 1,0,0,4.0,4.0,3.8,4.0,15.8
 1,Housing 1,Prompt 2,0,0,4.0,3.6,3.4,4.0,15.0
 2,Housing 1,Prompt 3,0,0,4.0,4.0,3.8,4.0,15.8
