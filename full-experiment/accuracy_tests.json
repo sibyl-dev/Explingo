@@ -6,7 +6,7 @@
     "narrative": "The house's larger than average second floor increased the predicted price by about $12,000. The house's newer construction year added around $9,000 to the price. However, the smaller basement and first-floor areas reduced the price by about $6,000 and $5,000, respectively. Also, the location in the CollgCr neighborhood also reduced the price by around $5,000.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate with approximate values",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(odor, foul, 0.15), (gill-size, narrow, 0.11), (gill-color, buff, 0.08)",
@@ -15,7 +15,7 @@
     "narrative": "The foul odor decreases the model's prediction, while the narrow gill size and buff color increases the prediction.",
     "accuracy_score": 0,
     "accuracy_rationalization": "Error in contribution direction",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Size of metadata in KB, 262.00, 0.10), (Total size in KB, 74.00, 0.09)",
@@ -24,7 +24,7 @@
     "narrative": "The file's metadata size of 262 KB and its total size of 74 KB increase the model's prediction",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Above ground living area square feet, 1256.00, -12527.46), (Rates the overall material and finish of the house, 5.00, -10743.76), (Wood deck area in square feet, 736.00, 9846.38)",
@@ -33,7 +33,7 @@
     "narrative": "The above ground living area reduces the prediction, while the wood deck area increases it.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and incomplete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Above ground living area square feet, 1256.00, -12527.46)",
@@ -42,7 +42,7 @@
     "narrative": "The house's small size decreases the house price prediction. ",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Above ground living area square feet, 1256.00, -12527.46)",
@@ -51,7 +51,7 @@
     "narrative": "The house's size of 1900 decreases the house price prediction. ",
     "accuracy_score": 0,
     "accuracy_rationalization": "Error in values",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(odor, foul, 0.15), (gill-size, narrow, 0.11), (gill-color, buff, 0.08)",
@@ -60,7 +60,7 @@
     "narrative": "The foul odor increases the model's prediction by 2.5, and the narrow gill size and buff color also increase the prediction.",
     "accuracy_score": 0,
     "accuracy_rationalization": "Error in values",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Size of metadata in KB, 262.00, 0.10), (Total size in KB, 74.00, 0.09)",
@@ -69,7 +69,7 @@
     "narrative": "The file's metadata size of 262 KB and its total size of 74 KB decrease the model's prediction",
     "accuracy_score": 0,
     "accuracy_rationalization": "Error in contribution direction",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Number of streams, 1.00, 0.10), (Number of objects, 1.00, 0.10)",
@@ -78,7 +78,7 @@
     "narrative": "The file's number of streams (1) and number of objects (1) increase the model's prediction by .10 each",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Number of streams, 1.00, 0.10), (Number of objects, 1.00, 0.10)",
@@ -87,7 +87,7 @@
     "narrative": "The file's number of streams (1) increases the model's prediction by .10",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and incomplete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Number of streams, 1.00, 0.11), (Number of objects, 1.00, 0.13)",
@@ -96,7 +96,7 @@
     "narrative": "The file's number of streams (1) and number of objects (1) increase the model's prediction by around .10 each",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate with approximate values",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Quality of materials out of 10, 3, 560.46), (Size in sq ft, 1020, 909)",
@@ -105,7 +105,7 @@
     "narrative": "The house's quality of 3/10 increased the model's prediction by around 500, while its size of around 1000 sq ft increased it by about 900",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86)",
@@ -114,7 +114,7 @@
     "narrative": "The house's size of 854, along with its construction date of 2003, significantly increased the model's house price prediction. Meanwhile, its basement size of 856 decreased the model's prediction by 6157.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86)",
@@ -123,7 +123,7 @@
     "narrative": "The house's size of 854 significantly increased the model's house price prediction. Meanwhile, its basement size of 856 decreased the model's prediction by 6157.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and incomplete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86)",
@@ -132,7 +132,7 @@
     "narrative": "The house's size of around 800 sq ft significantly increased the model's house price prediction. Meanwhile, its basement size of around 800 sq ft decreased the model's prediction by around $6000.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate with approximate values",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86), (First Floor square feet, 856.00, -5466.64), (Physical locations within Ames city limits, CollgCr, -4761.42)",
@@ -141,7 +141,7 @@
     "narrative": "The house's larger than average second floor increased the predicted price by about $12,757. The house's newer construction year added $9,115 to the price. However, the smaller basement and first-floor areas reduced the price by $6,157 and $5,466, respectively. Also, the location in the CollgCr neighborhood reduced the price by around $4,761.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Size of metadata in KB, 262.00, 0.10), (Total size in KB, 74.00, 0.09)",
@@ -150,7 +150,7 @@
     "narrative": "The file's metadata size of 262 KB and its total size of 74 KB increase the model's prediction.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Number of streams, 1.00, 0.10), (Number of objects, 1.00, 0.10)",
@@ -159,7 +159,7 @@
     "narrative": "The file's number of streams (1) and number of objects (1) increase the model's prediction by .10 each.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Second floor square feet, 854.00, 12757.84), (Original construction date, 2003.00, 9115.72), (Total square feet of basement area, 856.00, -6157.86), (First Floor square feet, 856.00, -5466.64)",
@@ -168,7 +168,7 @@
     "narrative": "The house's larger second floor increased the predicted price by about $12,000, while the construction date added $9,000. The smaller basement and first floor reduced the price by around $6,000 and $5,000, respectively.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate with approximate values",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Physical locations within Ames city limits, CollgCr, -4761.42), (First Floor square feet, 856.00, -5466.64)",
@@ -177,7 +177,7 @@
     "narrative": "The location in the CollgCr neighborhood reduced the price by around $5,000, while the smaller first floor reduced it by around $5,000.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate with approximate values",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Above ground living area square feet, 1256.00, -12527.46), (Rates the overall material and finish of the house, 5.00, -10743.76), (Wood deck area in square feet, 736.00, 9846.38)",
@@ -186,7 +186,7 @@
     "narrative": "The above ground living area reduces the prediction, while the wood deck area increases it.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and incomplete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(First Floor square feet, 1022, -3075.88), (Second floor square feet, 752, 10022.69)",
@@ -195,7 +195,7 @@
     "narrative": "The first floor size decreases the prediction, while the second floor size increases it.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Electrical system, FuseF, 2059.11), (Evaluates the quality of the material on the exterior, TA, -1868.01)",
@@ -204,7 +204,7 @@
     "narrative": "The house's electrical system increases the predicted price by $205.911, while the exterior material quality decreases it by $1,868.01.",
     "accuracy_score": 0,
     "accuracy_rationalization": "Error in values",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Size of metadata in KB, 262.00, 0.08), (Total size in KB, 91.00, 0.09)",
@@ -213,7 +213,7 @@
     "narrative": "The size of the metadata (462 KB) and total size (191 KB) increase the model's prediction.",
     "accuracy_score": 0,
     "accuracy_rationalization": "Error in values",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Evaluates the quality of the material on the exterior, TA, -1868.01), (Exterior covering on house, VinylSd, 16798.14)",
@@ -222,7 +222,7 @@
     "narrative": "The average quality of exterior material and  the vinyl siding decrease the price prediction by $1,868.01 and $16,798.14, respectively.",
     "accuracy_score": 0,
     "accuracy_rationalization": "Error in contribution direction",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Lot size in square feet, 6120, -4335.78), (Second floor square feet, 752, 10022.69)",
@@ -231,7 +231,7 @@
     "narrative": "The lot size increases the prediction by $4,335.78, and the second floor size decreases it by $10,022.69.",
     "accuracy_score": 0,
     "accuracy_rationalization": "Error in contribution direction",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Number of streams, 1.00, 0.10), (Number of objects, 1.00, 0.10)",
@@ -240,7 +240,7 @@
     "narrative": "The file's number of streams (1) and number of objects (1) decreases the model's prediction by .10 each.",
     "accuracy_score": 0,
     "accuracy_rationalization": "Error in contribution direction",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(odor, foul, 0.15), (gill-size, narrow, 0.11), (gill-color, buff, 0.08)",
@@ -249,7 +249,7 @@
     "narrative": "The foul odor has the most significant influence on predicting the mushroom is poisonous, followed by the narrow gill size and buff color.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Number of streams, 1.00, 0.10), (Number of objects, 1.00, 0.10)",
@@ -258,7 +258,7 @@
     "narrative": "The file's number of streams increases the model's prediction by 10",
     "accuracy_score": 0,
     "accuracy_rationalization": "Error in values",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
   },
   {
     "explanation": "(Size of metadata in KB, 262.00, 0.10), (Total size in KB, 74.00, 0.09)",
@@ -267,6 +267,133 @@
     "narrative": "The file's metadata size of 262 KB increases the model's prediction",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and incomplete",
-    "rubric": "0: Error in values or contribution direction. 2: Accurate but misleading. 4: Accurate"
-  }
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
+  },
+  {
+    "explanation": "(In a romantic relationship, yes, -1.86), (Student's guardian, father, 1.12), (Family educational support, no, -1.02)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "While the father's guardianship provides some positive impact, the student's involvement in a romantic relationship and the lack of family support might hinder their chances of passing.",
+    "accuracy_score": 4,
+    "accuracy_rationalization": "Accurate and complete",
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
+ },
+ {
+  "explanation": "(Student's guardian, father, 1.74), (In a romantic relationship, no, 1.53), (Family educational support, yes, 1.09)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "This student is more likely to pass because they have a father as a guardian, are not in a romantic relationship, and have family support.",
+  "accuracy_score": 4,
+  "accuracy_rationalization": "Accurate and complete",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(Family educational support, no, -2.26), (In a romantic relationship, no, 1.11), (Sex, M, -0.60)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "We believe this child is less likely to pass because they do not have family support, and we have seen that male students tend to be more likely to fail. However, the lack of a romantic relationship may increase their odds of passing.",
+  "accuracy_score": 4,
+  "accuracy_rationalization": "Accurate and complete",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(In a romantic relationship, yes, -1.74), (Family educational support, no, -1.51), (Student's guardian, mother, -0.31)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "This student may face challenges in passing due to being in a romantic relationship, lacking family support, and having their mother as a guardian.",
+  "accuracy_score": 4,
+  "accuracy_rationalization": "Accurate and complete",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(Family educational support, no, -1.37), (School, MS, -0.59)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "The lack of family support and the fact that this student attends the MS school may decrease their odds of passing.",
+  "accuracy_score": 4,
+  "accuracy_rationalization": "Accurate and complete",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(Family educational support, no, -2.26), (In a romantic relationship, no, 1.11), (Study time, low, -3.5)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "The lack of family educational support decreases the likelihood of passing.",
+  "accuracy_score": 4,
+  "accuracy_rationalization": "Accurate and incomplete",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(Family educational support, yes, 1.21), (In a romantic relationship, no, 1.12), (Previous failures, many, -2.50)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "Having family educational support increases the likelihood of passing.",
+  "accuracy_score": 4,
+  "accuracy_rationalization": "Accurate and incomplete",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(In a romantic relationship, yes, -2.00), (Family educational support, yes, 2.00), (Absences, high, -4.00)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "Being in a romantic relationship decreases the student's likelihood of passing.",
+  "accuracy_score": 4,
+  "accuracy_rationalization": "Accurate and incomplete",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(Family educational support, yes, 1.21), (In a romantic relationship, no, 1.12), (Previous failures, many, -2.50)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "Having family educational support and being in a romantic relationship increases the likelihood of passing by about 1. Having many previous failures decreases it of about 3.",
+  "accuracy_score": 4,
+  "accuracy_rationalization": "Accurate with approximate values",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(In a romantic relationship, yes, -1.86), (Student's guardian, father, 1.12)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "While the father's guardianship influence positively of about 1, the student's involvement in a romantic relationship decreases the chances of passing of about 2.",
+  "accuracy_score": 4,
+  "accuracy_rationalization": "Accurate with approximate values",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(Family educational support, no, -1.37), (School, MS, -0.59)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "The lack of family support and the fact that this student attends the MS school may decrease their odds of passing of about 1 each.",
+  "accuracy_score": 4,
+  "accuracy_rationalization": "Accurate with approximate values",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(Family educational support, no, -1.37), (School, MS, -0.59)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "Attending the MS school increases the student's chances of passing.",
+  "accuracy_score": 0,
+  "accuracy_rationalization": "Error in contribution direction",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(In a romantic relationship, yes, -2.31), (Student's guardian, father, 0.79), (Family educational support, yes, 0.61)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "Having family support has a positive impact on the student's chances, like being in a romantic relationship.",
+  "accuracy_score": 0,
+  "accuracy_rationalization": "Error in contribution direction",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+},
+{
+  "explanation": "(Family educational support, no, -2.26), (In a romantic relationship, no, 1.11), (Sex, M, -0.60)",
+  "context": "The model predicts whether a student will pass their class",
+  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+  "narrative": "The lack of family support drastically reduces the student's chances of passing of 10, while not being in a romantic relationship significantly improves their chances. However, the impact of the student's sex is understated by 3.",
+  "accuracy_score": 0,
+  "accuracy_rationalization": "Error in values",
+  "rubric": "0: Error in values or contribution direction. 4: Accurate"
+}
+ 
 ]
