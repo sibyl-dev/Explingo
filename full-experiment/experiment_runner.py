@@ -15,6 +15,7 @@ class ExplingoExperimentRunner:
         ) = examples.get_data(dataset_filepath)
         self.train_data = self.labeled_train + self.unlabeled_train
         self.eval_data = self.labeled_eval + self.unlabeled_eval
+        print(len(self.eval_data))
 
         max_optimal_length = max([len(d.narrative) for d in self.labeled_train])
 
