@@ -1,0 +1,161 @@
+[
+  {
+    "explanation": "(Size of metadata in KB, 262.0, 0.11), (Total size in KB, 74.0, 0.09), (Number of Javascript keywords, 0.0, 0.09)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The PDF file is more likely to contain malware because it has a larger metadata size (262 KB), a larger total size (74 KB), and no Javascript keywords."
+  },
+  {
+    "explanation": "(Number of objects, -1.0, 0.10), (Number of keywords that denote end of streams, -1.0, 0.10), (Number of streams (sequences of binary data), -1.0, 0.10)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The PDF file is more likely to contain malware because it has fewer objects, fewer keywords that denote the end of streams, and fewer streams."
+  },
+  {
+    "explanation": "(Size of metadata in KB, 272.0, 0.10), (Number of Javascript keywords, 0.0, 0.09), (Total size in KB, 90.0, 0.08)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The PDF file is more likely to contain malware because it has a larger metadata size (272 KB), no Javascript keywords, and a larger total size (90 KB)."
+  },
+  {
+    "explanation": "(Size of metadata in KB, 180.0, 0.11), (Total size in KB, 7.0, 0.06), (Number of objects, -1.0, 0.04)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The PDF file is more likely to contain malware because it has a larger metadata size (180 KB), a larger total size (7 KB), and fewer objects."
+  },
+  {
+    "explanation": "(Size of metadata in KB, 262.0, 0.10), (Number of Javascript keywords, 0.0, 0.09), (Total size in KB, 91.0, 0.08)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The PDF file is more likely to contain malware because it has a larger metadata size (262 KB), no Javascript keywords, and a larger total size (91 KB)."
+  },
+  {
+    "explanation": "(Size of metadata in KB, 180.0, 0.16), (Total size in KB, 3.0, 0.06), (Number of streams (sequences of binary data), 1.0, 0.04)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The PDF file is more likely to contain malware because it has a larger metadata size (180 KB), a larger total size (3 KB), and more streams."
+  },
+  {
+    "explanation": "(Size of metadata in KB, 358.0, 0.10), (Number of Javascript keywords, 0.0, 0.07), (Total size in KB, 63.0, 0.06)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The PDF file is more likely to contain malware because it has a larger metadata size (358 KB), no Javascript keywords, and a larger total size (63 KB)."
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 3.0, 0.08), (Size of metadata in KB, 224.0, 0.06), (Number of keywords with startxref, 0.0, 0.04)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The PDF file is more likely to contain malware because it has more Javascript keywords (3), a larger metadata size (224 KB), and no keywords with startxref."
+  },
+  {
+    "explanation": "(Size of metadata in KB, 403.0, 0.09), (Total size in KB, 145.0, 0.07), (Number of Javascript keywords, 0.0, 0.06)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The PDF file is more likely to contain malware because it has a larger metadata size (403 KB), a larger total size (145 KB), and no Javascript keywords."
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 1.0, 0.10), (Number of images, -1.0, 0.06), (Number of JS keywords, 1.0, 0.05)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 336.0, 0.11), (Total size in KB, 58.0, 0.07), (Number of objects, 121.0, 0.07)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 3.0, 0.15), (Number of JS keywords, 2.0, 0.07), (Number of keywords that denote end of streams, 2.0, 0.06)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 289.0, 0.09), (Number of Javascript keywords, 0.0, 0.08), (Total size in KB, 27.0, 0.06)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 2.0, 0.10), (Total size in KB, 4.0, 0.08), (Number of entries in Xref tables, 10.0, 0.05)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 298.0, 0.11), (Number of Javascript keywords, 0.0, 0.10), (Total size in KB, 32.0, 0.07)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 180.0, 0.11), (Number of Javascript keywords, 1.0, 0.08), (Total size in KB, 1.0, 0.06)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of objects, 289.0, 0.12), (Size of metadata in KB, 388.0, 0.10), (Number of entries in Xref tables, 354.0, 0.09)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of XFA keywords, 1.0, 0.11), (Total size in KB, 9.0, 0.08), (Size of metadata in KB, 252.0, 0.07)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 0.0, 0.12), (Size of metadata in KB, 299.0, 0.08), (Number of JS keywords, 0.0, 0.06)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 2.0, 0.12), (Total size in KB, 9.0, 0.09), (Number of JS keywords, 1.0, 0.04)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 288.0, 0.09), (Total size in KB, 32.0, 0.07), (Number of Javascript keywords, 0.0, 0.06)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Total size in KB, 7.0, 0.09), (Size of metadata in KB, 239.0, 0.07), (Number of entries in Xref tables, 10.0, 0.05)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 0.0, 0.09), (Size of metadata in KB, 278.0, 0.08), (Number of keywords with startxref, 2.0, 0.08)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 1.0, 0.11), (Number of images, -1.0, 0.07), (Number of keywords with startxref, 1.0, 0.05)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 327.0, 0.10), (Total size in KB, 75.0, 0.06), (Number of entries in Xref tables, 368.0, 0.05)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, -1.0, 0.09), (Number of Javascript keywords, 1.0, 0.06), (Total size in KB, -1.0, 0.04)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 0.0, 0.10), (Size of metadata in KB, 283.0, 0.09), (Total size in KB, 78.0, 0.07)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 180.0, 0.21), (Total size in KB, 9.0, 0.13), (Contains text, 0.0, 0.04)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Size of metadata in KB, 262.0, 0.11), (Total size in KB, 80.0, 0.09), (Number of Javascript keywords, 0.0, 0.09)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Number of Javascript keywords, 4.0, 0.12), (Total size in KB, 3.0, 0.08), (Number of JS keywords, 3.0, 0.06)",
+    "context": "The model predicts whether a PDF file contains malware",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  }
+]
