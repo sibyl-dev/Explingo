@@ -1,182 +1,182 @@
 [
   {
-    "explanation": "(famsup, no, -2.56), (romantic, no, 0.86), (Fjob, teacher, 0.36)",
+    "explanation": "(Family eductional support, no, -2.26), (In a romantic relationship, no, 1.11), (Sex, M, -0.60)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "We believe this child is less likely to pass because they do not have family support, and we have seen that male students tend to be more likely to fail. However, the lack of a romantic relationship may increase their odds of passing."
   },
   {
-    "explanation": "(romantic, no, 1.11), (famsup, yes, 0.91), (guardian, other, 0.47)",
+    "explanation": "(Family eductional support, yes, 1.21), (In a romantic relationship, no, 1.12), (Age, 17, -0.45)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "Interestingly, we have seen that students that are not in a romantic relationship are more likely to pass. This student has family support, which may also increase their odds of passing. However, being 17 may decrease their odds of passing."
   },
   {
-    "explanation": "(famsup, no, -1.99), (romantic, no, 0.80), (sex, M, -0.46)",
+    "explanation": "(In a romantic relationship, yes, -2.00), (Family eductional support, no, -1.99), (Sex, M, -0.49)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student may require additional support - we believe that they are less likely to pass because they are in a romantic relationship, do not have family support, and are male."
   },
   {
-    "explanation": "(romantic, yes, -1.68), (famsup, yes, 1.12), (Fjob, teacher, 0.88)",
+    "explanation": "(Family eductional support, no, -1.37), (School, MS, -0.59)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The lack of family support and the fact that this student attends the MS school may decrease their odds of passing."
   },
   {
-    "explanation": "(famsup, yes, 1.04), (romantic, no, 0.66), (age, 17, -0.55)",
+    "explanation": "(Student's guardian, father, 1.74), (In a romantic relationship, no, 1.53), (Family eductional support, yes, 1.09)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student is more likely to pass because they have a father as a guardian, are not in a romantic relationship, and have family support."
   },
   {
-    "explanation": "(famsup, no, -1.60), (romantic, no, 1.00), (nursery, no, -0.64)",
+    "explanation": "(In a romantic relationship, yes, -1.74), (Family eductional support, no, -1.51), (Student's guardian, mother, -0.31)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student may face challenges in passing due to being in a romantic relationship, lacking family support, and having their mother as a guardian."
   },
   {
-    "explanation": "(romantic, yes, -2.22), (famsup, yes, 0.81), (reason, home, 0.79)",
+    "explanation": "(In a romantic relationship, yes, -1.86), (Student's guardian, father, 1.12), (Family eductional support, no, -1.02)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "While the father's guardianship provides some positive impact, the student's involvement in a romantic relationship and the lack of family support might hinder their chances of passing."
   },
   {
-    "explanation": "(romantic, yes, -2.26), (famsup, yes, 0.78), (age, 18, -0.42)",
+    "explanation": "(Family eductional support, no, -2.01), (Student's guardian, father, 1.49), (In a romantic relationship, no, 1.07)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The lack of family support is a significant concern, but the student has some positive factors such as having their father as a guardian and not being in a romantic relationship, which might help increase their chances of passing."
   },
   {
-    "explanation": "(romantic, yes, -2.50), (famsup, yes, 0.68), (guardian, father, 0.66)",
+    "explanation": "(Family eductional support, no, -2.36), (In a romantic relationship, no, 1.05), (Sex, M, -0.44)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student faces several challenges, such as a lack of family support and being male, which are associated with lower odds of passing. However, not being in a romantic relationship could slightly improve their chances."
   },
   {
-    "explanation": "(romantic, yes, -2.72), (famsup, yes, 0.78), (absences, 10, -0.72)",
+    "explanation": "(Family eductional support, no, -1.60), (In a romantic relationship, no, 0.81), (Attended nursery school, no, -0.61)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The absence of family support and not attending nursery school are factors that decrease this student's likelihood of passing. However, not being in a romantic relationship might be a slight advantage."
   },
   {
-    "explanation": "(famsup, no, -2.22), (romantic, no, 0.99), (age, 16, 0.39)",
+    "explanation": "(Family eductional support, no, -2.01), (In a romantic relationship, no, 1.02), (Student's guardian, mother, -0.40)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The lack of family support and having the mother as a guardian could negatively impact the student's chances of passing. However, not being in a romantic relationship may offer some improvement in their odds."
   },
   {
-    "explanation": "(famsup, yes, 1.19), (romantic, no, 0.98), (age, 15, 0.51)",
+    "explanation": "(Family eductional support, yes, 1.25), (In a romantic relationship, no, 1.06), (Frequency of going out with friends (1-5), 5, -0.60)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student is more likely to pass due to strong family support and not being in a romantic relationship. However, frequently going out with friends could negatively impact their chances."
   },
   {
-    "explanation": "(famsup, no, -1.42), (romantic, no, 1.11), (school, MS, -0.74)",
+    "explanation": "(In a romantic relationship, no, 0.92), (Family eductional support, yes, 0.84), (Quality of family relationships (1-5), 2, -0.82)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "While this student benefits from not being in a romantic relationship and having family support, poor family relationships might decrease their likelihood of passing."
   },
   {
-    "explanation": "(romantic, yes, -1.86), (guardian, father, 1.12), (famsup, no, -1.02)",
+    "explanation": "(In a romantic relationship, no, 1.24), (Family eductional support, yes, 1.12), (Quality of family relationships (1-5), 4, 0.44)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student appears to have a good chance of passing, as they are not in a romantic relationship, have family support, and enjoy relatively strong family relationships."
   },
   {
-    "explanation": "(romantic, no, 1.07), (famsup, yes, 1.01), (age, 17, -0.54)",
+    "explanation": "(In a romantic relationship, yes, -2.23), (Family eductional support, yes, 0.78), (School, MS, -0.77)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The student's involvement in a romantic relationship and attendance at the MS school are significant challenges to passing, though the presence of family support offers some positive influence."
   },
   {
-    "explanation": "(famsup, no, -1.60), (romantic, no, 0.97), (absences, 12, -0.60)",
+    "explanation": "(Family eductional support, no, -1.70), (Student's guardian, father, 1.00), (In a romantic relationship, no, 0.95)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "Despite the lack of family support, the student's chances of passing are improved by having their father as a guardian and not being in a romantic relationship."
   },
   {
-    "explanation": "(romantic, yes, -1.69), (famsup, no, -1.00), (guardian, other, 0.84)",
+    "explanation": "(In a romantic relationship, yes, -1.71), (Family eductional support, yes, 0.78), (School, MS, -0.69)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The student's involvement in a romantic relationship and attendance at the MS school negatively impact their chances of passing, though the presence of family support provides some positive influence."
   },
   {
-    "explanation": "(romantic, no, 1.25), (famsup, yes, 1.16), (sex, M, -0.54)",
+    "explanation": "(In a romantic relationship, no, 1.13), (Family eductional support, yes, 1.10), (Reason for choosing this school, home, 0.62)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student is more likely to pass because they are not in a romantic relationship, have family support, and chose their school for a reason related to their home environment."
   },
   {
-    "explanation": "(romantic, yes, -1.36), (guardian, other, 0.81), (famsup, yes, 0.69)",
+    "explanation": "(Family eductional support, no, -1.42), (Student's guardian, father, 1.27), (In a romantic relationship, no, 1.00)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The lack of family support might hinder this student's chances of passing, but having their father as a guardian and not being in a romantic relationship may help improve their odds."
   },
   {
-    "explanation": "(romantic, yes, -1.91), (famsup, no, -1.71), (reason, home, 0.47)",
+    "explanation": "(In a romantic relationship, no, 1.25), (Family eductional support, yes, 1.16), (Sex, M, -0.54)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student is more likely to pass due to strong family support and not being in a romantic relationship, although being male slightly reduces their chances."
   },
   {
-    "explanation": "(romantic, yes, -2.12), (famsup, no, -1.82), (reason, home, 0.48)",
+    "explanation": "(In a romantic relationship, yes, -1.84), (Family eductional support, yes, 0.82), (Home to school travel time, 2, 0.39)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The student's involvement in a romantic relationship might hinder their chances of passing, but having family support and a shorter travel time to school provide some positive factors."
   },
   {
-    "explanation": "(famsup, yes, 1.19), (romantic, no, 1.17), (age, 17, -0.60)",
+    "explanation": "(Family eductional support, no, -2.14), (In a romantic relationship, no, 0.96), (Student's guardian, mother, -0.37)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The lack of family support and having the mother as a guardian are factors that decrease the likelihood of passing. However, not being in a romantic relationship offers a slight improvement in their odds."
   },
   {
-    "explanation": "(romantic, yes, -2.02), (famsup, no, -1.26), (sex, M, -0.47)",
+    "explanation": "(Family eductional support, yes, 1.27), (In a romantic relationship, no, 1.05), (Age, 18, -0.40)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student is more likely to pass because they have family support and are not in a romantic relationship, although being 18 years old may slightly reduce their chances."
   },
   {
-    "explanation": "(romantic, yes, -1.92), (guardian, father, 0.58), (famsup, yes, 0.52)",
+    "explanation": "(In a romantic relationship, yes, -2.67), (Family eductional support, yes, 0.83), (Sex, F, 0.32)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student's involvement in a romantic relationship significantly decreases their chances of passing, but family support and being female provide some positive influences."
   },
   {
-    "explanation": "(romantic, yes, -2.24), (famsup, yes, 0.84), (absences, 6, 0.60)",
+    "explanation": "(In a romantic relationship, yes, -2.41), (Family eductional support, yes, 0.63), (Amount of free time after school (1-5), 4, -0.47)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The student's involvement in a romantic relationship and a significant amount of free time after school negatively impact their chances of passing, though family support offers some positive influence."
   },
   {
-    "explanation": "(romantic, yes, -1.53), (famsup, no, -1.13), (nursery, no, -0.39)",
+    "explanation": "(Family eductional support, no, -2.22), (In a romantic relationship, no, 0.99), (Age, 16, 0.39)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The lack of family support is a significant concern, but the student's chances of passing are slightly improved by not being in a romantic relationship and being 16 years old."
   },
   {
-    "explanation": "(absences, 16, -1.42), (guardian, father, 1.15), (famsup, yes, 1.01)",
+    "explanation": "(In a romantic relationship, no, 1.13), (Family eductional support, yes, 1.06), (Attended nursery school, no, -0.81)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student is more likely to pass due to strong family support and not being in a romantic relationship, although not having attended nursery school slightly reduces their chances."
   },
   {
-    "explanation": "(romantic, yes, -2.59), (famsup, yes, 0.78), (school, MS, -0.76)",
+    "explanation": "(In a romantic relationship, yes, -2.31), (Student's guardian, father, 0.79), (Family eductional support, yes, 0.61)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "The student's involvement in a romantic relationship is a major factor in decreasing their likelihood of passing. However, having their father as a guardian and family support provides some positive influence."
   },
   {
-    "explanation": "(romantic, no, 1.17), (guardian, father, 1.07), (famsup, yes, 0.88)",
+    "explanation": "(In a romantic relationship, yes, -1.91), (Family eductional support, no, -1.67), (Reason for choosing this school, home, 0.62)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "This student faces significant challenges due to being in a romantic relationship and lacking family support, although choosing the school for reasons related to home may slightly improve their chances."
   },
   {
-    "explanation": "(romantic, yes, -2.32), (famsup, yes, 0.88), (guardian, other, 0.86)",
+    "explanation": "(In a romantic relationship, yes, -1.77), (Student's guardian, father, 1.36), (Family eductional support, no, -0.99)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": ""
+    "narrative": "While the student is likely to struggle due to being in a romantic relationship and lacking family support, having their father as a guardian offers some positive impact on their chances of passing."
   }
 ]
