@@ -1,0 +1,182 @@
+[
+  {
+    "explanation": "(famsup, no, -2.56), (romantic, no, 0.86), (Fjob, teacher, 0.36)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, no, 1.11), (famsup, yes, 0.91), (guardian, other, 0.47)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(famsup, no, -1.99), (romantic, no, 0.80), (sex, M, -0.46)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -1.68), (famsup, yes, 1.12), (Fjob, teacher, 0.88)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(famsup, yes, 1.04), (romantic, no, 0.66), (age, 17, -0.55)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(famsup, no, -1.60), (romantic, no, 1.00), (nursery, no, -0.64)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -2.22), (famsup, yes, 0.81), (reason, home, 0.79)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -2.26), (famsup, yes, 0.78), (age, 18, -0.42)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -2.50), (famsup, yes, 0.68), (guardian, father, 0.66)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -2.72), (famsup, yes, 0.78), (absences, 10, -0.72)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(famsup, no, -2.22), (romantic, no, 0.99), (age, 16, 0.39)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(famsup, yes, 1.19), (romantic, no, 0.98), (age, 15, 0.51)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(famsup, no, -1.42), (romantic, no, 1.11), (school, MS, -0.74)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -1.86), (guardian, father, 1.12), (famsup, no, -1.02)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, no, 1.07), (famsup, yes, 1.01), (age, 17, -0.54)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(famsup, no, -1.60), (romantic, no, 0.97), (absences, 12, -0.60)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -1.69), (famsup, no, -1.00), (guardian, other, 0.84)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, no, 1.25), (famsup, yes, 1.16), (sex, M, -0.54)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -1.36), (guardian, other, 0.81), (famsup, yes, 0.69)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -1.91), (famsup, no, -1.71), (reason, home, 0.47)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -2.12), (famsup, no, -1.82), (reason, home, 0.48)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(famsup, yes, 1.19), (romantic, no, 1.17), (age, 17, -0.60)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -2.02), (famsup, no, -1.26), (sex, M, -0.47)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -1.92), (guardian, father, 0.58), (famsup, yes, 0.52)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -2.24), (famsup, yes, 0.84), (absences, 6, 0.60)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -1.53), (famsup, no, -1.13), (nursery, no, -0.39)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(absences, 16, -1.42), (guardian, father, 1.15), (famsup, yes, 1.01)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -2.59), (famsup, yes, 0.78), (school, MS, -0.76)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, no, 1.17), (guardian, father, 1.07), (famsup, yes, 0.88)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(romantic, yes, -2.32), (famsup, yes, 0.88), (guardian, other, 0.86)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "explanation": "(odor, foul, 0.24), (stalk-surface-above-ring, silky, 0.10), (spore-print-color, chocolate, 0.06)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, foul, 0.22), (stalk-surface-above-ring, silky, 0.11), (spore-print-color, chocolate, 0.07)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.15), (gill-size, broad, 0.05), (spore-print-color, brown, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, foul, 0.24), (stalk-surface-above-ring, silky, 0.10), (spore-print-color, chocolate, 0.07)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.15), (gill-size, broad, 0.06), (spore-print-color, black, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-size, broad, 0.07), (spore-print-color, black, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, foul, 0.24), (stalk-surface-above-ring, silky, 0.09), (spore-print-color, chocolate, 0.07)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.15), (gill-spacing, crowded, 0.07), (gill-size, broad, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-size, broad, 0.08), (ring-type, pendant, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.15), (gill-size, broad, 0.06), (spore-print-color, black, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-spacing, crowded, 0.09), (gill-size, broad, 0.06)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, foul, 0.19), (gill-color, buff, 0.07), (gill-size, narrow, 0.07)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.13), (odor, fishy, 0.10), (gill-color, buff, 0.08)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, foul, 0.19), (gill-size, narrow, 0.09), (gill-color, buff, 0.07)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.12), (odor, fishy, 0.11), (gill-color, buff, 0.08)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-spacing, crowded, 0.08), (gill-size, broad, 0.06)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, foul, 0.25), (stalk-surface-above-ring, silky, 0.11), (spore-print-color, chocolate, 0.06)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.13), (gill-size, broad, 0.08), (stalk-surface-above-ring, smooth, 0.04)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.12), (odor, fishy, 0.11), (gill-color, buff, 0.08)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.10), (odor, spicy, 0.08), (gill-color, buff, 0.07)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(spore-print-color, green, 0.26), (ring-number, two, 0.10), (odor, none, -0.06)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, pungent, 0.18), (gill-size, narrow, 0.18), (stalk-shape, enlarging, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.15), (gill-size, broad, 0.08), (spore-print-color, black, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-spacing, crowded, 0.08), (gill-size, broad, 0.06)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.12), (odor, spicy, 0.10), (gill-color, buff, 0.08)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-size, broad, 0.07), (spore-print-color, brown, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.12), (odor, fishy, 0.11), (gill-color, buff, 0.08)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.12), (odor, fishy, 0.10), (gill-color, buff, 0.08)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-size, broad, 0.07), (spore-print-color, brown, 0.05)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  },
+  {
+    "explanation": "(odor, foul, 0.22), (stalk-surface-above-ring, silky, 0.10), (spore-print-color, chocolate, 0.06)",
+    "context": "The model predicts whether a mushroom is poisonous",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": ""
+  }
+]
