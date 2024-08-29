@@ -106,61 +106,61 @@
   {
     "explanation": "(Family eductional support, no, -1.42), (Student's guardian, father, 1.27), (In a romantic relationship, no, 1.00)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(In a romantic relationship, no, 1.25), (Family eductional support, yes, 1.16), (Sex, M, -0.54)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(In a romantic relationship, yes, -1.84), (Family eductional support, yes, 0.82), (Home to school travel time, 2, 0.39)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(Family eductional support, no, -2.14), (In a romantic relationship, no, 0.96), (Student's guardian, mother, -0.37)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(Family eductional support, yes, 1.27), (In a romantic relationship, no, 1.05), (Age, 18, -0.40)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(In a romantic relationship, yes, -2.67), (Family eductional support, yes, 0.83), (Sex, F, 0.32)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(In a romantic relationship, yes, -2.41), (Family eductional support, yes, 0.63), (Amount of free time after school (1-5), 4, -0.47)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(Family eductional support, no, -2.22), (In a romantic relationship, no, 0.99), (Age, 16, 0.39)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(In a romantic relationship, no, 1.13), (Family eductional support, yes, 1.06), (Attended nursery school, no, -0.81)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(In a romantic relationship, yes, -2.31), (Student's guardian, father, 0.79), (Family eductional support, yes, 0.61)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(In a romantic relationship, yes, -1.91), (Family eductional support, no, -1.67), (Reason for choosing this school, home, 0.62)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   },
   {
     "explanation": "(In a romantic relationship, yes, -1.77), (Student's guardian, father, 1.36), (Family eductional support, no, -0.99)",
     "context": "The model predicts whether a student will pass their class",
-    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
    }
 ]
