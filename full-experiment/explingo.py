@@ -4,7 +4,11 @@ import random
 
 
 def _manually_parse_output(output):
-    narrative = output.split("Narrative: ")[1].split("\n")[0]
+    try:
+        narrative = output.split("Narrative: ")[1].split("\n")[0]
+    except IndexError:
+        print(f"Unable to parse output: {output}")
+        return None
     # rationalization = output.split("Rationalization: ")[1].split("\n")[0]
     return dspy.Prediction(
         narrative=narrative,

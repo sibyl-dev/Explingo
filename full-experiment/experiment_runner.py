@@ -66,11 +66,12 @@ class ExplingoExperimentRunner:
                 explanation_format=example.explanation_format,
                 **kwargs,
             )
-            score = self.metrics(example, result)
-            if total_scores is None:
-                total_scores = score[1]
-            else:
-                total_scores += score[1]
+            if result is not None:
+                score = self.metrics(example, result)
+                if total_scores is None:
+                    total_scores = score[1]
+                else:
+                    total_scores += score[1]
 
         total = min(max_iters, len(self.eval_data))
         average_scores = total_scores / total
