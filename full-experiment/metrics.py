@@ -33,7 +33,7 @@ class Metrics:
         self.metric_kwargs = metric_kwargs if metric_kwargs is not None else {}
         self.grader = dspy.OpenAI(
             model="gpt-4o",
-            max_tokens=2000,
+            max_tokens=500,
             model_type="chat",
             api_key=openai_key,
             temperature=0.3,
@@ -70,7 +70,7 @@ class Metrics:
             )
 
 
-def compute_score_from_boolean(metric, question, narrative, grader, iters=5):
+def compute_score_from_boolean(metric, question, narrative, grader, iters=3):
     total_score = 0.0
 
     with dspy.context(lm=grader):
@@ -93,7 +93,7 @@ def compute_score_from_boolean(metric, question, narrative, grader, iters=5):
 
 
 def compute_score_from_rubric(
-    metric, question, rubric, narrative, grader, iters=5, rational_type=None
+    metric, question, rubric, narrative, grader, iters=3, rational_type=None
 ):
     scores = []
     with dspy.context(lm=grader):

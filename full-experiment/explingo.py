@@ -5,10 +5,10 @@ import random
 
 def _manually_parse_output(output):
     narrative = output.split("Narrative: ")[1].split("\n")[0]
-    rationalization = output.split("Rationalization: ")[1].split("\n")[0]
+    # rationalization = output.split("Rationalization: ")[1].split("\n")[0]
     return dspy.Prediction(
         narrative=narrative,
-        rationalization=rationalization,
+        # rationalization=rationalization,
     )
 
 
@@ -23,9 +23,9 @@ class ExplingoSig(dspy.Signature):
     narrative = dspy.OutputField(
         desc="human-readable narrative version of the explanation"
     )
-    rationalization = dspy.OutputField(
-        desc="explains why given features may be relevant"
-    )
+    # rationalization = dspy.OutputField(
+    #     desc="explains why given features may be relevant"
+    # )
 
 
 class Explingo:
@@ -55,15 +55,14 @@ class Explingo:
             f"Explanation: explanation of the model's prediction\n"
             f"Explanation Format: format the explanation is given in\n"
             f"Narrative: human-readable narrative version of the explanation\n"
-            f"Rationalization: explains why given features may be relevant\n"
         )
         input_string = (
             f"Context: {self.context}\n"
             f"Explanation: {explanation}\n"
             f"Explanation Format: {explanation_format}\n"
-            "Please provide the output fields Narrative then Rationalization. "
+            "Please provide the output field Narrative. "
             "Do so immediately, without additional content before or after, "
-            "and precisely as the format above shows. Begin with the field Narrative."
+            "and precisely as the format above shows."
         )
 
         examples_string = ""
