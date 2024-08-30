@@ -53,7 +53,6 @@ class Metrics:
         if self.verbose == 2:
             print("Explanation:", input_.explanation)
             print("Narrative:", output_.narrative)
-            print("Rationalization:", output_.rationalization)
             print("Total Score:", total_score)
             print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
             print("--")
