@@ -32,10 +32,11 @@ class Metrics:
         self.verbose = verbose
         self.metric_kwargs = metric_kwargs if metric_kwargs is not None else {}
         self.grader = dspy.OpenAI(
-            model="gpt-4-1106-preview",
-            max_tokens=1000,
+            model="gpt-4o",
+            max_tokens=2000,
             model_type="chat",
             api_key=openai_key,
+            temperature=0.3,
         )
 
     def __call__(self, input_, output_, trace=None):
