@@ -120,9 +120,10 @@ def accuracy(input_, output_, grader, trace=None):
     question = (
         f"How accurate is the information in the narrative, based on the explanation given? "
         f"A narrative can score 4 even if it is missing information as long as everything in the narrative is correct. "
+        f"Make sure the contribution direction is correct - positive contributions increase the output, negative contributions decrease the output."
         f"\n\nExplanation format: {input_.explanation_format}.\nExplanation: {input_.explanation}"
     )
-    rubric = f"0 - Contains one or more errors in value or contribution direction. 4 - Contains no errors."
+    rubric = f"0 - Contains one or more errors in value or contribution direction. 4 - Contains no errors, but may be missing information."
     return compute_score_from_rubric(
         "accuracy", question, rubric=rubric, narrative=output_.narrative, grader=grader
     )
