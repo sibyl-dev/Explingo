@@ -15,7 +15,14 @@ class ExplingoExperimentRunner:
         ) = examples.get_data(dataset_filepath)
         self.train_data = self.labeled_train + self.unlabeled_train
         self.eval_data = self.labeled_eval + self.unlabeled_eval
-        print(len(self.eval_data))
+        assert len(self.train_data) == 10
+        print(dataset_filepath)
+        print(f"Total number of examples: {len(self.train_data) + len(self.eval_data)}")
+        print(f"Labeled training examples: {len(self.labeled_train)}")
+        print(f"Labeled evaluation examples: {len(self.labeled_eval)}")
+        print(f"Unlabeled training examples: {len(self.unlabeled_train)}")
+        print(f"Unlabeled evaluation examples: {len(self.unlabeled_eval)}")
+        print("---")
 
         max_optimal_length = max([len(d.narrative) for d in self.labeled_train])
 

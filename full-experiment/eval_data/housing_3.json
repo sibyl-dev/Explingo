@@ -76,5 +76,50 @@
     "context": "The ML model predicts house prices",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
     "narrative": "This house is more expensive because it has a larger lot (size=8500), a three-season porch (size=250), and more above ground living space (size=1400). It’s cheaper due to its location in ClearCr and an older remodel year (1985)."
+  },
+  {
+    "explanation": "(Second floor square feet, 900.00, 12500.45), (Original construction date, 2002.00, 8600.78), (Above ground living area square feet, 1800.00, 5900.00), (Physical locations within Ames city limits, CollgCr, -4700.00), (Total square feet of basement area, 950.00, -4800.00)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Original construction date, 1918.00, -17500.50), (Physical locations within Ames city limits, Crawfor, 17500.00), (Second floor square feet, 800.00, 10500.25), (Total square feet of basement area, 770.00, -8200.00), (Condition of sale, Abnorml, -6700.00)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Physical locations within Ames city limits, NoRidge, 22000.45), (Above ground living area square feet, 2200.00, 20000.00), (Second floor square feet, 1100.00, 18500.00), (Rates the overall material and finish of the house, 8.00, 9700.00), (Original construction date, 1999.00, 8200.00)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Type of foundation, Concrete, -18000.00), (Physical locations within Ames city limits, Mitchel, -13000.00), (Rates the overall material and finish of the house, 6.00, -10500.00), (Three season porch area in square feet, 350.00, 10000.00), (Bedrooms above ground, 2.00, 9000.00)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Type 1 finished square feet, 1400.00, 15000.00), (Evaluates the height of the basement, Good, 13000.00), (Total square feet of basement area, 1700.00, 12000.00), (Second floor square feet, 0.00, -10000.00), (Rates the overall material and finish of the house, 7.00, 9500.00)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Garage size in square feet, 600.00, 12000.00), (Central air conditioning, Yes, 9800.00), (First Floor square feet, 1100.00, -8500.00), (Physical locations within Ames city limits, Sawyer, -6400.00), (Type of foundation, Slab, -5300.00)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Lot area in square feet, 9500.00, 15000.00), (Garage size in square feet, 720.00, 13000.00), (Rates the overall condition of the house, 7.00, 8600.00), (Physical locations within Ames city limits, NWAmes, -7500.00), (Second floor square feet, 0.00, -6900.00)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Rates the overall condition of the house, 8.00, 11500.00), (Fireplace quality, Excellent, 11000.00), (Garage size in square feet, 450.00, 8600.00), (Physical locations within Ames city limits, OldTown, -7300.00), (Second floor square feet, 0.00, -6400.00)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
+  },
+  {
+    "explanation": "(Rates the overall material and finish of the house, 8.50, 18000.00), (Lot area in square feet, 10500.00, 14000.00), (Garage size in square feet, 750.00, 13000.00), (First Floor square feet, 2100.00, -10500.00), (Physical locations within Ames city limits, Meadow, -8400.00)",
+    "context": "The ML model predicts house prices",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format"
   }
 ]

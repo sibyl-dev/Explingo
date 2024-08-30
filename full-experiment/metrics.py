@@ -108,7 +108,10 @@ def compute_score_from_rubric(
                     rubric=rubric,
                     narrative=narrative,
                 ).assessment
-            scores.append(int(score))
+            try:
+                scores.append(int(score))
+            except ValueError:
+                print("Invalid score for metric %s: %s" % (metric, score))
 
     if 0 in scores and MAX_SCORE in scores:
         print("Inconsistent score for metric %s: %s" % (metric, scores))
