@@ -1,3 +1,0 @@
-,dataset,prompt,total score,accuracy,completeness,fluency,conciseness,n_few_shot
-0,housing_1.json,"You are helping users understand an ML model's prediction. Given an explanation and information about the model, convert the explanation into a human-readable narrative.",15.24,3.52,3.92,3.8,4.0,1
-1,housing_1.json,"You are helping users understand an ML model's prediction. Given an explanation and information about the model, convert the explanation into a human-readable narrative.",14.96,3.2,3.92,3.84,4.0,3
