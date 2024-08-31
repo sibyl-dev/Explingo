@@ -173,7 +173,7 @@ def completeness(input_, output_, grader, trace=None):
 def conciseness(
     input_, output_, grader=None, trace=None, max_optimal_length_per_feature=20
 ):
-    num_features = output_.explanation.count("(")
+    num_features = input_.explanation.count("(")
     if num_features == 0:
         num_features = 1
     length = len(output_.narrative.split())
