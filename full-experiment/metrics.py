@@ -170,10 +170,22 @@ def completeness(input_, output_, grader, trace=None):
     )
 
 
-def conciseness(input_, output_, grader=None, trace=None, max_optimal_length=100):
+def conciseness(
+    input_, output_, grader=None, trace=None, max_optimal_length_per_feature=20
+):
+    num_features = output_.explanation.count("(")
+    if num_features == 0:
+        num_features = 1
     length = len(output_.narrative.split())
+    max_optimal_length = max_optimal_length_per_feature * num_features
     # scale length between 0 and 2
-    return max(0.0, min(MAX_SCORE, MAX_SCORE * (2 - length / max_optimal_length)))
+    return max(
+        0.0,
+        min(
+            MAX_SCORE,
+            MAX_SCORE * (2 - length / max_optimal_length),
+        ),
+    )
 
 
 def context_awareness(input_, output_, grader, trace=None):

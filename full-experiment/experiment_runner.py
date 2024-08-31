@@ -24,7 +24,9 @@ class ExplingoExperimentRunner:
         print(f"Unlabeled evaluation examples: {len(self.unlabeled_eval)}")
         print("---")
 
-        max_optimal_length = max([len(d.narrative) for d in self.labeled_train])
+        max_optimal_length = max([len(d.narrative.split()) for d in self.labeled_train])
+        max_optimal_length *= 0.8
+        print("Max optimal length:", max_optimal_length)
 
         example_good_narratives = random.sample(
             [d.narrative for d in self.labeled_train], 5
@@ -32,9 +34,9 @@ class ExplingoExperimentRunner:
 
         self.metrics = metrics.Metrics(
             metric_funcs=[
-                metrics.accuracy,
-                metrics.completeness,
-                metrics.fluency,
+                # metrics.accuracy,
+                # metrics.completeness,
+                # metrics.fluency,
                 metrics.conciseness,
             ],
             openai_key=openai_api_key,
