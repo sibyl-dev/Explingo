@@ -6,7 +6,9 @@ from explingo import Explingo
 
 
 class ExplingoExperimentRunner:
-    def __init__(self, llm, dataset_filepath, openai_api_key, verbose=0):
+    def __init__(
+        self, llm, dataset_filepath, openai_api_key, verbose=0, save_results=True
+    ):
         (
             self.labeled_train,
             self.labeled_eval,
@@ -53,6 +55,7 @@ class ExplingoExperimentRunner:
         )
 
         self.verbose = verbose
+        self.save_results = save_results
 
         self.explingo = Explingo(
             llm,
@@ -66,6 +69,7 @@ class ExplingoExperimentRunner:
             kwargs = {}
 
         total_scores = None
+        results = []
         for i, example in enumerate(self.eval_data):
             if i >= max_iters:
                 break
@@ -91,11 +95,26 @@ class ExplingoExperimentRunner:
                         )
                     )
                     print("--")
+                if self.save_results:
+                    results.append(
+                        {
+                            "func": func.__name__,
+                            "kwargs": kwargs,
+                            "explanation": example.explanation,
+                            "narrative": result.narrative,
+                            "scores": "".join(
+                                f"{metric}: {score}, "
+                                for metric, score in score[1].items()
+                            ),
+                        }
+                    )
 
         total = min(max_iters, len(self.eval_data))
         average_scores = total_scores / total
         total_average_score = total_scores.sum() / total
 
+        if self.save_results:
+            return total_average_score, average_scores, results
         return total_average_score, average_scores
 
     def run_basic_prompting_experiment(self, prompt=None, max_iters=100):
