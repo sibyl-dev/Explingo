@@ -52,6 +52,8 @@ class ExplingoExperimentRunner:
             },
         )
 
+        self.verbose = verbose
+
         self.explingo = Explingo(
             llm,
             context=self.labeled_train[0]["context"],
@@ -79,6 +81,16 @@ class ExplingoExperimentRunner:
                     total_scores = score[1]
                 else:
                     total_scores += score[1]
+                if self.verbose >= 1:
+                    print("Explanation:", example.explanation)
+                    print("Narrative:", result.narrative)
+                    print("Total Score:", score[0])
+                    print(
+                        "".join(
+                            f"{metric}: {score}, " for metric, score in score[1].items()
+                        )
+                    )
+                    print("--")
 
         total = min(max_iters, len(self.eval_data))
         average_scores = total_scores / total

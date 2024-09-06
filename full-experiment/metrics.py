@@ -50,23 +50,11 @@ class Metrics:
 
         total_score = sum(metrics.values())
 
-        if self.verbose == 2:
-            print("Explanation:", input_.explanation)
-            print("Narrative:", output_.narrative)
-            print("Total Score:", total_score)
-            print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
-            print("--")
-        if self.verbose == 1:
-            print("Narrative:", output_.narrative)
-            print("Total Score:", total_score)
-            print("".join(f"{metric}: {score}, " for metric, score in metrics.items()))
-            print("--")
-
         if trace is None:
             return total_score, pd.Series(metrics)
         else:
             return (metrics["accuracy"] == MAX_SCORE) and (
-                total_score >= len(metrics) * MAX_SCORE
+                total_score >= (len(metrics) * MAX_SCORE * 0.95)
             )
 
 
