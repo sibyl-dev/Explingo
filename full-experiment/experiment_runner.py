@@ -31,7 +31,6 @@ class ExplingoExperimentRunner:
                 for d in self.labeled_train
             ]
         )
-        max_optimal_length *= 0.9
         print("Max optimal length:", max_optimal_length)
         print("---")
 

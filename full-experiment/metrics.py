@@ -53,9 +53,20 @@ class Metrics:
         if trace is None:
             return total_score, pd.Series(metrics)
         else:
-            return (metrics["accuracy"] == MAX_SCORE) and (
-                total_score >= (len(metrics) * MAX_SCORE * 0.95)
+            # print("Narrative:")
+            # print(output_.narrative)
+            # print("Metrics:")
+            # for metric, score in metrics.items():
+            #     print(f"{metric}: {score}")
+            return (
+                (metrics["accuracy"] == MAX_SCORE)
+                and (metrics["fluency"] == MAX_SCORE)
+                and (metrics["completeness"] == MAX_SCORE)
+                and (metrics["conciseness"] >= 3.5)
             )
+            # return (metrics["accuracy"] == MAX_SCORE) and (
+            #     total_score >= (len(metrics) * MAX_SCORE * 0.9)
+            # )
 
 
 def compute_score_from_boolean(metric, question, narrative, grader, iters=3):

@@ -172,6 +172,7 @@ class Explingo:
             metric=metric,
             max_bootstrapped_demos=n_bootstrapped_few_shot,
             max_labeled_demos=n_labeled_few_shot,
+            max_rounds=3,
         )
         self.bootstrapped_few_shot_prompter = optimizer.compile(
             dspy.Predict(ExplingoSig),
