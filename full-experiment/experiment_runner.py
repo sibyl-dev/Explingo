@@ -98,7 +98,12 @@ class ExplingoExperimentRunner:
                     results.append(
                         {
                             "func": func.__name__,
-                            "kwargs": kwargs,
+                            "prompt": kwargs.get("prompt", ""),
+                            "n_few_shot": kwargs.get("n_few_shot", 0),
+                            "n_labeled_few_shot": kwargs.get("n_labeled_few_shot", 0),
+                            "n_bootstrapped_few_shot": kwargs.get(
+                                "n_bootstrapped_few_shot", 0
+                            ),
                             "explanation": example.explanation,
                             "narrative": result.narrative,
                             "scores": "".join(
