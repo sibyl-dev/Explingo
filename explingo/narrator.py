@@ -35,11 +35,13 @@ class NarratorSig(dspy.Signature):
 class Narrator:
     def __init__(
         self,
-        llm,
         explanation_format,
         context,
+        llm=None,
+        openai_api_key=None,
         labeled_train_data=None,
         unlabeled_train_data=None,
+        gpt_model_name="gpt-4o",
     ):
         """
         Args:
@@ -48,9 +50,15 @@ class Narrator:
             context (string): Brief description of what the model predicts (ie. "the model predicts house prices")
             labeled_train_data (list of tuples of strings): List of (explanation, narrative) examples
             unlabeled_train_data (list of strings): List of (explanation) examples
+            gpt_model_name (string): if openai_api_key is provided, specifies the GPT version to use
         """
         dspy.settings.configure(lm=llm, experimental=True)
         self.llm = llm
+        # TODO: convert passed in LLM into dspy object
+        if self.llm is None and openai_api_key is not None:
+            self.llm = dspy.OpenAI(
+                model=gpt_model_name, api_key=openai_api_key, max_tokens=1000
+            )
         self.context = context
         self.explanation_format = explanation_format
         self.labeled_train_data = []
