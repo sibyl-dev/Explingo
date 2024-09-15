@@ -273,7 +273,7 @@
     "explanation": "(In a romantic relationship, yes, -1.86), (Student's guardian, father, 1.12), (Family educational support, no, -1.02)",
     "context": "The model predicts whether a student will pass their class",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": "While the father's guardianship provides some positive impact, the student's involvement in a romantic relationship and the lack of family support might hinder their chances of passing.",
+    "narrative": "While the father's guardianship provides some positive impact, the student's involvement in a romantic relationship and the lack of family educational support might hinder their chances of passing.",
     "accuracy_score": 4,
     "accuracy_rationalization": "Accurate and complete",
     "rubric": "0: Error in values or contribution direction. 4: Accurate"
@@ -363,7 +363,7 @@
   "explanation": "(Family educational support, no, -1.37), (School, MS, -0.59)",
   "context": "The model predicts whether a student will pass their class",
   "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-  "narrative": "The lack of family support and the fact that this student attends the MS school may decrease their odds of passing of about 1 each.",
+  "narrative": "The lack of family educational support and the fact that this student attends the MS school may decrease their odds of passing by about -1.3 and -.6, respectively.",
   "accuracy_score": 4,
   "accuracy_rationalization": "Accurate with approximate values",
   "rubric": "0: Error in values or contribution direction. 4: Accurate"
@@ -386,14 +386,61 @@
   "accuracy_rationalization": "Error in contribution direction",
   "rubric": "0: Error in values or contribution direction. 4: Accurate"
 },
-{
-  "explanation": "(Family educational support, no, -2.26), (In a romantic relationship, no, 1.11), (Sex, M, -0.60)",
-  "context": "The model predicts whether a student will pass their class",
-  "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-  "narrative": "The lack of family support drastically reduces the student's chances of passing of 10, while not being in a romantic relationship significantly improves their chances. However, the impact of the student's sex is understated by 3.",
-  "accuracy_score": 0,
-  "accuracy_rationalization": "Error in values",
-  "rubric": "0: Error in values or contribution direction. 4: Accurate"
-}
- 
+  {
+    "explanation": "(Family educational support, no, -2.26), (In a romantic relationship, no, 1.11), (Sex, M, -0.60)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The lack of family educational support drastically reduces the student's chances of passing, while not being in a romantic relationship significantly improves their chances. However, the student's sex reduces their chance of passing by .9.",
+    "accuracy_score": 0,
+    "accuracy_rationalization": "Error in values",
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.12), (odor, spicy, 0.10), (gill-color, buff, 0.08)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The wide gill size, spicy odor, and gill color increase the prediction",
+    "accuracy_score": 0,
+    "accuracy_rationalization": "Error in values",
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-size, broad, 0.07), (spore-print-color, brown, 0.05)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The odor, gill-size, and spore-print-color decrease the prediction",
+    "accuracy_score": 0,
+    "accuracy_rationalization": "Error in contribution direction",
+    "rubric": "0: Error in values or contribution direction. 4: Accurate"
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.12), (odor, fishy, 0.11), (gill-color, buff, 0.08)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The narrow gill size, fishy odor, and buff gill color increase the prediction by around .1 each",
+    "accuracy_score": 4,
+    "rubric": "0: Error in values or contribution direction. 4: Accurate",
+    "accuracy_rationalization": "Accurate with approximate values"
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.12), (odor, fishy, 0.10), (gill-color, buff, 0.08)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The narrow gill size and fishy odor increase the prediction",
+    "accuracy_score": 4,
+    "rubric": "0: Error in values or contribution direction. 4: Accurate",
+      "accuracy_rationalization": "Accurate and incomplete"
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-size, broad, 0.07), (spore-print-color, brown, 0.05)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The narrow gill size increases the probability of the mushroom being poisonous by 0.14. The broad gill size increases the probability by 0.07, and the brown spore print color increases the probability by 0.05.",
+    "accuracy_score": 4,
+    "rubric": "0: Error in values or contribution direction. 4: Accurate",
+      "accuracy_rationalization": "Accurate and complete"
+  },
+  {
+    "explanation": "(odor, foul, 0.22), (stalk-surface-above-ring, silky, 0.10), (spore-print-color, chocolate, 0.06)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The sharp odor, silky stalk surface above the ring, and blonde spore print color increase the probability of this mushroom being poisonous.",
+    "accuracy_score": 0,
+    "rubric": "0: Error in values or contribution direction. 4: Accurate",
+        "accuracy_rationalization": "Error in values"
+  }
 ]

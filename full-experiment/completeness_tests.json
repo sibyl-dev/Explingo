@@ -147,11 +147,11 @@
     "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
   },
     {
-    "explanation": "(Type 1 finished square feet, 1369.00, 14641.53), (Evaluates the height of the basement, Ex, 13233.24), (Total square feet of basement area, 1686.00, 12138.28), (Second floor square feet, 0.00, -10142.29), (Rates the overall material and finish of the house, 8.00, 9655.79)",
+    "explanation": "(Evaluates the height of the basement, Ex, 13233.24), (Total square feet of basement area, 1686.00, 12138.28), (Second floor square feet, 0.00, -10142.29), (Rates the overall material and finish of the house, 8.00, 9655.79)",
     "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
-    "narrative": "This house's relatively large type 1 finished square footage increased the predicted price by about $14,000. The house's excellent basement height increased the price by about $13,000. The relatively larger basement area increased the price by about $12,000. The absence of a second floor reduced the price by about $10,000. The house's good condition (rated 8/10) increased the price by about $10,000.",
+    "narrative": "The house's excellent basement height increased the price by about $13,000. The relatively larger basement area increased the price by about $12,000. The absence of a second floor reduced the price by about $10,000. The house's good condition (rated 8/10) increased the price by about $10,000.",
     "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model.",
-    "completeness_score": 2
+    "completeness_score": 4
     },
   {
     "explanation": "(Exterior covering on house, BrkFace, 16798.14), (Original construction date, 1931.00, -13042.68), (Kitchens above grade, 2.00, -12983.78), (Second floor square feet, 752.00, 10022.69)",
@@ -181,5 +181,199 @@
     "narrative": "The student's lack of past class failures and desire for higher education significantly increase the predicted grade. However, the student's free time after school (rated 4/5) and school (GP) reputation slightly decrease the predicted grade.",
     "completeness_score": 4,
     "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+    {
+    "explanation": "(gill-size, narrow, 0.12), (odor, spicy, 0.10), (gill-color, buff, 0.08)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The narrow gill size, spicy odor, and gill color increase the prediction",
+    "completeness_score": 2,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-size, broad, 0.07), (spore-print-color, brown, 0.05)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The odor, gill-size, and spore-print-color increase the prediction",
+    "completeness_score": 2,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.12), (odor, fishy, 0.11), (gill-color, buff, 0.08)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The narrow gill size, spicy odor, and buff gill color increase the prediction",
+    "completeness_score": 2,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(gill-size, narrow, 0.12), (odor, fishy, 0.10), (gill-color, buff, 0.08)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The narrow gill size and fishy odor increase the prediction",
+    "completeness_score": 0,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(odor, none, 0.14), (gill-size, broad, 0.07), (spore-print-color, brown, 0.05)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The narrow gill size increases the probability of the mushroom being poisonous by 0.14",
+    "completeness_score": 0,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(odor, foul, 0.22), (stalk-surface-above-ring, silky, 0.10), (spore-print-color, chocolate, 0.06)",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The foul odor, silky stalk surface above the ring, and chocolate spore print color increase the probability of this mushroom being poisonous.",
+    "completeness_score": 4,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(Family eductional support, no, -2.26), (In a romantic relationship, no, 1.11), (Sex, M, -0.60)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "We believe this child is less likely to pass because they do not have family support, and we have seen that male students tend to be more likely to fail. However, the lack of a romantic relationship may increase their odds of passing.",
+    "completeness_score": 4,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(Family eductional support, yes, 1.21), (In a romantic relationship, no, 1.12), (Age, 17, -0.45)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "Interestingly, we have seen that students that are not in a romantic relationship are more likely to pass.",
+    "completeness_score": 0,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(In a romantic relationship, yes, -2.00), (Family eductional support, no, -1.99), (Sex, M, -0.49)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "This student may require additional support - we believe that they are less likely to pass because they are in a romantic relationship, do not have family support, and because of their gender",
+    "completeness_score": 2,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(Family support, no, -1.37), (School, MS, -0.59)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The lack of family support and the fact that this student attends the MS school may affect their odds of passing.",
+    "completeness_score": 2,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(Student's guardian, father, 1.74), (In a romantic relationship, no, 1.53), (Family eductional support, yes, 1.09)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "This student is more likely to pass because they have a father as a guardian, are not in a romantic relationship, and have family support.",
+        "completeness_score": 4,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(In a romantic relationship, yes, -1.74), (Family eductional support, no, -1.51), (Student's guardian, mother, -0.31)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "This student may face challenges in passing due to being in a romantic relationship, lacking family support, and having their mother as a guardian.",
+        "completeness_score": 4,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(In a romantic relationship, yes, -1.86), (Student's guardian, father, 1.12), (Family support, no, -1.02)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The father's guardianship provides some impact. Also, the student's involvement in a romantic relationship and the lack of family support might hinder their chances of passing.",
+        "completeness_score": 2,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(Family educational support, no, -2.01), (Student's guardian, father, 1.49), (In a romantic relationship, no, 1.07)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The lack of family educational support is a significant concern, but the student has some positive factors as well.",
+    "completeness_score": 0,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+   {
+    "explanation": "(Family support, no, -2.26), (In a romantic relationship, no, 1.11), (Sex, M, -0.60)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The lack of family support, and the sex (male) suggest the student is less likely to pass the class. But, the lack of a romantic relationship indicates an higher probability of passing.",
+    "completeness_score": 4,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+
+  },
+  {
+    "explanation": "(Family educational support, yes, 1.21), (In a romantic relationship, no, 1.12), (Age, 17, -0.45)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The lack of a romantic relationship and having family support suggest the student is more likely to pass. However, their age indicates a lower probability of passing.",
+    "completeness_score": 2,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(In a romantic relationship, yes, -2.00), (Family educational support, no, -1.99), (Sex, M, -0.49)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The student's involvement in a romantic relationship and lack of family support suggest they are less likely to pass the class.",
+    "completeness_score": 0,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+
+  },
+  {
+    "explanation": "(Family educational support, no, -1.37), (School, MS, -0.59)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The lack of family educational support and attending the MS school indicate a lower probability of passing.",
+    "completeness_score": 4,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+
+  },
+  {
+    "explanation": "(Student's guardian, father, 1.74), (In a romantic relationship, no, 1.53), (Family educational support, yes, 1.09)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The presence of a father as a guardian, the lack of a romantic relationship, and family support affect the likelihood of the student passing",
+    "completeness_score": 2,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+
+  },
+  {
+    "explanation": "(In a romantic relationship, yes, -1.74), (Family educational support, no, -1.51), (Student's guardian, mother, -0.31)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "Being in a romantic relationship and having their mother as a guardian suggest the student may face challenges in passing.",
+    "completeness_score": 0,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+
+  },
+  {
+    "explanation": "(In a romantic relationship, yes, -1.86), (Student's guardian, father, 1.12), (Family educational support, no, -1.02)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "While having a father as a guardian is a positive factor, the romantic relationship and lack of family support might hinder the student's chances of passing.",
+    "completeness_score": 4,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+
+  },
+  {
+    "explanation": "(Family educational support, no, -2.01), (Student's guardian, father, 1.49), (In a romantic relationship, no, 1.07)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "Having a father as a guardian might increase the student's chances of passing.",
+    "completeness_score": 0,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+  },
+  {
+    "explanation": "(Family educational support, no, -2.36), (In a romantic relationship, no, 1.05), (Sex, M, -0.44)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "The student's sex and family support status are concerning, but their relationship status might slightly improve their chances of passing",
+    "completeness_score": 2,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+
+  },
+  {
+    "explanation": "(Family educational support, no, -1.60), (In a romantic relationship, no, 0.81), (Attended nursery school, no, -0.61)",
+    "context": "The model predicts whether a student will pass their class",
+    "explanation_format": "SHAP feature contribution in (feature_name, feature_value, contribution) format",
+    "narrative": "Not attending nursery school decrease the student's likelihood of passing. However, not being in a romantic relationship could be an advantage",
+    "completeness_score": 0,
+    "rubric": "0: Does not mention all features. 2: Mentions all features. 4: Mentions all features, and gives information about their values and impact on the model."
+
   }
 ]

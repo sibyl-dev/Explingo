@@ -126,8 +126,18 @@ def accuracy(input_, output_, grader, trace=None):
         f"\n\nExplanation format: {input_.explanation_format}.\nExplanation: {input_.explanation}"
     )
     rubric = f"0 - Contains one or more errors in value or contribution direction. 4 - Contains no errors, but may be missing information."
+
+    rational_type = dspy.OutputField(
+        prefix="Start by listing out all the features in the narrative, and then for each one compare it to the explanation to ensure its value and contribution are approximately correct.",
+    )
+
     return compute_score_from_rubric(
-        "accuracy", question, rubric=rubric, narrative=output_.narrative, grader=grader
+        "accuracy",
+        question,
+        rubric=rubric,
+        narrative=output_.narrative,
+        grader=grader,
+        rational_type=rational_type,
     )
 
 
@@ -137,7 +147,7 @@ def fluency(
     if good_narratives is None:
         question = f"How natural and human is the narrative?"
     else:
-        question = f"How well does the style of the narrative match the style of these examples:"
+        question = f"How well does the style of the narrative match the style of the example narratives? Consider only the linguistic style, not the topic. Example narratives:"
         for narrative in good_narratives:
             question += f"\n{narrative}"
     if good_narratives is not None:
@@ -156,7 +166,6 @@ def completeness(input_, output_, grader, trace=None):
     rubric = "0 - One or more feature names from the explanation are not mentioned at all in the narrative. 2 - All features are mentioned, but not all feature values and/or contribution directions. 4 - All features are mentioned, and for each feature, includes at least an approximation of the feature's value and contribution direction."
     rational_type = dspy.OutputField(
         prefix="Start by listing out all the features in the explanations, and then determine every feature is present in the narrative, along with its value and contribution direction.",
-        desc="Feature-by-feature processing of the narrative.",
     )
 
     return compute_score_from_rubric(
