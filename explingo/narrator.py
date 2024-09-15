@@ -16,7 +16,7 @@ def _manually_parse_output(output):
     )
 
 
-class ExplingoSig(dspy.Signature):
+class NarratorSig(dspy.Signature):
     """You are helping users understand an ML model's prediction. Given an explanation and information about the model,
     convert the explanation into a human-readable narrative."""
 
@@ -32,15 +32,49 @@ class ExplingoSig(dspy.Signature):
     # )
 
 
-class Explingo:
-    def __init__(self, llm, context, labeled_train_data, unlabeled_train_data=None):
+class Narrator:
+    def __init__(
+        self,
+        llm,
+        explanation_format,
+        context,
+        labeled_train_data=None,
+        unlabeled_train_data=None,
+    ):
+        """
+        Args:
+            llm (LLM object): LLM to use
+            explanation_format (string): Format explanations will take
+            context (string): Brief description of what the model predicts (ie. "the model predicts house prices")
+            labeled_train_data (list of tuples of strings): List of (explanation, narrative) examples
+            unlabeled_train_data (list of strings): List of (explanation) examples
+        """
         dspy.settings.configure(lm=llm, experimental=True)
         self.llm = llm
         self.context = context
-        self.labeled_train_data = labeled_train_data
-        self.unlabeled_train_data = (
-            [] if unlabeled_train_data is None else unlabeled_train_data
-        )
+        self.explanation_format = explanation_format
+        self.labeled_train_data = []
+        if labeled_train_data is not None:
+            for example in labeled_train_data:
+                self.labeled_train_data.append(
+                    dspy.Example(
+                        explanation=example[0],
+                        narrative=example[1],
+                        context=self.context,
+                        explanation_format=explanation_format,
+                    )
+                )
+        self.unlabeled_train_data = []
+        if self.unlabeled_train_data is not None:
+            for example in unlabeled_train_data:
+                self.unlabeled_train_data.append(
+                    dspy.Example(
+                        explanation=example[0],
+                        context=self.context,
+                        explanation_format=explanation_format,
+                    )
+                )
+
         self.few_shot_prompter = None
         self.bootstrapped_few_shot_prompter = None
         self.default_prompt = (
@@ -86,6 +120,12 @@ class Explingo:
             return "---\n".join(
                 [header_string, format_string, examples_string, input_string]
             )
+
+    def narrate(self, explanation):
+        if self.labeled_train_data:
+            return self.few_shot(explanation, self.explanation_format, n_few_shot=3)
+        else:
+            return self.basic_prompt(explanation, self.explanation_format)
 
     def basic_prompt(self, explanation, explanation_format, prompt=None, few_shot_n=0):
         """
@@ -133,17 +173,6 @@ class Explingo:
             )
             output = self.llm(full_prompt)[0]
             return _manually_parse_output(output)
-        if use_dspy:
-            if self.few_shot_prompter is None:
-                optimizer = LabeledFewShot(k=n_few_shot)
-                self.few_shot_prompter = optimizer.compile(
-                    dspy.Predict(ExplingoSig), trainset=self.labeled_train_data
-                )
-            return self.few_shot_prompter(
-                explanation=explanation,
-                explanation_format=explanation_format,
-                context=self.context,
-            )
 
     def bootstrap_few_shot(
         self,
@@ -176,7 +205,7 @@ class Explingo:
             max_rounds=3,
         )
         self.bootstrapped_few_shot_prompter = optimizer.compile(
-            dspy.Predict(ExplingoSig),
+            dspy.Predict(NarratorSig),
             trainset=self.labeled_train_data + self.unlabeled_train_data,
         )
         return self.bootstrapped_few_shot_prompter(
