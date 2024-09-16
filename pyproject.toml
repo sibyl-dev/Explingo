@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "explingo"
-version = "0.1.0dev2"
+version = "0.1.0.1"
 description = ""
 authors = ["Ola Zytek <zyteka@mit.edu>"]
 readme = "README.md"
