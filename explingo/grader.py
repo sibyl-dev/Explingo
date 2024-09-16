@@ -29,7 +29,8 @@ class BooleanAssess(dspy.Signature):
 class Grader:
     def __init__(
         self,
-        llm,
+        llm=None,
+        openai_api_key=None,
         metrics="all",
         sample_narratives=None,
         max_optimal_length=None,
@@ -38,7 +39,8 @@ class Grader:
         Grades narratives
 
         Args:
-            llm (LLM): LLM to use to grade accuracy, completeness, and fluency
+            llm (LLM): LLM to use to grade accuracy, completeness, and fluency. One of llm or openai_api_key must be provided
+            openai_api_key (string): OpenAI API key to use to grade accuracy, completeness, and fluency
             metrics (list of strings or "all"): One or more of  accuracy", "completeness", "fluency", "conciseness"
             sample_narratives (list of strings): Sample narratives to use to grade fluency
             max_optimal_length (int): Hyperparameter for conciseness metric, defaults to number of words in longest sample narrative or 100 if not given
@@ -69,9 +71,19 @@ class Grader:
             self.max_optimal_length = 100
 
         self.grader_llm = llm
+        self.openai_api_key = openai_api_key
+        if self.grader_llm is None and self.openai_api_key is not None:
+            self.grader_llm = dspy.OpenAI(
+                model="gpt-4o", api_key=self.openai_api_key, max_tokens=1000
+            )
 
-    def __call__(self, input_, output_, trace=None):
+    def __call__(self, explanation, explanation_format, narrative, trace=None):
         results = {}
+        input_ = dspy.Example(
+            explanation=explanation, explanation_format=explanation_format
+        )
+        output_ = dspy.Prediction(narrative=narrative)
+
         if "accuracy" in self.metrics:
             results["accuracy"] = accuracy(
                 input_, output_, grader=self.grader_llm, trace=trace
@@ -93,10 +105,8 @@ class Grader:
                 input_, output_, max_optimal_length_per_feature=self.max_optimal_length
             )
 
-        total_score = sum(results.values())
-
         if trace is None:
-            return total_score, pd.Series(results)
+            return pd.Series(results)
         else:
             return (
                 (results["accuracy"] == MAX_SCORE)

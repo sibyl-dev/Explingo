@@ -73,7 +73,7 @@ class Narrator:
                     )
                 )
         self.unlabeled_train_data = []
-        if self.unlabeled_train_data is not None:
+        if unlabeled_train_data is not None:
             for example in unlabeled_train_data:
                 self.unlabeled_train_data.append(
                     dspy.Example(
@@ -92,7 +92,7 @@ class Narrator:
         )
 
     def assemble_prompt(
-        self, prompt, explanation, explanation_format, examples=None, k=3
+        self, prompt, explanation, explanation_format, examples=None, n=3
     ):
         header_string = f"{prompt}\n"
         format_string = (
@@ -113,7 +113,7 @@ class Narrator:
 
         examples_string = ""
         if examples is not None:
-            for i, example in enumerate(random.sample(examples, k)):
+            for i, example in enumerate(random.sample(examples, n)):
                 examples_string += (
                     f"Example {i+1}\n"
                     f"Context: {example.context}\n"
@@ -131,9 +131,11 @@ class Narrator:
 
     def narrate(self, explanation):
         if self.labeled_train_data:
-            return self.few_shot(explanation, self.explanation_format, n_few_shot=3)
+            return self.few_shot(
+                explanation, self.explanation_format, n_few_shot=3
+            ).narrative
         else:
-            return self.basic_prompt(explanation, self.explanation_format)
+            return self.basic_prompt(explanation, self.explanation_format).narrative
 
     def basic_prompt(self, explanation, explanation_format, prompt=None, few_shot_n=0):
         """

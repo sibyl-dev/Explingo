@@ -1,0 +1,13 @@
+name: Publish Python Package
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  deploy:
+    uses: sibyl-dev/.github/.github/workflows/python-publish.yml@main
+    with:
+      repository_url: https://upload.pypi.org/legacy/
+    secrets:
+      PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
