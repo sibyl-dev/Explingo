@@ -1,5 +1,5 @@
-from narrator import Narrator
-from grader import Grader
+from explingo.narrator import Narrator
+from explingo.grader import Grader
 
 __author__ = "MIT Data To AI Lab"
 __email__ = "dailabmit@gmail.com"
