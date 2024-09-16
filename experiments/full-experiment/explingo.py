@@ -129,6 +129,7 @@ class Explingo:
                 explanation,
                 explanation_format,
                 examples=self.labeled_train_data,
+                n=n_few_shot,
             )
             output = self.llm(full_prompt)[0]
             return _manually_parse_output(output)
