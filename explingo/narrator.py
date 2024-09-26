@@ -39,8 +39,7 @@ class Narrator:
         context,
         llm=None,
         openai_api_key=None,
-        labeled_train_data=None,
-        unlabeled_train_data=None,
+        sample_narratives=None,
         gpt_model_name="gpt-4o",
     ):
         """
@@ -48,8 +47,7 @@ class Narrator:
             llm (LLM object): LLM to use
             explanation_format (string): Format explanations will take
             context (string): Brief description of what the model predicts (ie. "the model predicts house prices")
-            labeled_train_data (list of tuples of strings): List of (explanation, narrative) examples
-            unlabeled_train_data (list of strings): List of (explanation) examples
+            sample_narratives (list of tuples of strings): List of (explanation, narrative) examples
             gpt_model_name (string): if openai_api_key is provided, specifies the GPT version to use
         """
         dspy.settings.configure(lm=llm, experimental=True)
@@ -61,23 +59,13 @@ class Narrator:
             )
         self.context = context
         self.explanation_format = explanation_format
-        self.labeled_train_data = []
-        if labeled_train_data is not None:
-            for example in labeled_train_data:
-                self.labeled_train_data.append(
+        self.sample_narratives = []
+        if sample_narratives is not None:
+            for example in sample_narratives:
+                self.sample_narratives.append(
                     dspy.Example(
                         explanation=example[0],
                         narrative=example[1],
-                        context=self.context,
-                        explanation_format=explanation_format,
-                    )
-                )
-        self.unlabeled_train_data = []
-        if unlabeled_train_data is not None:
-            for example in unlabeled_train_data:
-                self.unlabeled_train_data.append(
-                    dspy.Example(
-                        explanation=example[0],
                         context=self.context,
                         explanation_format=explanation_format,
                     )
@@ -91,7 +79,7 @@ class Narrator:
             "convert the explanation into a human-readable narrative."
         )
 
-    def assemble_prompt(
+    def _assemble_prompt(
         self, prompt, explanation, explanation_format, examples=None, n=3
     ):
         header_string = f"{prompt}\n"
@@ -129,10 +117,17 @@ class Narrator:
                 [header_string, format_string, examples_string, input_string]
             )
 
-    def narrate(self, explanation):
-        if self.labeled_train_data:
+    def narrate(self, explanation, n_examples=3):
+        """
+        Transform an explanation into a human-readable narrative
+
+        Args:
+            explanation (string): Explanation, in the format specified by self.explanation_format
+            n_examples (int): Number of examples to pass
+        """
+        if self.sample_narratives:
             return self.few_shot(
-                explanation, self.explanation_format, n_few_shot=3
+                explanation, self.explanation_format, n_few_shot=n_examples
             ).narrative
         else:
             return self.basic_prompt(explanation, self.explanation_format).narrative
@@ -149,7 +144,7 @@ class Narrator:
         """
         if prompt is None:
             prompt = self.default_prompt
-        full_prompt = self.assemble_prompt(
+        full_prompt = self._assemble_prompt(
             prompt, explanation, explanation_format, examples=None
         )
         output = self.llm(full_prompt)[0]
@@ -174,11 +169,11 @@ class Narrator:
         if prompt is None:
             prompt = self.default_prompt
         if not use_dspy:
-            full_prompt = self.assemble_prompt(
+            full_prompt = self._assemble_prompt(
                 prompt,
                 explanation,
                 explanation_format,
-                examples=self.labeled_train_data,
+                examples=self.sample_narratives,
                 n=n_few_shot,
             )
             output = self.llm(full_prompt)[0]
@@ -216,7 +211,7 @@ class Narrator:
         )
         self.bootstrapped_few_shot_prompter = optimizer.compile(
             dspy.Predict(NarratorSig),
-            trainset=self.labeled_train_data + self.unlabeled_train_data,
+            trainset=self.sample_narratives,
         )
         return self.bootstrapped_few_shot_prompter(
             explanation=explanation,

@@ -42,7 +42,9 @@ class Grader:
             llm (LLM): LLM to use to grade accuracy, completeness, and fluency. One of llm or openai_api_key must be provided
             openai_api_key (string): OpenAI API key to use to grade accuracy, completeness, and fluency
             metrics (list of strings or "all"): One or more of  accuracy", "completeness", "fluency", "conciseness"
-            sample_narratives (list of strings): Sample narratives to use to grade fluency
+            sample_narratives (list of strings, or (string, string) tuples):
+                Sample narratives to use to grade fluency. Can pass in either just the narratives
+                or (explanation, narrative) tuples
             max_optimal_length (int): Hyperparameter for conciseness metric, defaults to number of words in longest sample narrative or 100 if not given
         """
         self.metrics = metrics
@@ -62,6 +64,14 @@ class Grader:
             self.metric_funcs.append("conciseness")
 
         self.sample_narratives = sample_narratives
+
+        if isinstance(self.sample_narratives[0], list) or isinstance(
+            self.sample_narratives[0], tuple
+        ):
+            self.sample_narratives = [
+                narrative[1] for narrative in self.sample_narratives
+            ]
+
         self.max_optimal_length = max_optimal_length
         if max_optimal_length is None and self.sample_narratives is not None:
             self.max_optimal_length = max(
@@ -74,7 +84,10 @@ class Grader:
         self.openai_api_key = openai_api_key
         if self.grader_llm is None and self.openai_api_key is not None:
             self.grader_llm = dspy.OpenAI(
-                model="gpt-4o", api_key=self.openai_api_key, max_tokens=1000
+                model="gpt-4o",
+                api_key=self.openai_api_key,
+                max_tokens=1000,
+                temperature=0.0,
             )
 
     def __call__(self, explanation, explanation_format, narrative, trace=None):
