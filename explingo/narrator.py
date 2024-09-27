@@ -44,15 +44,16 @@ class Narrator:
     ):
         """
         Args:
-            llm (LLM object): LLM to use
             explanation_format (string): Format explanations will take
             context (string): Brief description of what the model predicts (ie. "the model predicts house prices")
-            sample_narratives (list of tuples of strings): List of (explanation, narrative) examples
+            llm (LLM object): DSPy LLM object to use.
+                See https://dspy-docs.vercel.app/docs/building-blocks/language_models for examples
+                One of llm or openai_api_key must be provided
+            openai_api_key (string): OpenAI API key to use
             gpt_model_name (string): if openai_api_key is provided, specifies the GPT version to use
+            sample_narratives (list of tuples of strings): List of (explanation, narrative) examples
         """
-        dspy.settings.configure(lm=llm, experimental=True)
         self.llm = llm
-        # TODO: convert passed in LLM into dspy object
         if self.llm is None and openai_api_key is not None:
             self.llm = dspy.OpenAI(
                 model=gpt_model_name, api_key=openai_api_key, max_tokens=1000
@@ -68,7 +69,7 @@ class Narrator:
                         narrative=example[1],
                         context=self.context,
                         explanation_format=explanation_format,
-                    )
+                    ).with_inputs("explanation", "context", "explanation_format")
                 )
 
         self.few_shot_prompter = None
@@ -117,14 +118,26 @@ class Narrator:
                 [header_string, format_string, examples_string, input_string]
             )
 
-    def narrate(self, explanation, n_examples=3):
+    def narrate(self, explanation, n_examples=3, n_bootstrapped=0, grader=None):
         """
         Transform an explanation into a human-readable narrative
 
         Args:
             explanation (string): Explanation, in the format specified by self.explanation_format
             n_examples (int): Number of examples to pass
+            n_bootstrapped (int): Number of bootstrapped examples to pass. Increasing this number
+                will incur additional calls to the LLM, but may improve the quality of the output
+                n_bootstrapped should be less than or equal to n_examples
+            grader (Grader): Grader object to use for bootstrapping. Must be provided if n_bootstrapped > 0
         """
+        if n_bootstrapped > 0:
+            return self.bootstrap_few_shot(
+                explanation,
+                self.explanation_format,
+                metric=grader,
+                n_labeled_few_shot=n_examples,
+                n_bootstrapped_few_shot=n_bootstrapped,
+            ).narrative
         if self.sample_narratives:
             return self.few_shot(
                 explanation, self.explanation_format, n_few_shot=n_examples
@@ -184,7 +197,6 @@ class Narrator:
         explanation,
         explanation_format,
         metric,
-        prompt=None,
         n_labeled_few_shot=3,
         n_bootstrapped_few_shot=3,
     ):
@@ -203,18 +215,19 @@ class Narrator:
         Returns:
             DSPy Prediction object
         """
-        optimizer = BootstrapFewShot(
-            metric=metric,
-            max_bootstrapped_demos=n_bootstrapped_few_shot,
-            max_labeled_demos=n_labeled_few_shot,
-            max_rounds=3,
-        )
-        self.bootstrapped_few_shot_prompter = optimizer.compile(
-            dspy.Predict(NarratorSig),
-            trainset=self.sample_narratives,
-        )
-        return self.bootstrapped_few_shot_prompter(
-            explanation=explanation,
-            explanation_format=explanation_format,
-            context=self.context,
-        )
+        with dspy.context(lm=self.llm):
+            optimizer = BootstrapFewShot(
+                metric=metric,
+                max_bootstrapped_demos=n_bootstrapped_few_shot,
+                max_labeled_demos=n_labeled_few_shot,
+                max_rounds=3,
+            )
+            self.bootstrapped_few_shot_prompter = optimizer.compile(
+                dspy.Predict(NarratorSig),
+                trainset=self.sample_narratives,
+            )
+            return self.bootstrapped_few_shot_prompter(
+                explanation=explanation,
+                explanation_format=explanation_format,
+                context=self.context,
+            )
