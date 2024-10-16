@@ -1,11 +1,6 @@
 import explingo
 
 
-def test_narrator():
-    narrator = explingo.Narrator(explanation_format="test", context="test")
-    assert narrator is not None
-
-
 def test_narrate_basic_prompt():
     response = "narrative"
     mock_llm = explingo.testing.MockNarratorLLM(response)

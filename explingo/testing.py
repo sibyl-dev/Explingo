@@ -50,7 +50,7 @@ class MockGraderLLM(dspy.LM):
         super().__init__(model=None)
 
     def __call__(self, prompt=None, *args, **kwargs):
-        completions = "Assessment: " + str(self.response)
+        completions = str(self.response)
         self.history.append({"prompt": prompt, "completions": completions})
         return [completions]
 
