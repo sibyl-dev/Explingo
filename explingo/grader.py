@@ -65,8 +65,9 @@ class Grader:
 
         self.sample_narratives = sample_narratives
 
-        if isinstance(self.sample_narratives[0], list) or isinstance(
-            self.sample_narratives[0], tuple
+        if sample_narratives is not None and (
+            isinstance(self.sample_narratives[0], list)
+            or isinstance(self.sample_narratives[0], tuple)
         ):
             self.sample_narratives = [
                 narrative[1] for narrative in self.sample_narratives
@@ -122,10 +123,10 @@ class Grader:
             return pd.Series(results)
         else:
             return (
-                (results["accuracy"] == MAX_SCORE)
-                and (results["fluency"] == MAX_SCORE)
-                and (results["completeness"] == MAX_SCORE)
-                and (results["conciseness"] >= 3.5)
+                (results.get("accuracy", MAX_SCORE) == MAX_SCORE)
+                and (results.get("fluency", MAX_SCORE) == MAX_SCORE)
+                and (results.get("completeness", MAX_SCORE) == MAX_SCORE)
+                and (results.get("conciseness", MAX_SCORE) >= 3.5)
             )
 
 
