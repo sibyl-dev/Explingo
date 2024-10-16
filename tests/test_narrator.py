@@ -31,7 +31,7 @@ def test_narrative_few_shot():
 
 def test_narrative_bootstrapped_few_shot():
     response = "narrative"
-    mock_llm = explingo.testing.MockNarratorLLM(response)
+    mock_llm = explingo.testing.MockNarratorLLM(response, include_tags=False)
     mock_grader = explingo.Grader(
         llm=explingo.testing.MockGraderLLM(4),
         metrics=["fluency, conciseness"],
@@ -44,4 +44,9 @@ def test_narrative_bootstrapped_few_shot():
         sample_narratives=["sample 1", "sample 2"],
     )
     explanation = "explanation"
-    narrator.narrate(explanation, n_examples=2, n_bootstrapped=2, grader=mock_grader)
+    assert (
+        narrator.narrate(
+            explanation, n_examples=2, n_bootstrapped=2, grader=mock_grader
+        )
+        == response
+    )
