@@ -1,6 +1,7 @@
-import dspy
-from dspy.teleprompt import LabeledFewShot, BootstrapFewShot
 import random
+
+import dspy
+from dspy.teleprompt import BootstrapFewShot, LabeledFewShot
 
 
 def _manually_parse_output(output):

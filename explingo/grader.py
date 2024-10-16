@@ -1,6 +1,7 @@
+import random
+
 import dspy
 import pandas as pd
-import random
 
 MAX_SCORE = 4
 
