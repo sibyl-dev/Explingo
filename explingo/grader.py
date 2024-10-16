@@ -91,13 +91,8 @@ class Grader:
                 temperature=0.0,
             )
 
-    def __call__(self, explanation, explanation_format, narrative, trace=None):
+    def run_metrics(self, input_, output_, trace):
         results = {}
-        input_ = dspy.Example(
-            explanation=explanation, explanation_format=explanation_format
-        )
-        output_ = dspy.Prediction(narrative=narrative)
-
         if "accuracy" in self.metrics:
             results["accuracy"] = accuracy(
                 input_, output_, grader=self.grader_llm, trace=trace
@@ -128,6 +123,13 @@ class Grader:
                 and (results.get("completeness", MAX_SCORE) == MAX_SCORE)
                 and (results.get("conciseness", MAX_SCORE) >= 3.5)
             )
+
+    def __call__(self, explanation, explanation_format, narrative, trace=None):
+        input_ = dspy.Example(
+            explanation=explanation, explanation_format=explanation_format
+        )
+        output_ = dspy.Prediction(narrative=narrative)
+        return self.run_metrics(input_, output_, trace)
 
 
 def compute_score_from_boolean(metric, question, narrative, grader, iters=3):
