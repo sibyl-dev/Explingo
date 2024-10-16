@@ -1,6 +1,7 @@
-import dspy
-from dspy.teleprompt import LabeledFewShot, BootstrapFewShot
 import random
+
+import dspy
+from dspy.teleprompt import BootstrapFewShot, LabeledFewShot
 
 
 def _manually_parse_output(output):
@@ -134,7 +135,7 @@ class Narrator:
             return self.bootstrap_few_shot(
                 explanation,
                 self.explanation_format,
-                metric=grader,
+                metric=grader.run_metrics,
                 n_labeled_few_shot=n_examples,
                 n_bootstrapped_few_shot=n_bootstrapped,
             ).narrative
@@ -204,11 +205,9 @@ class Narrator:
         Use DSPy to bootstrap few-shot prompts to optimize metrics
 
         Args:
-            prompt (string): Not supported, included for consistency. To modify prompt, manually
-                             edit the docstrings in the ExplingoSig object
             explanation (string): Explanation
             explanation_format (string): Explanation format
-            metric (string): Metric to optimize
+            metric (func): Metric to use for optimization
             n_labeled_few_shot (int): Number of examples to use in few-shot learning
             n_bootstrapped_few_shot (int): Number of bootstrapped examples to use in few-shot learning
 

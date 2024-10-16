@@ -1,6 +1,7 @@
+import random
+
 import dspy
 import pandas as pd
-import random
 
 MAX_SCORE = 4
 
@@ -65,8 +66,9 @@ class Grader:
 
         self.sample_narratives = sample_narratives
 
-        if isinstance(self.sample_narratives[0], list) or isinstance(
-            self.sample_narratives[0], tuple
+        if sample_narratives is not None and (
+            isinstance(self.sample_narratives[0], list)
+            or isinstance(self.sample_narratives[0], tuple)
         ):
             self.sample_narratives = [
                 narrative[1] for narrative in self.sample_narratives
@@ -90,13 +92,8 @@ class Grader:
                 temperature=0.0,
             )
 
-    def __call__(self, explanation, explanation_format, narrative, trace=None):
+    def run_metrics(self, input_, output_, trace):
         results = {}
-        input_ = dspy.Example(
-            explanation=explanation, explanation_format=explanation_format
-        )
-        output_ = dspy.Prediction(narrative=narrative)
-
         if "accuracy" in self.metrics:
             results["accuracy"] = accuracy(
                 input_, output_, grader=self.grader_llm, trace=trace
@@ -122,11 +119,18 @@ class Grader:
             return pd.Series(results)
         else:
             return (
-                (results["accuracy"] == MAX_SCORE)
-                and (results["fluency"] == MAX_SCORE)
-                and (results["completeness"] == MAX_SCORE)
-                and (results["conciseness"] >= 3.5)
+                (results.get("accuracy", MAX_SCORE) == MAX_SCORE)
+                and (results.get("fluency", MAX_SCORE) == MAX_SCORE)
+                and (results.get("completeness", MAX_SCORE) == MAX_SCORE)
+                and (results.get("conciseness", MAX_SCORE) >= 3.5)
             )
+
+    def __call__(self, explanation, explanation_format, narrative, trace=None):
+        input_ = dspy.Example(
+            explanation=explanation, explanation_format=explanation_format
+        )
+        output_ = dspy.Prediction(narrative=narrative)
+        return self.run_metrics(input_, output_, trace)
 
 
 def compute_score_from_boolean(metric, question, narrative, grader, iters=3):
