@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "explingo"
-version = "0.1.0.1"
+version = "0.1.1"
 description = ""
 authors = ["Ola Zytek <zyteka@mit.edu>"]
 readme = "README.md"
@@ -22,3 +22,12 @@ jupyter = "^1.1.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 99
+preview = true
+
+[tool.isort]
+profile = "black"
+line_length = 99
+skip = ["__init__.py"]

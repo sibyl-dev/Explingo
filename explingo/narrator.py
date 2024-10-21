@@ -1,7 +1,7 @@
 import random
 
 import dspy
-from dspy.teleprompt import BootstrapFewShot, LabeledFewShot
+from dspy.teleprompt import BootstrapFewShot
 
 
 def _manually_parse_output(output):
@@ -18,16 +18,14 @@ def _manually_parse_output(output):
 
 
 class NarratorSig(dspy.Signature):
-    """You are helping users understand an ML model's prediction. Given an explanation and information about the model,
-    convert the explanation into a human-readable narrative."""
+    """You are helping users understand an ML model's prediction. Given an explanation
+    and information about the model, convert the explanation into a human-readable narrative."""
 
     context = dspy.InputField(desc="what the ML model predicts")
     explanation = dspy.InputField(desc="explanation of an ML model's prediction")
     explanation_format = dspy.InputField(desc="format the explanation is given in")
 
-    narrative = dspy.OutputField(
-        desc="human-readable narrative version of the explanation"
-    )
+    narrative = dspy.OutputField(desc="human-readable narrative version of the explanation")
     # rationalization = dspy.OutputField(
     #     desc="explains why given features may be relevant"
     # )
@@ -46,19 +44,20 @@ class Narrator:
         """
         Args:
             explanation_format (string): Format explanations will take
-            context (string): Brief description of what the model predicts (ie. "the model predicts house prices")
+            context (string): Brief description of what the model predicts
+                (ie. "the model predicts house prices")
             llm (LLM object): DSPy LLM object to use.
                 See https://dspy-docs.vercel.app/docs/building-blocks/language_models for examples
                 One of llm or openai_api_key must be provided
             openai_api_key (string): OpenAI API key to use
-            gpt_model_name (string): if openai_api_key is provided, specifies the GPT version to use
-            sample_narratives (list of tuples of strings): List of (explanation, narrative) examples
+            gpt_model_name (string): if openai_api_key is provided,
+                specifies the GPT version to use
+            sample_narratives (list of tuples of strings):
+                List of (explanation, narrative) examples
         """
         self.llm = llm
         if self.llm is None and openai_api_key is not None:
-            self.llm = dspy.OpenAI(
-                model=gpt_model_name, api_key=openai_api_key, max_tokens=1000
-            )
+            self.llm = dspy.OpenAI(model=gpt_model_name, api_key=openai_api_key, max_tokens=1000)
         self.context = context
         self.explanation_format = explanation_format
         self.sample_narratives = []
@@ -81,16 +80,14 @@ class Narrator:
             "convert the explanation into a human-readable narrative."
         )
 
-    def _assemble_prompt(
-        self, prompt, explanation, explanation_format, examples=None, n=3
-    ):
+    def _assemble_prompt(self, prompt, explanation, explanation_format, examples=None, n=3):
         header_string = f"{prompt}\n"
         format_string = (
-            f"Follow the following format\n"
-            f"Context: what the model predicts\n"
-            f"Explanation: explanation of the model's prediction\n"
-            f"Explanation Format: format the explanation is given in\n"
-            f"Narrative: human-readable narrative version of the explanation\n"
+            "Follow the following format\n"
+            "Context: what the model predicts\n"
+            "Explanation: explanation of the model's prediction\n"
+            "Explanation Format: format the explanation is given in\n"
+            "Narrative: human-readable narrative version of the explanation\n"
         )
         input_string = (
             f"Context: {self.context}\n"
@@ -115,9 +112,7 @@ class Narrator:
         if len(examples_string) == 0:
             return "---\n".join([header_string, format_string, input_string])
         else:
-            return "---\n".join(
-                [header_string, format_string, examples_string, input_string]
-            )
+            return "---\n".join([header_string, format_string, examples_string, input_string])
 
     def narrate(self, explanation, n_examples=3, n_bootstrapped=0, grader=None):
         """
@@ -129,7 +124,8 @@ class Narrator:
             n_bootstrapped (int): Number of bootstrapped examples to pass. Increasing this number
                 will incur additional calls to the LLM, but may improve the quality of the output
                 n_bootstrapped should be less than or equal to n_examples
-            grader (Grader): Grader object to use for bootstrapping. Must be provided if n_bootstrapped > 0
+            grader (Grader): Grader object to use for bootstrapping. Must be provided if
+                n_bootstrapped > 0
         """
         if n_bootstrapped > 0:
             return self.bootstrap_few_shot(
@@ -158,15 +154,11 @@ class Narrator:
         """
         if prompt is None:
             prompt = self.default_prompt
-        full_prompt = self._assemble_prompt(
-            prompt, explanation, explanation_format, examples=None
-        )
+        full_prompt = self._assemble_prompt(prompt, explanation, explanation_format, examples=None)
         output = self.llm(full_prompt)[0]
         return _manually_parse_output(output)
 
-    def few_shot(
-        self, explanation, explanation_format, prompt=None, n_few_shot=3, use_dspy=False
-    ):
+    def few_shot(self, explanation, explanation_format, prompt=None, n_few_shot=3, use_dspy=False):
         """
         Few-shot prompting
 
@@ -175,7 +167,8 @@ class Narrator:
             explanation_format (string): Explanation format
             prompt (string): Prompt
             n_few_shot (int): Number of examples to use in few-shot learning
-            use_dspy (bool): Should be set to False, saving legacy version using DSPy in case needed later
+            use_dspy (bool): Should be set to False, saving legacy version using DSPy
+                in case needed later
 
         Returns:
             DSPy Prediction object
@@ -209,7 +202,8 @@ class Narrator:
             explanation_format (string): Explanation format
             metric (func): Metric to use for optimization
             n_labeled_few_shot (int): Number of examples to use in few-shot learning
-            n_bootstrapped_few_shot (int): Number of bootstrapped examples to use in few-shot learning
+            n_bootstrapped_few_shot (int): Number of bootstrapped examples to use in
+                few-shot learning
 
         Returns:
             DSPy Prediction object

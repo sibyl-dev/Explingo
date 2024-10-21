@@ -1,5 +1,3 @@
-import random
-
 import dspy
 import pandas as pd
 
@@ -14,7 +12,8 @@ class RubricAssess(dspy.Signature):
     rubric = dspy.InputField()
 
     assessment = dspy.OutputField(
-        desc="A single number from the options in the rubric. Provide only a single number with no other text."
+        desc="A single number from the options in the rubric. "
+        "Provide only a single number with no other text."
     )
 
 
@@ -40,13 +39,17 @@ class Grader:
         Grades narratives
 
         Args:
-            llm (LLM): LLM to use to grade accuracy, completeness, and fluency. One of llm or openai_api_key must be provided
-            openai_api_key (string): OpenAI API key to use to grade accuracy, completeness, and fluency
-            metrics (list of strings or "all"): One or more of  accuracy", "completeness", "fluency", "conciseness"
+            llm (LLM): LLM to use to grade accuracy, completeness, and fluency.
+                One of llm or openai_api_key must be provided
+            openai_api_key (string): OpenAI API key to use to grade accuracy, completeness,
+                and fluency
+            metrics (list of strings or "all"): One or more of
+                "accuracy", "completeness", "fluency", "conciseness"
             sample_narratives (list of strings, or (string, string) tuples):
                 Sample narratives to use to grade fluency. Can pass in either just the narratives
                 or (explanation, narrative) tuples
-            max_optimal_length (int): Hyperparameter for conciseness metric, defaults to number of words in longest sample narrative or 100 if not given
+            max_optimal_length (int): Hyperparameter for conciseness metric, defaults to number of
+                words in longest sample narrative or 100 if not given
         """
         self.metrics = metrics
 
@@ -70,9 +73,7 @@ class Grader:
             isinstance(self.sample_narratives[0], list)
             or isinstance(self.sample_narratives[0], tuple)
         ):
-            self.sample_narratives = [
-                narrative[1] for narrative in self.sample_narratives
-            ]
+            self.sample_narratives = [narrative[1] for narrative in self.sample_narratives]
 
         self.max_optimal_length = max_optimal_length
         if max_optimal_length is None and self.sample_narratives is not None:
@@ -95,9 +96,7 @@ class Grader:
     def run_metrics(self, input_, output_, trace):
         results = {}
         if "accuracy" in self.metrics:
-            results["accuracy"] = accuracy(
-                input_, output_, grader=self.grader_llm, trace=trace
-            )
+            results["accuracy"] = accuracy(input_, output_, grader=self.grader_llm, trace=trace)
         if "completeness" in self.metrics:
             results["completeness"] = completeness(
                 input_, output_, grader=self.grader_llm, trace=trace
@@ -126,9 +125,7 @@ class Grader:
             )
 
     def __call__(self, explanation, explanation_format, narrative, trace=None):
-        input_ = dspy.Example(
-            explanation=explanation, explanation_format=explanation_format
-        )
+        input_ = dspy.Example(explanation=explanation, explanation_format=explanation_format)
         output_ = dspy.Prediction(narrative=narrative)
         return self.run_metrics(input_, output_, trace)
 
@@ -185,14 +182,20 @@ def compute_score_from_rubric(
 def accuracy(input_, output_, grader, trace=None):
     question = (
         f"How accurate is the information in the narrative, based on the explanation given? "
-        f"A narrative can score 4 even if it is missing information as long as everything in the narrative is correct. "
-        f"Make sure the contribution direction is correct - positive contributions increase the output, negative contributions decrease the output."
+        f"A narrative can score 4 even if it is missing information as long as everything "
+        f"in the narrative is correct. Make sure the contribution direction is correct - "
+        f"positive contributions increase the output, negative contributions decrease the output."
         f"\n\nExplanation format: {input_.explanation_format}.\nExplanation: {input_.explanation}"
     )
-    rubric = f"0 - Contains one or more errors in value or contribution direction. 4 - Contains no errors, but may be missing information."
+    rubric = (
+        "0 - Contains one or more errors in value or contribution direction. "
+        "4 - Contains no errors, but may be missing information."
+    )
 
     rational_type = dspy.OutputField(
-        prefix="Start by listing out all the features in the narrative, and then for each one compare it to the explanation to ensure its value and contribution are approximately correct.",
+        prefix="Start by listing out all the features in the narrative, and then for each one "
+        "compare it to the explanation to ensure its value and contribution "
+        "are approximately correct.",
     )
 
     return compute_score_from_rubric(
@@ -207,27 +210,39 @@ def accuracy(input_, output_, grader, trace=None):
 
 def fluency(input_, output_, grader, trace=None, good_narratives=None):
     if good_narratives is None:
-        question = f"How natural and human is the narrative?"
+        question = "How natural and human is the narrative?"
     else:
-        question = f"How well does the style of the narrative match the style of the example narratives? Consider only the linguistic style, not the topic. Example narratives:"
+        question = (
+            "How well does the style of the narrative match the style of the example "
+            "narratives? Consider only the linguistic style, not the topic. "
+            "Example narratives:"
+        )
         for narrative in good_narratives:
             question += f"\n{narrative}"
     if good_narratives is not None:
-        rubric = f"0: Very dissimilar. 1: Dissimilar. 2: Neutral. 3: Similar. 4: Very similar"
+        rubric = "0: Very dissimilar. 1: Dissimilar. 2: Neutral. 3: Similar. 4: Very similar"
     else:
-        rubric = (
-            f"0: Very unnatural. 1: Unnatural. 2: Neutral. 3: Natural. 4: Very natural"
-        )
-    return compute_score_from_rubric(
-        "fluency", question, rubric, output_.narrative, grader
-    )
+        rubric = "0: Very unnatural. 1: Unnatural. 2: Neutral. 3: Natural. 4: Very natural"
+    return compute_score_from_rubric("fluency", question, rubric, output_.narrative, grader)
 
 
 def completeness(input_, output_, grader, trace=None):
-    question = f"How completely does the narrative below describe the explanation given in <<>>?\nExplanation format: {input_.explanation_format}.\nExplanation: <<{input_.explanation}>>"
-    rubric = "0 - One or more feature names from the explanation are not mentioned at all in the narrative. 2 - All features are mentioned, but not all feature values and/or contribution directions. 4 - All features are mentioned, and for each feature, includes at least an approximation of the feature's value and contribution direction."
+    question = (
+        f"How completely does the narrative below describe the explanation given?"
+        f"\nExplanation format: {input_.explanation_format}."
+        f"\nExplanation: {input_.explanation}"
+    )
+    rubric = (
+        "0 - One or more feature names from the explanation are not mentioned at all in the "
+        "narrative. 2 - All features are mentioned, but not all feature values and/or "
+        "contribution directions. 4 - All features are mentioned, and for each feature, "
+        "includes at least an approximation of the feature's value and contribution "
+        "direction."
+    )
     rational_type = dspy.OutputField(
-        prefix="Start by listing out all the features in the explanations, and then determine every feature is present in the narrative, along with its value and contribution direction.",
+        prefix="Start by listing out all the features in the explanations, and then determine "
+        "every feature is present in the narrative, along with its value and "
+        "contribution direction.",
     )
 
     return compute_score_from_rubric(
@@ -240,9 +255,7 @@ def completeness(input_, output_, grader, trace=None):
     )
 
 
-def conciseness(
-    input_, output_, grader=None, trace=None, max_optimal_length_per_feature=20
-):
+def conciseness(input_, output_, grader=None, trace=None, max_optimal_length_per_feature=20):
     num_features = input_.explanation.count("(")
     if num_features == 0:
         num_features = 1
@@ -259,13 +272,9 @@ def conciseness(
 
 
 def context_awareness(input_, output_, grader, trace=None):
-    question = (
-        f"How well does the rationalization help explain the logic in the narrative?"
-    )
-    rubric = f"0: Not at all. 2: Somewhat. 4: Very well."
-    narrative_input = (
-        f"Narrative: {output_.narrative}. Rationalization: {output_.rationalization}"
-    )
+    question = "How well does the rationalization help explain the logic in the narrative?"
+    rubric = "0: Not at all. 2: Somewhat. 4: Very well."
+    narrative_input = f"Narrative: {output_.narrative}. Rationalization: {output_.rationalization}"
     return compute_score_from_rubric(
         "context_awareness", question, rubric, narrative_input, grader
     )

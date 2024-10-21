@@ -4,9 +4,7 @@ import explingo
 def test_narrate_basic_prompt():
     response = "narrative"
     mock_llm = explingo.testing.MockNarratorLLM(response)
-    narrator = explingo.Narrator(
-        llm=mock_llm, explanation_format="test", context="test"
-    )
+    narrator = explingo.Narrator(llm=mock_llm, explanation_format="test", context="test")
     explanation = "explanation"
     assert narrator.narrate(explanation) == response
 
@@ -40,8 +38,6 @@ def test_narrative_bootstrapped_few_shot():
     )
     explanation = "explanation"
     assert (
-        narrator.narrate(
-            explanation, n_examples=2, n_bootstrapped=2, grader=mock_grader
-        )
+        narrator.narrate(explanation, n_examples=2, n_bootstrapped=2, grader=mock_grader)
         == response
     )
